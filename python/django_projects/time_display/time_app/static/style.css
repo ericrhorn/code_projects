@@ -1,0 +1,25 @@
+body {
+    padding: 10px;
+    margin: 10px;
+}
+
+.container {
+    border-style: solid;
+    margin-bottom: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+    justify-content: center;
+    width: auto;
+}
+
+.display {
+    color: blue;
+    text-align: center;
+    
+}
+
+.time {
+    color: red;
+    text-align: center;
+    
+}
