@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Survey</h1>
+    <form action="/display" method="POST">
+        {% csrf_token %}
+        <p>First Name: <input name="first_name" type="text"></p>
+        <p>Last Name: <input name="last_name" type="text"></p>
+        <p> Favorite Code Language:
+            <select name = "language">
+                <option value = "javaScript">javaScript</option>
+                <option value = "React">React</option>
+                <option value = "Java">Java</option>
+                <option value = "Python">Python</option>
+            </select>
+        </p>
+        <p>
+            <input type = "radio" id = "like_coding" name = "affinity" value = "Like Coding">
+            <label for = "like_coding">Like Coding?</label><br>
+            <input type = "radio" id = "love_coding" name = "affinity" value = "Love Coding">
+            <label for = "love_coding">Love Coding?</label><br>
+            <input type = "radio" id = "live_for_coding!!!!" name = "affinity" value = "Live For Coding">
+            <label for = "live_for_coding....">Live For Coding?</label><br>
+        </p>
+        <p>Comments:</p>
+            <p>
+                <textarea type ="text" name="comment"></textarea>
+            </p>
+        <button type="submit">Submit</button>
+    </form>      
+</body>
+</html>
