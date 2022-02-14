@@ -9,7 +9,7 @@ require('dotenv').config();
 
 
 app.use(cookieParser());
-// Change the app.use(cors()) to the one below
+// Change the app.use(cors()) to the one below. add the ability to use credentials with cookies
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 // app.use(cors())    
 app.use(express.json());                           

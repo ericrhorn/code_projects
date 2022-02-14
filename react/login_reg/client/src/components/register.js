@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Login from './login';
 import axios from 'axios';
-const PersonForm = () => {
+const RegisterUser = () => {
     //keep track of what is being typed via useState hook
     const [firstName, setFirstName] = useState(""); 
     const [lastName, setLastName] = useState("");
@@ -61,4 +61,4 @@ const PersonForm = () => {
         </div>
     )
 }
-export default PersonForm;
+export default RegisterUser;

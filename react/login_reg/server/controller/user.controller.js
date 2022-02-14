@@ -6,7 +6,7 @@
 
 const { request } = require("express");
 const { model } = require("mongoose");
-const User = require("../models/login_reg.model");
+const User = require("../models/user.model");
 
 const newUser = (req, res) => {
     User.create(req.body)
