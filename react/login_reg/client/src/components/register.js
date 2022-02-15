@@ -55,7 +55,7 @@ const register = e => {
         })
         setConfirmReg("Thank you for registering");
         setErrs({})     // remember to reset error state if it was successfull
-        //  
+        navigate("/dashboard")
     })
     .catch((err) => {
         console.log(err);

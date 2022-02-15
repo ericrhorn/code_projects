@@ -3,7 +3,8 @@ import axios from "axios";
 import {navigate} from "@reach/router";
 
 
-const Login = () => {
+const Login = (props) => {
+    const {firstName, setFirstName} = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -24,6 +25,7 @@ const Login = () => {
             console.log(res.cookies);
             console.log(res);
             console.log(res.data, 'is res data');
+            setFirstName(res.data.userLoggedIn);
             navigate("/dashboard")
         })
         .catch(err => {

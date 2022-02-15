@@ -46,7 +46,8 @@ const login = (req, res) => {
                         res.cookie("usertoken",
                             jwt.sign({
                                 use_id: userRecord._id,
-                                email: userRecord.email
+                                email: userRecord.email,
+                                firstName: userRecord.firstName
                             },
                             process.env.FIRST_SECRET_KEY),
                             {
@@ -56,7 +57,9 @@ const login = (req, res) => {
                             )
                             .json({
                                 message: "login successfull",
+                                userLoggedIn: userRecord.email,
                                 userLoggedIn: userRecord.firstName
+                                
                             })
                     } else {
                         // passwords didnt match
