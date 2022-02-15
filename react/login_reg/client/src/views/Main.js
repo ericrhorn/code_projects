@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import RegisterUser from '../components/RegisterUser';
+import LogReg from './logreg';
+
+
 const Main = () => {
     return (
         <div>
-           <RegisterUser/>
+           <LogReg/>
         </div>
     )
 }

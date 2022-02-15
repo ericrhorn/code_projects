@@ -19,7 +19,7 @@ const register = (req, res) => {
     })
     .catch((err) => {
       console.log("register not successful");
-      res.json({ message: "uh oh cant make a new user", error: err });
+      res.status(400).json(err);
     });
 };
 
@@ -40,7 +40,9 @@ const login = (req, res) => {
             bcrypt.compare(req.body.password, userRecord.password)
                 .then((isPasswordValid) => {
                     if(isPasswordValid){
-                        console.log("password is valid")
+                        console.log("password is valid");
+                        console.log(userRecord);
+                        console.log(process.env.FIRST_SECRET_KEY);
                         res.cookie("usertoken",
                             jwt.sign({
                                 use_id: userRecord._id,

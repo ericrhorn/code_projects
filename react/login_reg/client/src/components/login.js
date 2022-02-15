@@ -1,46 +1,68 @@
 import React, { useState } from 'react'
+import axios from "axios";
+import {navigate} from "@reach/router";
 
-// login: async(req, res) => {
-//         const user = await User.findOne({ email: req.body.email });
-     
-//         if(user === null) {
-//             // email not found in users collection
-//             return res.sendStatus(400);
-//         }
-     
-//         // if we made it this far, we found a user with this email address
-//         // let's compare the supplied password to the hashed password in the database
-//         const correctPassword = await bcrypt.compare(req.body.password, user.password);
-     
-//         if(!correctPassword) {
-//             // password wasn't a match!
-//             return res.sendStatus(400);
-//         }
-     
-//         // if we made it this far, the password was correct
-//         const userToken = jwt.sign({
-//             id: user._id
-//         }, process.env.SECRET_KEY);
-     
-//         // note that the response object allows chained calls to cookie and json
-//         res
-//             .cookie("usertoken", userToken, secret, {
-//                 httpOnly: true
-//             })
-//             .json({ msg: "success!" });
-//     }
-   
-    
-//     // logout
-//     ...
-// logout: (req, res) => {
-//     res.clearCookie('usertoken');
-//     res.sendStatus(200);
-// }
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const login = event => {
+        event.preventDefault();
+        axios.post('http://localhost:8000/api/user/login', {
+            email: email,
+            password: password,
+        },
+        {
+        // this will force the sending of the credentials / cookies so they can be updated
+        // XMLHTTPRequest from a different domain canno set cookie values for their own domain
+        // unless withCredentials is set to true before making the request
+        withCredentials: true,
+        })
+        .then((res) => {
+            console.log(res.cookies);
+            console.log(res);
+            console.log(res.data, 'is res data');
+            navigate("/dashboard")
+        })
+        .catch(err => {
+            console.log(err.response);
+            setErrorMessage(err.response.data.message);
+        });
+    };
+
     return (
-        <h1>login</h1>
+        <div>
+            <h2>Login</h2>
+            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+            <form onSubmit={login}>
+                <p>
+                <label>Email</label><br/>
+                    <input
+                        type = "text"
+                        name = "email"
+                        value = {email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </p>
+                <p>
+                <label>Password</label><br/>
+                    <input
+                        type = "text"
+                        name = "password"
+                        value = {password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </p>
+                <div>
+                <button
+                    type="submit"
+                    >Login</button>
+            </div>
+            </form>
+            
+        </div>
     )
 }
 

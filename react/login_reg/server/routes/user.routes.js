@@ -4,6 +4,7 @@ module.exports = (app) => {
     app.post("/api/user/register", UserController.register);
     app.post("/api/user/login", UserController.login);
     app.post("/api/user/logout", UserController.logout);
+    
 
     // app.post('/api/user', userController.newUser);
     // app.get('/api/user', userController.showUser);
@@ -13,7 +14,7 @@ module.exports = (app) => {
 };
 
 
-// inside of user.routes.js
+// inside of routes.js
 // const Users = require('../controllers/user.controller');
 // const { authenticate } = require('../config/jwt.config');
 // module.exports = app => {
@@ -22,13 +23,3 @@ module.exports = (app) => {
 //   // this route now has to be authenticated
 //   app.get("/api/users", authenticate, Users.getAll);
 // }
-
-// const UserController = require("../controllers/user.controller");
-// const jwtMiddleware = require("../middleware/jwt.middleware");
-
-// module.exports = (app) => {
-//     app.post("/api/register", UserController.register);
-//     app.post("/api/login", UserController.login);
-//     app.get("/api/protected", jwtMiddleware.authenticate);
-//     app.post("/api/logout", UserController.logout);
-// };
