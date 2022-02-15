@@ -1,47 +1,93 @@
-// module.exports.index = (req, res) => {
-//     res.json({
-//        message: "Hello World"
-//     });
-// }
-
 const { request } = require("express");
 const { model } = require("mongoose");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 
-const newUser = (req, res) => {
-    User.create(req.body)
-        .then((newUser) => res.json({ msg: "success!", user: newUser }))
-        .catch((err) => res.json({ message: "uh oh cant make a new user", error: err }));
+const register = (req, res) => {
+  console.log("in register");
+  console.log(req.body);
+
+  User.create(req.body)
+    .then((newUser) => {
+      console.log("successfully registered");
+      console.log(newUser);
+      res.json({
+        msg: "success!",
+        user: newUser,
+      });
+    })
+    .catch((err) => {
+      console.log("register not successful");
+      res.json({ message: "uh oh cant make a new user", error: err });
+    });
 };
 
-const showUsers = (req, res) => {
-    User.find({})
-        .then((allUsers) => res.json(allUsers))
-        .catch((err) => res.json({ message: "uh oh cant show users", error: err }));
+// login
+const login = (req, res) => {
+    User.findOne({ email:req.body.email})
+    .then((userRecord) => {
+        // check if the return object is null
+        if (userRecord === null) {
+            // email was not found in the DB
+            console.log("user email not found");
+            res.status(400).json({message: "invalid login attempt"})
+        } else {
+            console.log("user email found");
+            console.log(userRecord)
+          // the email was found
+          // compair the address given with the request with the one in the DB
+            bcrypt.compare(req.body.password, userRecord.password)
+                .then((isPasswordValid) => {
+                    if(isPasswordValid){
+                        console.log("password is valid")
+                        res.cookie("usertoken",
+                            jwt.sign({
+                                use_id: userRecord._id,
+                                email: userRecord.email
+                            },
+                            process.env.FIRST_SECRET_KEY),
+                            {
+                                httpOnly: true,
+                                expires: new Date(Date.now() + 900000)
+                            }
+                            )
+                            .json({
+                                message: "login successfull",
+                                userLoggedIn: userRecord.firstName
+                            })
+                    } else {
+                        // passwords didnt match
+                        console.log("passwords dont match")
+                        res.status(400).json({message: "invalid login attempt"})
+                    }
+                })
+                .catch((err) => {
+                    console.log("error compairing passwords");
+                    res.status(400).json({message: "invalid attempt sub"})
+                })
+        }
+    })
+    .catch((err) => {
+        console.log("error finding one user");
+        res.status(400).json({message: "invalid login attempt"})
+    });
 };
 
-const showOneUser = (req, res) => {
-    User.findOne({_id: req.params._id})
-        .then((oneUser) => res.json(oneUser))
-        .catch((err) => res.json({ message: "uh oh... cant show a user", error: err }));
-};
+const logout = (req, res) => {
+    console.log("successfully logged out")
+    res.clearCookie('usertoken');
+    // res.sendStatus(200);
+    res.json({
+        message: "you have logged out",
+    })
+}
 
-const updateUser = (req, res) => {
-    User.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true })
-        .then(updatedProduct => res.json(updatedProduct))
-        .catch(err => res.json({ message: "Something went wrong with edit", error: err }));
-};
-
-const deleteUser = (req, res) => {
-    User.deleteOne({ _id: req.params._id })
-        .then(result => res.json(result))
-        .catch(err => res.json({ message: "Something went wrong with delete", error: err }));
-};
 
 module.exports = {
-    showUsers,
-    showOneUser,
-    newUser,
-    updateUser,
-    deleteUser,
-}
+  register,
+  login,
+  logout,
+  // updateUser,
+  // deleteUser,
+};
