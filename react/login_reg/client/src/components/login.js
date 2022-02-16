@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import {navigate} from "@reach/router";
 
 
 const Login = (props) => {
     const {firstName, setFirstName} = props;
+    const [user, setUser] = useState();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
+
+    // //checks to see if there is a logged in user each time the app loads
+    // useEffect (() => {
+    //     const userLoggedIn = localStorage.getItem("user");
+    //     if (userLoggedIn) {
+    //         const foundUser = JSON.parse(userLoggedIn);
+    //         setUser(foundUser);
+    //     }
+    // }, []);
+
+
     const login = event => {
         event.preventDefault();
+        // const user = { email, password}; // new
         axios.post('http://localhost:8000/api/user/login', {
+            // user // new
             email: email,
             password: password,
         },
@@ -25,7 +39,10 @@ const Login = (props) => {
             console.log(res.cookies);
             console.log(res);
             console.log(res.data, 'is res data');
+            //sets the state of the user
             setFirstName(res.data.userLoggedIn);
+            //store the user in local storage
+            localStorage.setItem("user", res.data)
             navigate("/dashboard")
         })
         .catch(err => {

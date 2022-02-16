@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Router } from "@reach/router";
 import Dashboard from './components/dashboard';
-import Main from './views/Main';
+// import Main from './views/Main';
 import LogReg from './views/logreg';
 
 

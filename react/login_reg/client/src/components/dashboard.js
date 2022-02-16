@@ -1,9 +1,25 @@
 import { navigate } from "@reach/router";
-import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from 'react'
 
+import axios from "axios";
+
+
+
+ 
 
 const Dashboard = (props) => {
+
+  //  const {user, setUser} = props;
+
+
+   //checks to see if there is a logged in user each time the app loads
+//    useEffect (() => {
+//     const userLoggedIn = localStorage.getItem("user");
+//     if (userLoggedIn) {
+//         const foundUser = JSON.parse(userLoggedIn);
+//         setUser(foundUser);
+//     }
+// }, []);
 
   const logout = e => {
     e.preventDefault();
@@ -20,6 +36,16 @@ const Dashboard = (props) => {
       console.log(err);
     })
   }
+
+  // if there's a user show the message below
+  // if (user) {
+  //   return (
+  //     <div>
+  //       <p>Please log in to view this page</p>
+  //       <button>login</button>
+  //     </div>
+  //   );
+  // }
 
 
   return (

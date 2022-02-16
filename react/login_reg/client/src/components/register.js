@@ -156,17 +156,3 @@ const register = e => {
 export default RegisterUser;
 
 
-
-    //handler when the form is submitted
-    // const onSubmitHandler = e => {
-    //     //prevent default behavior of the submit
-    //     e.preventDefault();
-    //     //make a post request to create a new person
-    //     axios.post('http://localhost:8000/api/user', {
-    //         firstName,    // this is shortcut syntax for firstName: firstName,
-    //         lastName,      // this is shortcut syntax for lastName: lastName
-    //         email,
-    //     })
-    //         .then(res=>console.log(res))
-    //         .catch(err=>console.log(err))
-    // }
