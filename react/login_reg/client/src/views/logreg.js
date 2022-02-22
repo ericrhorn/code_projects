@@ -1,15 +1,15 @@
 import React from "react";
-import Login from "../components/login";
+import Login2 from "../components/login2";
 import RegisterUser from "../components/register"
 
 
 const LogReg = (props) => {
 
-    const {firstName, setFirstName} = props;
+    const {user, setUser} = props;
 
     return (
         <div>
-            <Login firstName = {firstName} setFirstName = {setFirstName}/>
+            <Login2 user = {user} setUser = {setUser}/>
             <hr/>
             <RegisterUser/>
         </div>

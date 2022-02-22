@@ -9,17 +9,21 @@ import axios from "axios";
 
 const Dashboard = (props) => {
 
-  //  const {user, setUser} = props;
+
+  // const {firstName, setFirstName} = props;
+  // const [user, setUser] = useState();
 
 
    //checks to see if there is a logged in user each time the app loads
 //    useEffect (() => {
-//     const userLoggedIn = localStorage.getItem("user");
-//     if (userLoggedIn) {
-//         const foundUser = JSON.parse(userLoggedIn);
+//     const user = localStorage.getItem("userLoggedIn");
+//     if (user) {
+//         const foundUser = JSON.parse(user);
 //         setUser(foundUser);
+//     } else {
+//       console.log("didnt work")
 //     }
-// }, []);
+// },[]);
 
   const logout = e => {
     e.preventDefault();

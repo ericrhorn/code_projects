@@ -45,9 +45,10 @@ const login = (req, res) => {
                         console.log(process.env.FIRST_SECRET_KEY);
                         res.cookie("usertoken",
                             jwt.sign({
-                                use_id: userRecord._id,
+                                user_id: userRecord._id,
                                 email: userRecord.email,
-                                firstName: userRecord.firstName
+                                firstName: userRecord.firstName,
+                                lastName: userRecord.lastName
                             },
                             process.env.FIRST_SECRET_KEY),
                             {
@@ -58,8 +59,9 @@ const login = (req, res) => {
                             .json({
                                 message: "login successfull",
                                 userLoggedIn: userRecord.email,
-                                userLoggedIn: userRecord.firstName
-                                
+                                userFirstName: userRecord.firstName,
+                                userLastName: userRecord.lastName,
+                                userId: userRecord._id
                             })
                     } else {
                         // passwords didnt match
@@ -88,11 +90,19 @@ const logout = (req, res) => {
     })
 }
 
+const getLoggedInUser = (req, res) => {
+    const decodedJWT = jwt.decode(req.cookies.usertoken, {complete: true});
+
+    User.findById(decodedJWT.payload._id)
+        .then((user) => res.json(user))
+        .catch((err) => res.json({ message: "uh oh... cant show logged in user", error: err }));
+};
+
 
 module.exports = {
   register,
   login,
   logout,
-  // updateUser,
+  getLoggedInUser,
   // deleteUser,
 };

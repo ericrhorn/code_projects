@@ -3,31 +3,19 @@ import axios from "axios";
 import {navigate} from "@reach/router";
 
 
-const Login = (props) => {
-    const {users, setUsers} = props;
-    const [user, setUser] = useState();
+const Login2 = (props) => {
+    const {user, setUser} = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
 
-    // //checks to see if there is a logged in user each time the app loads
-    // useEffect (() => {
-    //     const userLoggedIn = localStorage.getItem("user");
-    //     if (userLoggedIn) {
-    //         const foundUser = JSON.parse(userLoggedIn);
-    //         setUser(foundUser);
-    //     }
-    // }, []);
-
-
     const login = event => {
         event.preventDefault();
-        const user = { email, password}; // new
         axios.post('http://localhost:8000/api/user/login', {
-            user // new
-            // email: email,
-            // password: password,
+           
+            email: email,
+            password: password,
         },
         {
         // this will force the sending of the credentials / cookies so they can be updated
@@ -39,11 +27,18 @@ const Login = (props) => {
             console.log(res.cookies);
             console.log(res);
             console.log(res.data, 'is res data');
-            //sets the state of the user
-            setUser(res.data.userLoggedIn);
+            setUser({
+                email: res.data.userLoggedIn,
+                firstName: res.data.userFirstName,
+                lastName: res.data.userLastName,
+                id: res.data.userId,
+
+            
+            })
             //store the user in local storage
-            localStorage.setItem("user", res.data)
-            navigate("/dashboard")
+            // localStorage.setItem("userLoggedIn", JSON.stringify(res.data));
+            navigate("/profile")
+
         })
         .catch(err => {
             console.log(err.response);
@@ -88,4 +83,4 @@ const Login = (props) => {
 }
 
 
-export default Login;
+export default Login2;

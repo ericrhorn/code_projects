@@ -3,7 +3,7 @@ import axios from 'axios';
 import {navigate} from "@reach/router";
 
 
-const RegisterUser = () => {
+const RegisterUser = (props) => {
     //keep track of what is being typed via useState hook
     // const [firstName, setFirstName] = useState(""); 
     // const [lastName, setLastName] = useState("");
@@ -21,6 +21,7 @@ const RegisterUser = () => {
         password: "",
         confirmPassword: "",
     })
+    // const {users, setUsers} = props;
 
 
     //using a single function to update the state object
@@ -55,7 +56,7 @@ const register = e => {
         })
         setConfirmReg("Thank you for registering");
         setErrs({})     // remember to reset error state if it was successfull
-        navigate("/dashboard")
+        navigate("/profile")
     })
     .catch((err) => {
         console.log(err);
