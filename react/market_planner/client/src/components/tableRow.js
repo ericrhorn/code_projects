@@ -19,7 +19,7 @@ const TableRow = ({rowData, handleChange}) => {
                 dividendPerShare,
                 dividendPerQuarter,
                 dividendPerYear,
-                action,
+                // action,
             } = data;
             
             return (
@@ -41,10 +41,10 @@ const TableRow = ({rowData, handleChange}) => {
                     <td value={dividendPerShare} name="dividendPerShare">filler info</td>
                     <td value={dividendPerQuarter} name="dividendPerQuarter">filler info</td>
                     <td value={dividendPerYear} name="dividendPerYear">filler info</td>
-                    <td value={action} name = "action">
+                    {/* <td value={action} name = "action">
                         <button>delete</button>
                         <button>edit</button>
-                    </td>
+                    </td> */}
                 </tr>
             )
         })

@@ -39,8 +39,13 @@ const MarketInfo = () => {
 
     return(
         <div>
-            <h1>Here is a list of market information</h1>
-            <button>Run Info</button>
+            <div class="title">
+                <h1>Check Your Investments!</h1>
+            </div>
+            <div class ="submit">
+                <button>Run Info</button>
+            </div>
+            
             <div>
             <table class="table table-bordered">
                 <thead>
@@ -53,7 +58,7 @@ const MarketInfo = () => {
                         <th>Dividend Per Share</th>
                         <th>Dividend Per Quarter</th>
                         <th>Dividend Per Year</th>
-                        <th>Action</th>
+                        {/* <th>Action</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -86,9 +91,9 @@ const MarketInfo = () => {
             </table>
             </div>
             
-            <div>
-            <button onClick = {addRow}>Add Row </button>
-            <button onClick = {deleteRow}>Delete Row </button>
+            <div class = "rowButton">
+                <button onClick = {addRow}>Add Row </button>
+                <button onClick = {deleteRow}>Delete Row </button>
             </div>
             
         </div>

@@ -1,6 +1,32 @@
+* {
+    margin: 5px;
+    
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    padding: 5px;
     margin: 5px;
+}
+
+.header {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.title {
+    text-align: center;
+}
+
+.rowButton {
+    float: right;
+    
+}
+
+.submit {
+    float: right;
+    
 }
