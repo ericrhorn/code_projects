@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import "../style.css";
+// import React, { useEffect, useState } from 'react'
+// import axios from 'axios';
+// import "../style.css";
 
 const Main = () => {
     
     return (
-        <div class = "name">
-            <h1>Eric Horn</h1>
+        <div>
+            <h1>Content test</h1>
         </div>
       
     )
