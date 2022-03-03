@@ -9,6 +9,7 @@ const Home =()=>{
             <span>
             <div id="particles">
                 <ParticleBackground/>
+                <CenterTile/>
             </div>
             {/* <div id="title">
                 <CenterTile/>
@@ -18,15 +19,15 @@ const Home =()=>{
     )
 }
 
-// function CenterTile() {
-//     return (
-//       <div id = "text_div center_all">
-//         <div className="center_all">
-//           <h1>ERIC HORN</h1>
-//           <h2>Full Stack Web Developer</h2>
-//         </div>
-//       </div>
-//     )
-//   }
+function CenterTile() {
+    return (
+      <div id = "text_div center_all">
+        <div className="center_all">
+          <h1>ERIC HORN</h1>
+          <h2>Full Stack Web Developer</h2>
+        </div>
+      </div>
+    )
+  }
 
 export default Home;

@@ -10,20 +10,29 @@ import Home from "./views/Home";
 import { Router } from "@reach/router";
 import About from "./views/About";
 import Contact from "./views/Contact";
+import Footer from "./views/Footer";
 
 function App() {
   return (
-    <div>
-      <div>
+    <div className="main" id="home">
+      {/* <div className="navBar"> */}
         <NavBarComp/>
-      </div>
-        <body>
-        <Router>
+      {/* </div> */}
+      {/* <Router> */}
+      
+        <section className="home">
           <Home path="/"/>
+        </section>
+        <section className="about body" id="about">
           <About path="/about"/>
+        </section>
+        <section className="contact body" id="contact">
           <Contact path="/contact"/>
-        </Router>
-        </body>
+        </section>
+        <section className="footer body" id="footer">
+          <Footer path="/footer"/>
+        </section>
+        {/* </Router> */}
       
       
         

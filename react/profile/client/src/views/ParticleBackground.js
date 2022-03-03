@@ -45,7 +45,7 @@ export default function ParticleBackground() {
 
             polygon: {
             enable: true,
-            scale: 0.5,
+            scale: .5,
             type: "inline",
             move: {
                 radius: 10
@@ -78,8 +78,8 @@ export default function ParticleBackground() {
             }
         }}>
         </Particles>
-        <h1>ERIC HORN</h1>
-        <h2>Full Stack Web Developer</h2>
+        {/* <h1>ERIC HORN</h1>
+        <h2>Full Stack Web Developer</h2> */}
         </>
         
         
