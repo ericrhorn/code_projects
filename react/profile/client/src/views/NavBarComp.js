@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, {Component} from "react";
+import {HashLink as Link} from "react-router-hash-link";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import navbarImg from "../whiteStag.jpeg"
 import "../style.css";
@@ -15,7 +16,7 @@ export default class NavBarComp extends Component {
         return(
         <div>
         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-                <Navbar.Brand href="/">
+                <Navbar.Brand smooth href="#">
                 <img
                     src={navbarImg}
                     width="40"
@@ -26,9 +27,9 @@ export default class NavBarComp extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Nav.Link href="/about">About</Nav.Link>
-                    <Nav.Link href="/contact">Contact</Nav.Link>
-                    <Nav.Link href="/footer">Footer</Nav.Link>
+                    <Nav.Link smooth href="#about">About</Nav.Link>
+                    <Nav.Link smooth href="#contact">Contact</Nav.Link>
+                    <Nav.Link smooth href="#footer">Footer</Nav.Link>
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

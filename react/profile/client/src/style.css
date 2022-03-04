@@ -20,16 +20,14 @@
     text-align: center;
     font-size: 25px;
     font-family: "Ariel";
-    border-style: solid;
-    border-color: blue;
+    /* border-style: solid;
+    border-color: blue; */
 }
 
 #container{
     position: relative;
-    height: 700px;
+    height: 100hv;
     width: auto;
-    border-style: solid;
-    border-color: pink;
 }
 
 #title{
@@ -55,8 +53,8 @@
 } */
 
 #particles{
-    border-style: solid;
-    border-color: red;
+    /* border-style: solid;
+    border-color: red; */
     position: absolute;
     left: 50%;
     margin-right: -50%;
@@ -107,6 +105,10 @@ Navbar{
     text-align: center;
 } */
 
+.home{
+    /* background-color: aqua; */
+}
+
 .about{
     border-style: solid;
     border-color: orange;
@@ -123,10 +125,54 @@ Navbar{
 }
 
 .body{
-    min-height: 60vh;
+    /* max-height: 90vh;
+    min-height: 60vh; */
+    height: 100vh;
+    width: auto;
+    padding-top: 60px;
     text-align: center;
 }
 
+/* .filler_img{
+   
+} */
+
 html{
     scroll-behavior: smooth;
+}
+
+.imageContainer{
+    position: absolute;
+}
+
+.bio{
+    z-index: 1;
+    overflow: auto;
+    flex: 1;
+    padding: 20px;
+}
+
+.aboutImg{
+    position: relative;
+    vertical-align: top;
+    float: right;
+    flex: 1;
+}
+.row{
+    display: inline-flex;
+}
+
+.bioText{
+    text-align: left;
+}
+
+#ericBio p{
+    margin-top: 2.5em;
+    font-size: 1.25em;
+}
+
+.image1{
+    max-width: 100%;
+    width: 100%;
+    z-index: 0;
 }

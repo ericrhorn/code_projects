@@ -11,6 +11,11 @@ import { Router } from "@reach/router";
 import About from "./views/About";
 import Contact from "./views/Contact";
 import Footer from "./views/Footer";
+import Image1 from "./views/Images/Image1";
+import Image2 from "./views/Images/Image2";
+import Image3 from "./views/Images/Image3";
+
+
 
 function App() {
   return (
@@ -20,14 +25,23 @@ function App() {
       {/* </div> */}
       {/* <Router> */}
       
-        <section className="home">
+        <section className="home body">
           <Home path="/"/>
+        </section>
+        <section className="filler_img">
+          <Image1/>
         </section>
         <section className="about body" id="about">
           <About path="/about"/>
         </section>
+        <section className="filler_img">
+          <Image2 path="/image2"/>
+        </section>
         <section className="contact body" id="contact">
           <Contact path="/contact"/>
+        </section>
+        <section className="filler_img">
+          <Image3 path="/image3"/>
         </section>
         <section className="footer body" id="footer">
           <Footer path="/footer"/>
