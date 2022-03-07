@@ -4,9 +4,12 @@ import React from "react";
 
 import ParticleBackground from './ParticleBackground';
 import "../style.css";
+
 // import {useMediaQuery} from "react-responsive"
 import Media from "react-media"
-import bkgrImg from "../whiteStag.jpeg"
+import python from "../python.jpeg"
+import java from "../java.jpeg"
+import react from "../logo.svg"
 
 
 const Home =()=>{
@@ -15,48 +18,82 @@ const Home =()=>{
 
      
     return (
-        <div id="container">
-            <div id="particles">
-                <div>
-                    <Media query="(min-width: 1000px)">
-                        {
-                            matches => {
-                                return matches ? 
-                                <div>
+        <div class="container">
+
+            <div class="row align-items-start">
+
+                <div class="particles col ">
+                    <div>
+                        <Media query="(min-width: 1000px)">
+                            {
+                                matches => {
+                                    return matches ? 
                                     <div>
-                                        <ParticleBackground/>
+                                        <div>
+                                            <ParticleBackground/>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <CenterTile/>
-                                    </div>
-                                </div>
-                                : null
-                                // <div style={{
-                                //     backgroundImage: `url(${bkgrImg})`,
-                                //     backgroundPosition: 'center',
-                                //     backgroundSize: 'cover',
-                                //     backgroundRepeat: 'no-repeat'
-                                //     }}>
-                                //     <div style={{color: "red"}}>
-                                //     <CenterTile/>
-                                //     </div>
-                                // </div> 
+                                    : null
+                                }
                             }
-                        }
-                    </Media>
+                        </Media>
+                    </div>
                 </div>
-                <div>
+            </div>
+
+
+            <div class="row align-items-center">
+                <div class="col">
                     <CenterTile/>
                 </div>
             </div>
+
+
+            <div class="homeImages row align-items-end">
+
+                <div class="col">
+                    <img
+                        // class="frame img-responsive" 
+                        style={{
+                            width:200,
+                            height:125,
+                            
+                        }}
+                        src={python}
+                    />
+                    <img
+                        // class="frame img-responsive" 
+                        class="App-logo" alt="logo"
+                        style={{
+                            width:200,
+                            height:125,
+                            
+                        }}
+                        src={react}
+                    />
+                    <img
+                        // class="frame img-responsive" 
+                        style={{
+                            width:200,
+                            height:125,
+                            
+                        }}
+                        src={java}
+                    />
+                </div>
+                    
+            </div> 
+
         </div>
     )
 }
 
 function CenterTile() {
     return (
-      <div id = "text_div center_all">
-        <div className="center_all">
+    //   <div id = "text_div center_all">
+    //     <div className="center_all">
+    <div>
+        <div className="text_div">
           <h1>ERIC HORN</h1>
           <h2>Full Stack Web Developer</h2>
         </div>
