@@ -29,15 +29,15 @@ function App() {
         <section className="home">
           <Home path="/"/>
         </section>
-        <section className="filler_img">
+        {/* <section className="filler_img">
           <Image1/>
-        </section>
+        </section> */}
         <section className="about" id="about">
           <About path="/about"/>
         </section>
-        <section className="filler_img">
+        {/* <section className="filler_img">
           <Image2 path="/image2"/>
-        </section>
+        </section> */}
         <section className="contact" id="contact">
           <Contact path="/contact"/>
         </section>

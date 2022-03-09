@@ -30,9 +30,21 @@ const Home =()=>{
                                     <div>
                                         <div>
                                             <ParticleBackground/>
+                                            <div class="row align-items-center">
+                                            <div class="col">
+                                                <CenterTile/>
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
-                                    : null
+                                    : 
+                                    <div class="col"
+                                    style={{
+                                        paddingTop: 150
+                                    }}
+                                    >
+                                        <CenterTile/>
+                                    </div>
                                 }
                             }
                         </Media>
@@ -41,11 +53,11 @@ const Home =()=>{
             </div>
 
 
-            <div class="row align-items-center">
+            {/* <div class="row align-items-center">
                 <div class="col">
                     <CenterTile/>
                 </div>
-            </div>
+            </div> */}
 
 
             <div class="homeImages row align-items-end">

@@ -125,16 +125,60 @@ Navbar{
 
 
 .about{
-    height: 100vh;
+    min-height: 100vh;
     width: auto;
     padding-top: 60px;
     text-align: center;
 }
 
+.aboutImg{
+    /* max-width: 100%;
+    vertical-align: middle;
+    display: inline-block; */
+    /* border-style: solid;
+    border-color: purple; */
+    /* min-width: 500px; */
+    
+}
+
+.aboutInfo{
+    /* border-style: solid;
+    border-color: blue; */
+    min-width: 400px;
+}
+
+
+
+/* .frame{
+	margin: auto;
+	margin-top: 50px;
+} */
+
+/* .infoFirst{
+	position: relative;
+	background: white;
+	color: black;
+	z-index: 1;
+	padding: 100px 10px;
+	max-width: 100%;
+	min-height: 100vh;
+	height:auto;
+	width:100%;
+	overflow: auto;
+    border-style: solid;
+    border-color: purple;
+}
+
+
+#who p{
+	margin-top: 2.5em;
+	font-size: 1.25em;
+} */
+
 .contact{
     margin: auto;
     width: 50%;
-    height: 40vh;
+    min-height: 100vh;
     padding-top: 65px;
     text-align: center;
     
@@ -173,7 +217,7 @@ Navbar{
 .body{
     /* max-height: 90vh;
     min-height: 60vh; */
-    height: calc(100vh + 200px);
+    min-height: calc(100vh + 200px);
     width: auto;
     padding-top: 60px;
     /* text-align: center; */

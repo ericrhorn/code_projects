@@ -8,8 +8,8 @@ const About =()=>{
     return (
         <div class="container-fluid bio">
             <div class="row">
-                {/* <div class="col-md-12"> */}
-                    <div class="col col-sm-7">
+                {/* <div id="who" class="col-md-12 infoFirst"> */}
+                    <div class="col col-offset-1 aboutInfo">
                         <h1>About Eric</h1>
                         <h3>Criminal Justice Major Turned Coder</h3>
                         <p style={{
@@ -19,12 +19,15 @@ const About =()=>{
                         >
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu feugiat sem. Etiam suscipit erat non libero dignissim vehicula. Sed at magna mattis, faucibus justo mattis, vehicula nunc. Ut pellentesque, ex ut lobortis dictum, tortor libero rhoncus ante, sed convallis quam purus eu lacus. Duis nec odio tempor, elementum justo sit amet, lacinia ipsum. Integer vestibulum scelerisque nulla, quis sodales quam imperdiet vitae. Sed hendrerit mollis purus, sit amet viverra diam sodales sit amet. Maecenas in accumsan diam, gravida dignissim neque.</p>
                     </div>
-                    <div class="col col-md-5 aboutImg">
+                    <div class="col col-offset-1 aboutImg">
                         <img
-                        
-                        class="frame img-responsive" 
+                        // sizes="(max-width: 479px) 100vw, (max-width: 767px) 87vw, (max-width: 991px) 90vw, 50vw"
+                        // loading="lazy"
+                        class="frame img-fluid" 
                         style={{
-                            width:500,
+                            minWidth: 400,
+                            width:600,
+                            borderRadius: 15
                         }}
                         src={famImg}
                         />
