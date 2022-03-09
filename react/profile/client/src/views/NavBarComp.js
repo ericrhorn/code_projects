@@ -29,7 +29,9 @@ export default class NavBarComp extends Component {
                 <Nav className="ml-auto">
                     <Nav.Link smooth href="#about">About</Nav.Link>
                     <Nav.Link smooth href="#contact">Contact</Nav.Link>
-                    <Nav.Link smooth href="#footer">Footer</Nav.Link>
+                    <Nav.Link smooth href="#tech">Technologies</Nav.Link>
+                    <Nav.Link smooth href="#projects">Projects</Nav.Link>
+                    {/* <Nav.Link smooth href="#footer">Footer</Nav.Link> */}
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

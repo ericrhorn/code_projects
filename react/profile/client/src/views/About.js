@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+
 import "../style.css";
 import famImg from "../family.JPG"
 
@@ -14,7 +15,7 @@ const About =()=>{
                         <h3>Criminal Justice Major Turned Coder</h3>
                         <p style={{
                             textAlign: "justify",
-                            paddingLeft: 25,
+                            // paddingLeft: 25,
                         }}
                         >
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu feugiat sem. Etiam suscipit erat non libero dignissim vehicula. Sed at magna mattis, faucibus justo mattis, vehicula nunc. Ut pellentesque, ex ut lobortis dictum, tortor libero rhoncus ante, sed convallis quam purus eu lacus. Duis nec odio tempor, elementum justo sit amet, lacinia ipsum. Integer vestibulum scelerisque nulla, quis sodales quam imperdiet vitae. Sed hendrerit mollis purus, sit amet viverra diam sodales sit amet. Maecenas in accumsan diam, gravida dignissim neque.</p>
@@ -25,7 +26,7 @@ const About =()=>{
                         // loading="lazy"
                         class="frame img-fluid" 
                         style={{
-                            minWidth: 400,
+                            minWidth: 300,
                             width:600,
                             borderRadius: 15
                         }}

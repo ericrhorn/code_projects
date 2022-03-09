@@ -4,12 +4,15 @@
 // import Main from "./views/main";
 // import ParticleBackground from './views/ParticleBackground';
 // import "./style.css";
-import NavBarComp from "./views/NavBarComp";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from "./views/Home";
 import { Router } from "@reach/router";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBarComp from "./views/NavBarComp";
+import Home from "./views/Home";
 import About from "./views/About";
 import Contact from "./views/Contact";
+import Projects from "./views/Projects"
+import Tech from "./views/Tech";
+
 import Footer from "./views/Footer";
 import Image1 from "./views/Images/Image1";
 import Image2 from "./views/Images/Image2";
@@ -35,6 +38,15 @@ function App() {
         <section className="about" id="about">
           <About path="/about"/>
         </section>
+
+        <section className="tech" id="tech">
+          <Tech path="/tech"/>
+        </section>
+
+        <section className="projects" id="projects">
+          <Projects path="/projects"/>
+        </section>
+        
         {/* <section className="filler_img">
           <Image2 path="/image2"/>
         </section> */}

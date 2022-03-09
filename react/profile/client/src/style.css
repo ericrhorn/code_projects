@@ -122,14 +122,40 @@ Navbar{
     text-align: center;
     padding-bottom: 30px;
 }
+.projects{
+    min-height: 100vh;
+    width: auto;
+    padding-top: 60px;
+    text-align: center;
+    font-family: "Ariel";
+    font-size: 30px;
+    background-color: lightgray;
+}
 
+.tech{
+    min-height: 100vh;
+    width: auto;
+    padding-top: 60px;
+    text-align: center;
+    font-family: "Ariel";
+    font-size: 30px;
+}
+
+.projCol{
+    border-style: solid;
+    border-color: red;
+    height: 400px;
+}
 
 .about{
     min-height: 100vh;
     width: auto;
     padding-top: 60px;
     text-align: center;
+    background-color: lightgrey;
 }
+
+
 
 .aboutImg{
     /* max-width: 100%;
@@ -144,7 +170,8 @@ Navbar{
 .aboutInfo{
     /* border-style: solid;
     border-color: blue; */
-    min-width: 400px;
+    min-width: 300px;
+    width: 400px;
 }
 
 
@@ -177,12 +204,21 @@ Navbar{
 
 .contact{
     margin: auto;
-    width: 50%;
-    min-height: 100vh;
+    /* width: 50%; */
+    min-height: 50vh;
     padding-top: 65px;
     text-align: center;
+    /* background-color: rgb(223, 232, 236);
+    color: white; */
     
     
+}
+
+.icon{
+    width: 800px;
+    align-items: center;
+    align-content: center;
+
 }
 
 /* .contactPage{
@@ -200,12 +236,21 @@ Navbar{
 }  */
 
 .moreContact{
-    /* border-style: solid;
-    border-color: red; */
+    border-style: solid;
+    border-color: red;
     justify-content: space-between;
     display: flex;
     align-items: center;
     /* vertical-align: bottom; */
+    
+}
+
+.contactIcons{
+    /* border-style: solid;
+    border-color: blue; */
+    /* width: 800px; */
+    
+    
     
 }
 
@@ -239,6 +284,7 @@ html{
     font-family: "Ariel";
     margin-top: 2.5em;
     font-size: 1.25em;
+    max-width: 90%;
 }
 
 .aboutImg{
