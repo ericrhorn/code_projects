@@ -1,5 +1,5 @@
 .text_div {
-    padding-top: 30px;
+    /* padding-top: 15px; */
     font-size: 30px;
     font-family: "Ariel";
 }
@@ -125,16 +125,20 @@ Navbar{
 
 
 .about{
-    height: calc(100vh + 200px);
+    height: 100vh;
     width: auto;
     padding-top: 60px;
     text-align: center;
 }
 
 .contact{
-    height: calc(100vh + 200px);
-    width: auto;
+    margin: auto;
+    width: 50%;
+    height: 40vh;
     padding-top: 65px;
+    text-align: center;
+    
+    
 }
 
 /* .contactPage{
@@ -152,8 +156,13 @@ Navbar{
 }  */
 
 .moreContact{
-    border-style: solid;
-    border-color: red;
+    /* border-style: solid;
+    border-color: red; */
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    /* vertical-align: bottom; */
+    
 }
 
 .footer{

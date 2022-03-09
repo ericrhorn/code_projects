@@ -17,11 +17,11 @@ export default class NavBarComp extends Component {
         <div>
         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
                 <Navbar.Brand smooth href="#">
-                <img
+                {/* <img
                     src={navbarImg}
                     width="40"
                     height="40"
-                    />
+                    /> */}
                     ERH
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

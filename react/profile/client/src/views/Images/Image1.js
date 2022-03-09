@@ -12,7 +12,7 @@ const Image1 =()=>{
                 src={halfMoon}
                 alt="halfMoon"
                 style={{
-                    // transform: translat3d(0, 211, 0),
+                    transform: "translat3d(0px, -23px, 0px)",
                     opacity: 1,
                 }}
                 />

@@ -16,7 +16,6 @@ const Home =()=>{
 
     // const display = useMe
 
-     
     return (
         <div class="container">
 

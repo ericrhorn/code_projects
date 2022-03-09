@@ -41,12 +41,12 @@ function App() {
         <section className="contact" id="contact">
           <Contact path="/contact"/>
         </section>
-        <section className="filler_img">
+        {/* <section className="filler_img">
           <Image3 path="/image3"/>
         </section>
         <section className="footer body" id="footer">
           <Footer path="/footer"/>
-        </section>
+        </section> */}
         {/* </Router> */}
       
       
