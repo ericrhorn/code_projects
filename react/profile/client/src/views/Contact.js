@@ -9,12 +9,11 @@ import linkedin from "../linkedin.png"
 import email from "../email.jpeg"
 import resume from "../file.png"
 import { redirectTo } from '@reach/router';
+import { useState } from 'react';
 
 const Contact =()=>{
 
-    // const openComposer = () => {
-
-    // }
+    const [isShown, setIsShown] = useState(false);
 
 
     return (
@@ -75,7 +74,7 @@ const Contact =()=>{
                         </Form>
                     </Container>
                 </div> */}
-                <div class="container">
+                <div class="container contactIcons">
                     <div class="row contactIcons ">
                         <div class="col">
                             <a href="mailto:baratheon.development@gmail.com?subject=I was just visiting your site&body=Hi Eric,">
@@ -86,8 +85,14 @@ const Contact =()=>{
                                         
                                     }}
                                     src={email}
+                                    onMouseEnter={() => setIsShown(true)}
+                                    onMouseLeave={() => setIsShown(false)}
                                 />
                             </a>
+                            {isShown && (
+                                <p>Email Me</p>
+                            )}
+                            
                         </div>
 
                         <div class="col">
@@ -103,8 +108,17 @@ const Contact =()=>{
                                     
                                 }}
                                 src={gitImg}
+                                onMouseEnter={() => setIsShown(true)}
+                                onMouseLeave={() => setIsShown(false)}
                             />
                             </a>
+                            <div>
+                            {isShown && (
+                                <p 
+                                style={{paddingTop:7}}
+                                >GitHub</p>
+                            )}
+                            </div>
                         </div>
 
                         <div class="col">
@@ -119,8 +133,17 @@ const Contact =()=>{
                                     
                                 }}
                                 src={linkedin}
+                                onMouseEnter={() => setIsShown(true)}
+                                onMouseLeave={() => setIsShown(false)}
                             />
                             </a>
+                            <div>
+                            {isShown && (
+                                <p
+                                style={{paddingTop:4}}
+                                >LinkedIn</p>
+                            )}
+                            </div>
                         </div>
 
                         <div class="col">
@@ -135,8 +158,15 @@ const Contact =()=>{
                                     
                                 }}
                                 src={resume}
+                                onMouseEnter={() => setIsShown(true)}
+                                onMouseLeave={() => setIsShown(false)}
                             />
                             </a>
+                            {isShown && (
+                                <p
+                                style={{paddingTop:4}}
+                                >Resume</p>
+                            )}
                         </div>
                     </div>
 

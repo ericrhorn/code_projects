@@ -129,7 +129,23 @@ Navbar{
     text-align: center;
     font-family: "Ariel";
     font-size: 30px;
-    background-color: lightgray;
+    
+}
+
+@media screen and (max-width: 769px) {
+    .language, .library {
+        border-bottom: 1px solid #000000;
+        border-right: 0px solid #000000;
+        padding: 60px 35px;
+
+    }
+} 
+
+.language, .library {
+    padding: 50px 30px;
+    border-bottom: 1xp solid #000000;
+    border-right: 1px solid #000000;
+    /* background-color: red; */
 }
 
 .tech{
@@ -141,18 +157,59 @@ Navbar{
     font-size: 30px;
 }
 
+
+.techContainer{
+    background-color: lightblue;
+    padding: 50px;
+}
+
+.techList{
+    border-style: solid;
+    border-color: grey;
+    border-radius: 25px;
+    padding: 25px;
+    background-color: white;
+}
+
+/* .language{
+    border-right: solid;
+    border-color: lightgray;
+    padding: 10px;
+    text-align: center;
+}
+.language, p{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.library{
+    border-right: solid;
+    border-color: lightgray;
+    padding: 10px;
+} */
+
+
+.learn{
+    /* border-style: solid; */
+    /* border-right: solid;
+    border-color: black; */
+    padding: 10px;
+}
+
+
 .projCol{
     border-style: solid;
     border-color: red;
     height: 400px;
 }
 
+
 .about{
-    min-height: 100vh;
+    min-height: 75vh;
     width: auto;
     padding-top: 60px;
     text-align: center;
-    background-color: lightgrey;
 }
 
 
@@ -205,21 +262,24 @@ Navbar{
 .contact{
     margin: auto;
     /* width: 50%; */
-    min-height: 50vh;
-    padding-top: 65px;
+    min-height: 35vh;
+    padding-top: 20px;
     text-align: center;
     /* background-color: rgb(223, 232, 236);
     color: white; */
+    border-top: solid;
+    border-color: red;
     
     
 }
 
-.icon{
-    width: 800px;
-    align-items: center;
-    align-content: center;
-
+.contactIcons{
+    width: 500px;
 }
+
+/* .contact-label{
+    display: none;
+} */
 
 /* .contactPage{
     width: 100vh;
@@ -235,24 +295,17 @@ Navbar{
     border-color: blue;
 }  */
 
-.moreContact{
+/* .moreContact{
     border-style: solid;
     border-color: red;
     justify-content: space-between;
     display: flex;
     align-items: center;
-    /* vertical-align: bottom; */
+    vertical-align: bottom;
     
-}
+} */
 
-.contactIcons{
-    /* border-style: solid;
-    border-color: blue; */
-    /* width: 800px; */
-    
-    
-    
-}
+
 
 .footer{
     border-style: solid;
@@ -331,3 +384,13 @@ to {
     transform: rotate(360deg);
 }
 }
+
+
+
+/* @media screen and (min-width: 769px) {
+    .section.skills .box .content .columns .column {
+        border-bottom: 0px solid #E6ECF8;
+        border-right: 1px solid #E6ECF8;
+        padding: 60px 35px;
+    }
+} */
