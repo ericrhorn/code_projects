@@ -129,6 +129,7 @@ Navbar{
     text-align: center;
     font-family: "Ariel";
     font-size: 30px;
+    margin-bottom: 50px;
     
 }
 
@@ -157,19 +158,28 @@ Navbar{
     font-size: 30px;
 }
 
+.test{
+    background-color: aqua;
+    height: 400px;
+
+}
 
 .techContainer{
-    background-color: lightblue;
-    padding: 50px;
+    /* background-color: lightblue;
+    padding: 50px; */
 }
 
 .techList{
     border-style: solid;
     border-color: grey;
     border-radius: 25px;
-    padding: 25px;
-    max-width: 1000px;
+    /* padding: 25px; */
+    margin-left: 10%;
+    /* width: auto; */
+    /* max-width: 1000px; */
     background-color: white;
+    margin-top: -10rem;
+    margin-right: 10%;
 }
 
 /* .language{
