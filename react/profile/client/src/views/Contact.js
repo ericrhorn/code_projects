@@ -4,10 +4,10 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 // import { openComposer } from "react-native-email-link";
 import "../style.css";
-import gitImg from "../git.png"
-import linkedin from "../linkedin.png"
-import email from "../email.jpeg"
-import resume from "../file.png"
+import gitImg from "../image/github.png"
+import linkedin from "../image/linkedin.png"
+import email from "../image/email.png"
+import resume from "../image/dropbox.png"
 import { redirectTo } from '@reach/router';
 import { useState } from 'react';
 
@@ -18,13 +18,20 @@ const Contact =()=>{
 
     return (
         <div>
-            <div style={{
-                textAlign: "center",
-                paddingBottom: 25,
-                fontFamily: "Ariel"
-                }}>
-                <h1>Contact Eric</h1>
+            <div class="container">
+                <div class="row">
+                    <div 
+                    class=" col align-self-center contactMe"
+                    style={{
+                        textAlign: "center",
+                        padding: 25,
+                        fontFamily: "Ariel"
+                        }}>
+                        <h1>Contact Eric</h1>
+                    </div>
+                </div>
             </div>
+            
             {/* <div class="row contactPage">
                 <div class="col col-md-6 contactForm"
                 style={{
@@ -80,8 +87,9 @@ const Contact =()=>{
                             <a href="mailto:baratheon.development@gmail.com?subject=I was just visiting your site&body=Hi Eric,">
                             <img
                                     style={{
-                                        width:88,
-                                        height:88,
+                                        width:70,
+                                        height:70,
+                                        marginTop: 5,
                                         
                                     }}
                                     src={email}
@@ -104,7 +112,7 @@ const Contact =()=>{
                                 style={{
                                     width:70,
                                     height:70,
-                                    marginTop: 10,
+                                    marginTop: 5,
                                     
                                 }}
                                 src={gitImg}
@@ -127,8 +135,8 @@ const Contact =()=>{
                             >
                             <img
                                 style={{
-                                    width:78,
-                                    height:78,
+                                    width:70,
+                                    height:70,
                                     marginTop: 5,
                                     
                                 }}
@@ -152,8 +160,8 @@ const Contact =()=>{
                             >
                             <img
                                 style={{
-                                    width:78,
-                                    height:78,
+                                    width:70,
+                                    height:70,
                                     marginTop: 5,
                                     
                                 }}

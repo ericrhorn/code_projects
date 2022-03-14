@@ -6,14 +6,20 @@ import "../style.css";
 const Tech =()=>{
     return (
         <div>
-            <section>
+            {/* <section>
                 <div>
                     <h1>Here is a list of the technologies I use</h1>
                 </div>
-            </section>
+            </section> */}
             <section>
                 <div class="test">
-                    <h2>Filler info and background color</h2>
+                    <h1 style={{
+                        paddingTop: 35,
+                        color: "white"
+                    }}
+                    >Technologies I Use</h1>
+                    <h4 style={{color: "lightgray"}}
+                    >These are Technologies I use in my projects</h4>
                 </div>
             </section>
             <section>
@@ -21,7 +27,8 @@ const Tech =()=>{
                     <div class="row techList">
                         <div class="col-md-4 language">
                             <div>
-                                <h3>Coding Languages</h3>
+                                <h3 style={{color: "blue", paddingBottom: 10}}
+                                >Coding Languages</h3>
                                 <p>Python</p>
                                 <p>Java</p>
                                 <p>React</p>
@@ -31,7 +38,8 @@ const Tech =()=>{
                             </div>
                         </div>
                         <div class="col-md-4 library">
-                        <h3>Frameworks/Libraries</h3>
+                        <h3 style={{color: "blue", paddingBottom: 10}}
+                        >Frameworks and Libraries</h3>
                             <p>Django</p>
                             <p>Java Spring</p>
                             <p>Express</p>
@@ -40,7 +48,8 @@ const Tech =()=>{
                             <p>Mongoose</p>
                         </div>
                         <div class="col-md-4 learn">
-                        <h3>Databases</h3>
+                        <h3 style={{color: "blue", paddingBottom: 10}}
+                        >Databases</h3>
                             <p>MySql</p>
                             <p>NoSql</p>
                             <p>MongoDb</p>

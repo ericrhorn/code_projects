@@ -133,7 +133,7 @@ Navbar{
     
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 767px) {
     .language, .library {
         border-bottom: 1px solid #000000;
         border-right: 0px solid #000000;
@@ -141,16 +141,26 @@ Navbar{
 
     }
 } 
+@media screen and (min-width: 768px) {
+    .language, .library {
+        border-bottom: 0px solid #000000;
+        border-right: 1px solid #000000;
+        padding: 60px 35px;
+
+    }
+} 
+
+
 
 .language, .library {
-    padding: 50px 30px;
-    border-bottom: 1xp solid #000000;
-    border-right: 1px solid #000000;
+    /* padding: 50px 30px;
+    border-bottom: 0xp solid #000000;
+    border-right: 1px solid #000000; */
     /* background-color: red; */
 }
 
 .tech{
-    min-height: 100vh;
+    min-height: 90vh;
     width: auto;
     padding-top: 60px;
     text-align: center;
@@ -159,7 +169,7 @@ Navbar{
 }
 
 .test{
-    background-color: aqua;
+    background-color: #62607c;
     height: 400px;
 
 }
@@ -174,12 +184,16 @@ Navbar{
     border-color: grey;
     border-radius: 25px;
     /* padding: 25px; */
-    margin-left: 10%;
+    margin-left: 5%;
     /* width: auto; */
-    /* max-width: 1000px; */
+    /* min-width: 600px; */
     background-color: white;
-    margin-top: -10rem;
-    margin-right: 10%;
+    margin-top: -15rem;
+    margin-right: 5%;
+}
+
+.language, .library, .learn, p {
+    font-size: 20px;
 }
 
 /* .language{
@@ -205,14 +219,30 @@ Navbar{
     /* border-style: solid; */
     /* border-right: solid;
     border-color: black; */
-    padding: 10px;
+    padding: 60px 35px;
 }
 
 
+.projRow{
+    border-style: solid;
+    border-color: red;
+    min-height: 250px;
+    min-width: 80%;
+    max-width: 100%;
+    margin: 10px;
+}
 .projCol{
     border-style: solid;
     border-color: red;
-    height: 400px;
+    /* margin-left: 35px; */
+    /* min-height: 350px;
+    min-width: 90%; */
+}
+
+.projCont{
+    /* min-width: 80%; */
+    max-width: 85%;
+    margin-left: 7%;
 }
 
 
@@ -278,14 +308,26 @@ Navbar{
     text-align: center;
     /* background-color: rgb(223, 232, 236);
     color: white; */
-    border-top: solid;
-    border-color: red;
+    /* border-top: solid;
+    border-color: red; */
+    background-color: #62607c;
     
     
 }
 
+.contactMe{
+    /* background-color: white; */
+    border-radius: 25px;
+    /* max-width: 400px; */
+    /* margin-left: 32%; */
+    color: white;
+
+}
+
 .contactIcons{
-    width: 500px;
+    min-width: 400px;
+    /* padding-top: 5px; */
+    /* padding-bottom: 50px; */
 }
 
 /* .contact-label{
