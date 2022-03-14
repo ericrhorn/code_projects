@@ -22,12 +22,55 @@ table, th, td {
   padding: 100px;
 } */
 
-.nav{
+
+/* .welcomelogin{
+	float: left;
+} */
+
+
+.test{
+/* 	border-style: solid;
+	border-color: red; */
+	/* padding: 30px; */
+	text-align: right;
+}
+
+.test1{
+/* 	border-style: solid;
+	border-color: red; */
+	/* padding: 30px; */
+	text-align: center;
+}
+
+
+nav{
+	margin-bottom:50px;
+}
+
+.hometext{
+	/* padding-top: 50px; */
+
+	border-style: solid;
+	border-color: blue;
+	float: right;
+}
+
+.homelogin{
+	float: right;
+}
+
+.welcome{
+	padding-bottom: 50px;
+	text-align: center;
+}
+
+
+/* .nav{
 	padding-left: 400px;
 	display: inline-block;
 	justify-content: space-between;
 	
-}
+} */
 
 textarea {
   resize: none;
@@ -40,10 +83,13 @@ label {
 	display: block;
 }
 
-#nav {
+.nav {
+	float: right;
     overflow:hidden;
-    width:auto;
+    width:100%;
     display:inline;
+    border-style: solid;
+	border-color: blue;
 }
 .link{
     float:right;
@@ -59,11 +105,11 @@ body{
     margin-left:15px;
 }
 
-.login {
+/* .login {
 	 flex: 1;
     width: 200px;
     height: 300px;
-}
+} */
 
 .description {
 	flex: 1;
