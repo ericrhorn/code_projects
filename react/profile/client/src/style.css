@@ -2,6 +2,7 @@
     /* padding-top: 15px; */
     font-size: 30px;
     font-family: "Ariel";
+    
 }
 
 center_all {
@@ -124,9 +125,10 @@ Navbar{
 }
 .projects{
     min-height: 100vh;
+    padding-bottom: 50px;
     width: auto;
     padding-top: 60px;
-    text-align: center;
+    /* text-align: center; */
     font-family: "Ariel";
     font-size: 30px;
     margin-bottom: 50px;
@@ -160,9 +162,9 @@ Navbar{
 }
 
 .tech{
-    min-height: 90vh;
+    min-height: 65vh;
     width: auto;
-    padding-top: 60px;
+    padding-top: 40px;
     text-align: center;
     font-family: "Ariel";
     font-size: 30px;
@@ -224,19 +226,34 @@ Navbar{
 
 
 .projRow{
-    border-style: solid;
-    border-color: red;
-    min-height: 250px;
-    min-width: 80%;
+    /* border-style: solid;
+    border-color: red; */
+    min-height: 300px;
+    padding: 10px;
+    min-width: 90%;
     max-width: 100%;
     margin: 10px;
+    border-bottom: solid;
+    border-color: blue;
+    margin-bottom: 50px;
+
 }
-.projCol{
-    border-style: solid;
-    border-color: red;
+.projCol, p{
+    /* border-style: solid;
+    border-color: red; */
+    font-size: 18px;
     /* margin-left: 35px; */
     /* min-height: 350px;
     min-width: 90%; */
+    /* padding-bottom: 50px; */
+    
+}
+
+
+.bottomborder{
+    border-top: solid;
+    border-color: blue;
+
 }
 
 .projCont{
@@ -247,9 +264,9 @@ Navbar{
 
 
 .about{
-    min-height: 75vh;
+    min-height: 55vh;
     width: auto;
-    padding-top: 60px;
+    padding-top: 40px;
     text-align: center;
 }
 
@@ -303,30 +320,51 @@ Navbar{
 .contact{
     margin: auto;
     /* width: 50%; */
-    min-height: 35vh;
-    padding-top: 20px;
+    min-height: 15vh;
+    padding-top: 35px;
     text-align: center;
+    border-top: solid;
+    border-color: blue;
     /* background-color: rgb(223, 232, 236);
     color: white; */
     /* border-top: solid;
     border-color: red; */
-    background-color: #62607c;
+    /* background-color: #62607c; */
+    /* background-color: lightgray; */
+    /* background-color: rgb(38, 38, 38); */
     
     
 }
+
+/* .contactmecont{
+    border-style: solid;
+    border-color: red;
+    align-items: center;
+} */
 
 .contactMe{
     /* background-color: white; */
     border-radius: 25px;
-    /* max-width: 400px; */
+    min-width: 100px;
+    max-width: 500px;
+    background-color: rgb(17, 21, 44);
     /* margin-left: 32%; */
     color: white;
+    /* border-style: solid;
+    border-color: red; */
+    /* margin-bottom: 30px; */
+    position: absolute;
+    left: 50%;
+    /* top: 50%; */
+    transform: translate(-50%, -50%);
+    margin-top: -2rem;
 
 }
 
 .contactIcons{
-    min-width: 400px;
-    /* padding-top: 5px; */
+    /* min-width: 100px; */
+    max-width: 450px;
+    /* padding-top: 5px;
     /* padding-bottom: 50px; */
 }
 

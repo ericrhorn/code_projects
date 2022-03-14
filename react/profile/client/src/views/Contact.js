@@ -18,7 +18,7 @@ const Contact =()=>{
 
     return (
         <div>
-            <div class="container">
+            {/* <div class="container contactmecont ">
                 <div class="row">
                     <div 
                     class=" col align-self-center contactMe"
@@ -30,7 +30,7 @@ const Contact =()=>{
                         <h1>Contact Eric</h1>
                     </div>
                 </div>
-            </div>
+            </div> */}
             
             {/* <div class="row contactPage">
                 <div class="col col-md-6 contactForm"
@@ -90,6 +90,7 @@ const Contact =()=>{
                                         width:70,
                                         height:70,
                                         marginTop: 5,
+                                        marginBottom: 7
                                         
                                     }}
                                     src={email}
