@@ -1,11 +1,9 @@
-// import Main from "./views/main";
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 
 import ParticleBackground from './ParticleBackground';
 import "../style.css";
 
-// import {useMediaQuery} from "react-responsive"
 import Media from "react-media"
 import python from "../python.jpeg"
 import java from "../java.jpeg"
@@ -13,8 +11,6 @@ import react from "../logo.svg"
 
 
 const Home =()=>{
-
-    // const display = useMe
 
     return (
         <div class="container">
@@ -52,19 +48,10 @@ const Home =()=>{
                 </div>
             </div>
 
-
-            {/* <div class="row align-items-center">
-                <div class="col">
-                    <CenterTile/>
-                </div>
-            </div> */}
-
-
             <div class="homeImages row align-items-end">
 
                 <div class="col">
                     <img
-                        // class="frame img-responsive" 
                         style={{
                             width:200,
                             height:125,
@@ -73,7 +60,6 @@ const Home =()=>{
                         src={python}
                     />
                     <img
-                        // class="frame img-responsive" 
                         class="App-logo" alt="logo"
                         style={{
                             width:200,
@@ -83,11 +69,9 @@ const Home =()=>{
                         src={react}
                     />
                     <img
-                        // class="frame img-responsive" 
                         style={{
                             width:200,
                             height:125,
-                            
                         }}
                         src={java}
                     />
@@ -101,8 +85,6 @@ const Home =()=>{
 
 function CenterTile() {
     return (
-    //   <div id = "text_div center_all">
-    //     <div className="center_all">
     <div>
         <div className="text_div">
           <h1>ERIC HORN</h1>

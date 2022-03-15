@@ -6,13 +6,8 @@ import "../style.css";
 const Tech =()=>{
     return (
         <div>
-            {/* <section>
-                <div>
-                    <h1>Here is a list of the technologies I use</h1>
-                </div>
-            </section> */}
             <section>
-                <div class="test">
+                <div class="techHead">
                     <h1 style={{
                         paddingTop: 35,
                         color: "white"
@@ -47,7 +42,7 @@ const Tech =()=>{
                             <p>Bootstrap</p>
                             <p>Mongoose</p>
                         </div>
-                        <div class="col-md-4 learn">
+                        <div class="col-md-4 database">
                         <h3 style={{color: "blue", paddingBottom: 10}}
                         >Databases</h3>
                             <p>MySql</p>
@@ -58,7 +53,6 @@ const Tech =()=>{
                     </div>
                 </div>
             </section>
-            
         </div>
     )
 }
