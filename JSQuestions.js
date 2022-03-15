@@ -1,146 +1,43 @@
-//Basic Foundation
+// Operator	Description	Examples
+// ==	equal	1 == 2 => false; 1 == 1 => true
+// !=	not equal	1 != 2 => true; 1 != 1 => false
+// >	greater than	1 > 2 => false; 2 > 1 => true
+// <	less than	1 < 2 => true; 1 < 2 => false
+// >=	greater than or equal to	1 >= 2 => false; 2 >= 2 => true
+// <=	less than or equal to	1 <= 2 => true; 2 <= 2 => true
+
 
 // Get 1 to 255 - Write a function that returns an array with all the numbers from 1 to 255.
 
 
-// console.log inside the loop will print all the numbers 
-// this function will print number 1-255
-function array (){
-    for (var x=1; x <= 255; x++) {
-        console.log(x)
-    }
-}
-array();
-
-//this function expects a start parameter 
-function array (start){
-    for (var x=start; x <= 255; x++) {
-        console.log(x)
-    }
-}
-array(254);
-//enter the argument or start number here
-
-
-// console.log to print an arr must be outside the loop or it will print an array evertime the fuunction goes through the loop
-// the push method add x to Arr1
-// this function will print an array with number 1-255
-function array (){
-    var Arr1 = [];
-    for (var x=1; x <= 255; x++) {
-        Arr1.push(x)
-    }
-    console.log(Arr1)
-}
-array();
-
-
-// this function is a combination of the two above with the addition of the return function so the values can presist outside the function
-function array (num){
-    var NewArr=[];
-    for (var x=1; x <= num; x++) {
-        NewArr.push(x);
-        
-    }
-    console.log(x)
-    return NewArr;
-}
-
-var y = array(10);
-console.log(y)
-
-
-
 // Get even 1000 - Write a function that would get the sum of all the even numbers from 1 to 1000.  You may use a modulus operator for this exercise.
 
-function evenNum () {
-    var num = 0;
-    for (var i = 1; i <= 1000; i++){
-        if (i % 2 == 0) {
-            num = num + i;
-        }
-    }
-    return num;
-}
-var sum = evenNum();
-console.log(sum)
 
 
 
 // Sum odd 5000 - Write a function that returns the sum of all the odd numbers from 1 to 5000. (e.g. 1+3+5+...+4997+4999).
 
-function oddNum () {
-    var sum = 0;
-    for (var x = 1; x <= 5000; x++){
-        if (x % 2 == 1){
-            sum = sum + x;
-        }
-    }
-    return sum;
-}
-var y = oddNum();
-console.log(y)
-// can also console.log and call the function at the same time
-console.log(oddNum())
+
 
 
 // Iterate an array - Write a function that returns the sum of all the values within an array. (e.g. [1,2,5] returns 8. [-5,2,5,12] returns 14).
 
-function iterArr (newArr) { //this function is expecting a parameter, newArr, in order to run. needs arguments when calling function.
-    var sum = 0;
-    for(var x=0; x < newArr.length; x++){
-        sum = sum + newArr[x];
-    }
-    return sum
-}
-console.log(iterArr([1,2,3,4,5])) // argument is an array
+
 
 
 // Find max - Given an array with multiple values, write a function that returns the maximum number in the array. (e.g. for [-3,3,5,7] max is 7)
 
-function maxNum(arrMax) {
-    var max = arrMax[0];    // sets the max to the first value of hte arr
-    for (var i = 0; i < arrMax.length; i++){
-        // check if the next value is larger than the first value in the arr
-        if (arrMax[i] > max){
-            // if it is, then make it the new max
-            max = arrMax[i];
-        }
-    }
-    return max
-}
-console.log(maxNum([-1,-2,-3,5]))
 
 
 
 // Find average - Given an array with multiple values, write a function that returns the average of the values in the array. (e.g. for [1,3,5,7,20] average is 7.2)
 
-function average(arr) {
-    var sum = 0;
-    var avg = 0;
-    for (var x=0; x < arr.length; x++){
-        sum = sum + arr[x];
-        avg = sum / arr.length;
-    }
-    console.log("sum = " + sum)
-    console.log("length = " + arr.length)
-    return avg;
-}
-console.log("average = " + average([1,2,3,4,5]))
+
 
 
 // Array odd - Write a function that would return an array of all the odd numbers between 1 to 50. (ex. [1,3,5, .... , 47,49]). Hint: Use 'push' method.
 
-function oddArr(){
-    var newArr = [];
-    for(var j = 0; j <= 50; j++){
-        if (j % 2 == 1){
-            newArr.push(j)
-        }
-    }
-    return newArr
-}
-console.log(oddArr())
+
 
 
 // Greater than Y - Given value of Y, write a function that takes an array and returns the number of values that are greater than Y. For example if arr = [1, 3, 5, 7] and Y = 3, your function will return 2. (There are two values in the array greater than 3, which are 5, 7).
@@ -172,9 +69,6 @@ console.log(oddArr())
 
 
 
-
-// ------------------------------------------------------------------
-// Basic Foundation II
 
 // Biggie Size - Given an array, write a function that changes all positive numbers in the array to the string "big".  Example: makeItBig([-1,3,5,-5]) returns that same array, changed to [-1, "big", "big", -5].
 
