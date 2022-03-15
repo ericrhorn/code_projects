@@ -12,13 +12,20 @@ const About =()=>{
                 {/* <div id="who" class="col-md-12 infoFirst"> */}
                     <div class="col col-offset-1 aboutInfo">
                         <h1>About Eric</h1>
-                        <h3>Criminal Justice Major Turned Coder</h3>
-                        <p style={{
+                        <h4>Criminal Justice Major Turned Coder</h4>
+                        <p class="infotext" 
+                        style={{
                             textAlign: "justify",
-                            // paddingLeft: 25,
                         }}
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu feugiat sem. Etiam suscipit erat non libero dignissim vehicula. Sed at magna mattis, faucibus justo mattis, vehicula nunc. Ut pellentesque, ex ut lobortis dictum, tortor libero rhoncus ante, sed convallis quam purus eu lacus. Duis nec odio tempor, elementum justo sit amet, lacinia ipsum. Integer vestibulum scelerisque nulla, quis sodales quam imperdiet vitae. Sed hendrerit mollis purus, sit amet viverra diam sodales sit amet. Maecenas in accumsan diam, gravida dignissim neque.</p>
+                            I started my developemnt journey in April 2021. Before that I had a career in private recreation club management and a short career in law enforcement. After my family relocated I decided to chase a passion in web and software developemnt and enrolled in the Coding Dojo Bootcamp! After 9 month I graduated as a full stack developer, learning Python, Java, and Mern. I achieved a black belt, highest possible score for the exit exam, in the Java and Mern stacks. 
+                        </p>
+                        <p class="infotext"
+                        style={{
+                            textAlign: "justify",
+                        }}>
+                            When Im not coding, I enjoy spending time with my Wife and Son. I love spending time outdoors playing golf, going for a walk, or spending time in and around Lake Tahoe. 
+                        </p>
                     </div>
                     <div class="col col-offset-1 aboutImg">
                         <img

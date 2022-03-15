@@ -15,7 +15,7 @@ export default class NavBarComp extends Component {
     render() {
         return(
         <div>
-        <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+        <Navbar className="nav-color" variant="dark" expand="lg" fixed="top">
                 <Navbar.Brand smooth href="#">
                 {/* <img
                     src={navbarImg}

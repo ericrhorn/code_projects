@@ -27,7 +27,6 @@ const Projects =()=>{
                                 
                                 minWidth: 250,
                                 width:500,
-                                borderRadius: 15
                             }}
                             src={joinMe}
                             />
@@ -50,11 +49,28 @@ const Projects =()=>{
                     </div>
                     <div class="row projRow">
                         <div class="col-md-7 projCol">
-                            <h4>project</h4>
+                        <h3 style={{color: "blue"}}>Market Planner</h3>
+                            <p>Technologies Used: React | Express | MongoDB | Finance API</p>
+                            <p>Market Planner is a web app designed to view ticker informaiton </p>
                         </div>
                         <div class="col-md-5 projCol">
                             <h4>image</h4>
                         </div>
+                        <a 
+                            href="https://github.com/ericrhorn/code_projects/tree/main/java/events"
+                            target="blank"
+                            >
+                            <img
+                                style={{
+                                    width:70,
+                                    height:70,
+                                    marginTop: 5,
+                                    marginLeft: 15,
+                                    
+                                }}
+                                src={gitImg}
+                            />
+                            </a>
                     </div>
                     <div class="row projRow">
                         <div class="col-md-7 projCol">

@@ -35,12 +35,12 @@ const TableRow = ({rowData, handleChange}) => {
                             <input type="text" id="ammountOfShares" name="ammountOfShares"/>
                         </form>
                     </td>
-                    <td value={currentPrice} name ="currentPrice">filler info</td>
-                    <td value={weekHigh} name="weekHigh">filler info</td>
-                    <td value={weekLow} name="weekLow">filler info</td>
-                    <td value={dividendPerShare} name="dividendPerShare">filler info</td>
-                    <td value={dividendPerQuarter} name="dividendPerQuarter">filler info</td>
-                    <td value={dividendPerYear} name="dividendPerYear">filler info</td>
+                    <td value={currentPrice} name ="currentPrice"></td>
+                    <td value={weekHigh} name="weekHigh"></td>
+                    <td value={weekLow} name="weekLow"></td>
+                    <td value={dividendPerShare} name="dividendPerShare"></td>
+                    <td value={dividendPerQuarter} name="dividendPerQuarter"></td>
+                    <td value={dividendPerYear} name="dividendPerYear"></td>
                     {/* <td value={action} name = "action">
                         <button>delete</button>
                         <button>edit</button>
