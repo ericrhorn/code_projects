@@ -145,32 +145,97 @@ console.log(oddArr())
 
 // Greater than Y - Given value of Y, write a function that takes an array and returns the number of values that are greater than Y. For example if arr = [1, 3, 5, 7] and Y = 3, your function will return 2. (There are two values in the array greater than 3, which are 5, 7).
 
+function greaterThan(arr, y) {
+    var num = 0
+    for (var x = 0; x < arr.length; x++){
+        if (arr[x] > 3){
+            num++
+        }
+    }
+    return num;
+}
+console.log(greaterThan([1,3,5,7], 3))
 
 
 
 // Squares - Given an array with multiple values, write a function that replaces each value in the array with the value squared by itself. (e.g. [1,5,10,-2] will become [1,25,100,4])
 
+function square(arr){
+    for (var i = 0; i < arr.length; i++ ){
+        arr[i] = arr[i] * arr[i]
 
+    }
+    return arr;
+}
+console.log(square([1,2,3,4,5]));
 
 
 // Negatives - Given an array with multiple values, write a function that replaces any negative numbers within the array with the value of 0. When the program is done the array should contain no negative values. (e.g. [1,5,10,-2] will become [1,5,10,0])
 
-
+function neg(arr){
+    for (var x = 0; x < arr.length; x++){
+        if (arr[x] < 0){
+            arr[x] = 0;
+        }
+    }
+    return arr
+}
+console.log(neg([1,-5,10,-2]))
 
 
 // Max/Min/Avg - Given an array with multiple values, write a function that returns a new array that only contains the maximum, minimum, and average values of the original array. (e.g. [1,5,10,-2] will return [10,-2,3.5])
 
+function MaxMinAvg(arr){
+    //start to check the arr value at the 0 index
+    var max = arr[0];
+    var min = arr[0];
+    //sets the value of sum to 0
+    var sum = 0;
+    for (var j = 0; j < arr.length; j++){
+        sum = sum + arr[j]
 
+        if (arr[j] > max){
+            max = arr[j]
+        }
+        else if (arr[j] < min){
+            min = arr[j]
+        }
+    }
+    var newArr = [];
+    newArr.push(max)
+    newArr.push(min)
+    var avg = 0;
+    avg = sum / arr.length;
+    newArr.push(avg)
+
+    return newArr
+}
+console.log(MaxMinAvg([1,5,10,-2]))
 
 
 // Swap Values - Write a function that will swap the first and last values of any given array. The default minimum length of the array is 2. (e.g. [1,5,10,-2] will become [-2,5,10,1]).
 
-
+function swap(arr){
+    var temp =  arr[0];
+    arr[0] = arr[arr.length-1];
+    arr[arr.length-1] = temp;
+}
+var y = [1,5,10,-2];
+swap(y)
+console.log(y);
 
 
 // Number to String - Write a function that takes an array of numbers and replaces any negative values within the array with the string 'Dojo'. For example if array = [-1,-3,2], your function will return ['Dojo','Dojo',2].
 
-
+function numString(arr) {
+    for ( var x = 0; x < arr.length; x++){
+        if (arr[x] < 0){
+            arr[x] = 'Dojo'
+        }
+    }
+    return arr
+}
+console.log(numString([-1,-3,2]))
 
 
 // ------------------------------------------------------------------
