@@ -93,7 +93,7 @@ function iterArr (newArr) { //this function is expecting a parameter, newArr, in
     }
     return sum
 }
-console.log(iterArr([1,2,3,4,5])) // argument is an array
+console.log(iterArr([1,2,3,4,5,100])) // argument is an array
 
 
 // Find max - Given an array with multiple values, write a function that returns the maximum number in the array. (e.g. for [-3,3,5,7] max is 7)
@@ -189,6 +189,7 @@ function MaxMinAvg(arr){
     //start to check the arr value at the 0 index
     var max = arr[0];
     var min = arr[0];
+    var newArr = [];
     //sets the value of sum to 0
     var sum = 0;
     for (var j = 0; j < arr.length; j++){
@@ -201,7 +202,7 @@ function MaxMinAvg(arr){
             min = arr[j]
         }
     }
-    var newArr = [];
+    // var newArr = [];
     newArr.push(max)
     newArr.push(min)
     var avg = 0;
@@ -243,7 +244,14 @@ console.log(numString([-1,-3,2]))
 
 // Biggie Size - Given an array, write a function that changes all positive numbers in the array to the string "big".  Example: makeItBig([-1,3,5,-5]) returns that same array, changed to [-1, "big", "big", -5].
 
-
+function big (arr){
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] > 0)
+            arr[i] = 'big';
+    }
+    return arr
+}
+console.log(big([-1,3,5,-5]))
 
 
 // Print Low, Return High - Create a function that takes in an array of numbers.  The function should print the lowest value in the array, and return the highest value in the array.
@@ -308,6 +316,10 @@ console.log(numString([-1,-3,2]))
 
 // Scale the Array - Given an array arr and a number num, multiply all values in the array arr by the number num, and return the changed array arr.  For example, scaleArray([1,2,3], 3) should return [3,6,9].
 
+
+
+// ------------------------------------------------------------------
+// Intermediate Foundation
 
 
 // Sigma - Implement function sigma(num) that, given a number, returns the sum of all positive integers up to the given number (inclusive).  Ex: sigma(3) = 6 (or 1+2+3); sigma(5) = 15 (or 1+2+3+4+5).
