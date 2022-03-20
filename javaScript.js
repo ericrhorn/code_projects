@@ -256,37 +256,138 @@ console.log(big([-1,3,5,-5]))
 
 // Print Low, Return High - Create a function that takes in an array of numbers.  The function should print the lowest value in the array, and return the highest value in the array.
 
+function lowHigh (arr){
+    var low = arr[0];
+    var high = arr[0];
+    for (var x = 0; x < arr.length; x++){
+        if (arr[x] > high){
+            high = arr[x]
+        }
+        else if (arr[x] < low){
+            low = arr[x]
+        }
+    }
+    console.log(low)
+    return high;
+}
+console.log(lowHigh([-10,1,2,3,4,5]))
 
 
 
 // Print One, Return Another - Build a function that takes in an array of numbers.  The function should print the second-to-last value in the array, and return the first odd value in the array.
 
 
+//  this wont work because to stop at the FIRST odd number you need to stop the loop with a return. therefore you cant have an else if statememt 
+
+function prinrReturn(arr){
+    var secondToLast = arr[0];
+    var firstOdd = arr[0];
+    // console.log("this is also second to last " + arr[arr.length-2]);
+    for (var x = 0; x < arr.length; x++){
+        if(arr[x] % 2 == 1){
+            firstOdd = arr[x];
+        }
+        else if (arr[x] = arr[arr.length-2]){
+            secondToLast = arr[x];
+        }
+    }
+    console.log("second to last " + secondToLast);
+    return firstOdd;
+}
+console.log(prinrReturn([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,105,106]))
+
+// this will work
+function prinrReturn(arr){
+    console.log("this is the second to last " + arr[arr.length-2]);
+    for (var x = 0; x < arr.length; x++){
+        if(arr[x] % 2 == 1){
+            return arr[x];
+        }
+    }
+}
+console.log(prinrReturn([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,105,106]))
 
 
 // Double Vision - Given an array (similar to saying 'takes in an array'), create a function that returns a new array where each value in the original array has been doubled.  Calling double([1,2,3]) should return [2,4,6] without changing the original array.
 
-
+function doubble(arr){
+    var newArr = [];
+    console.log(arr)
+    for (var x = 0; x < arr.length; x++){
+        newArr.push (arr[x]*2);
+    }
+    return newArr;
+}
+console.log(doubble([1,2,3,4,5]))
 
 
 // Count Positives - Given an array of numbers, create a function to replace the last value with the number of positive values found in the array.  Example, countPositives([-1,1,1,1]) changes the original array to [-1,1,1,3] and returns it.
 
-
+function countPos(arr){
+    // var counter = 0;
+    for(var x = 0; x < arr.length; x++){
+        if (arr[x] > 0){
+            counter ++;
+        }
+    }
+    arr[arr.length-1] = counter;
+    // arr.push(counter);
+    return arr;
+}
+console.log(countPos([-1,1,1,1]))
 
 
 // Evens and Odds - Create a function that accepts an array.  Every time that array has three odd values in a row, print "That's odd!".  Every time the array has three evens in a row, print "Even more so!".
 
-
+function evenOdd(arr){
+    var odd = 0;
+    var even = 0;
+    for(var x=0; x < arr.length; x++){
+        if (arr[x] % 2 == 1){
+            odd ++;
+            even = 0;
+        }
+        else {
+            even ++;
+            odd = 0;
+        }
+        if (odd == 3){
+            console.log("That's odd!")
+            odd = 0;
+        }
+        else if (even == 3){
+            console.log("Even more so!")
+            even = 0;
+        }
+    }
+    return arr;
+}
+console.log(evenOdd([1,1,1,3,3,3,4,2,2,2,4,4]))
 
 
 // Increment the Seconds - Given an array of numbers arr, add 1 to every other element, specifically those whose index is odd (arr[1], arr[3], arr[5], etc).  Afterward, console.log each array value and return arr.
 
-
+function increment(arr){
+    for (var x=1; x < arr.length; x+=2){
+        arr[x] = arr[x] + 1;
+    }
+    for (var x=0; x < arr.length; x++ ){
+        console.log(arr[x])
+    }
+    return arr
+}
+console.log(increment([1,2,3,4,5,6,7,8,9,10]))
 
 
 // Previous Lengths - You are passed an array (similar to saying 'takes in an array' or 'given an array') containing strings.  Working within that same array, replace each string with a number - the length of the string at the previous array index - and return the array.  For example, previousLengths(["hello", "dojo", "awesome"]) should return ["hello", 5, 4]. Hint: Can for loops only go forward?
 
+function lengths(arr){
+    for(){
 
+    }
+    return arr;
+}
+console.log(([]))
 
 
 // Add Seven - Build a function that accepts an array. Return a new array with all the values of the original, but add 7 to each. Do not alter the original array.  Example, addSeven([1,2,3]) should return [8,9,10] in a new array.
