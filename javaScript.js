@@ -1,4 +1,13 @@
-//Basic Foundation
+//Basic Foundation - level intermediate
+
+
+// printing index and value with line brake and line border
+//printing the arr outside the for loop
+var arr = [2,4,6,8]
+for (var x=0; x < arr.length; x++){
+    console.log('index',x,'\n','value',arr[x],'\n','*'.repeat(10));
+}
+console.log('arr',arr)
 
 // Get 1 to 255 - Write a function that returns an array with all the numbers from 1 to 255.
 
@@ -240,7 +249,7 @@ console.log(numString([-1,-3,2]))
 
 
 // ------------------------------------------------------------------
-// Basic Foundation II
+// Basic Foundation II - level intermediate
 
 // Biggie Size - Given an array, write a function that changes all positive numbers in the array to the string "big".  Example: makeItBig([-1,3,5,-5]) returns that same array, changed to [-1, "big", "big", -5].
 
@@ -382,50 +391,138 @@ console.log(increment([1,2,3,4,5,6,7,8,9,10]))
 // Previous Lengths - You are passed an array (similar to saying 'takes in an array' or 'given an array') containing strings.  Working within that same array, replace each string with a number - the length of the string at the previous array index - and return the array.  For example, previousLengths(["hello", "dojo", "awesome"]) should return ["hello", 5, 4]. Hint: Can for loops only go forward?
 
 function lengths(arr){
-    for(){
-
+    for(var x = arr.length-1; x>0; x--){
+        arr[x] = arr[x-1].length;
     }
     return arr;
 }
-console.log(([]))
+console.log(lengths(["hello", "dojo", "awesome"]))
 
 
 // Add Seven - Build a function that accepts an array. Return a new array with all the values of the original, but add 7 to each. Do not alter the original array.  Example, addSeven([1,2,3]) should return [8,9,10] in a new array.
 
-
+function addSeven(arr){
+    var newArr = [];
+    for (var x=0; x < arr.length; x++){
+        newArr.push(arr[x]+7);
+    }
+    console.log(arr)
+    return newArr
+}
+console.log(addSeven([1,2,3]))
 
 
 // Reverse Array - Given an array, write a function that reverses its values, in-place.  Example: reverse([3,1,6,4,2]) returns the same array, but now contains values reversed like so... [2,4,6,1,3].  Do this without creating an empty temporary array.  (Hint: you'll need to swap values).
 
-
+function reverse(arr){
+    for (var x=0; x < arr.length/2; x++){
+        var temp = arr[x]
+        arr[x] = arr[arr.length - 1 - x]
+        arr[arr.length - 1 - x] = temp
+    }
+    return arr;
+}
+console.log(reverse([1,2,3,4,5]))
 
 
 // Outlook: Negative - Given an array, create and return a new one containing all the values of the original array, but make them all negative (not simply multiplied by -1). Given [1,-3,5], return [-1,-3,-5].
 
-
+function negative(arr){
+    for (var x=0; x < arr.length; x++){
+        if (arr[x] > 0){
+            arr[x] = arr[x] * -1;
+        }
+    }
+    return arr
+}
+console.log(negative([-1,1,-2,2,-3,3]))
 
 
 // Always Hungry - Create a function that accepts an array, and prints "yummy" each time one of the values is equal to "food".  If no array values are "food", then print "I'm hungry" once.
 
+function hungry(arr){
+    var gotFood = false;
+    for (var x=0; x < arr.length; x++){
+        if (arr[x] == "food"){
+            console.log("yummy");
+            gotFood = true;
+        }
+    }
+    if (gotFood == false){
+        console.log("im hungry")
+    }
+    return arr;
+}
 
+var print = [1,2,"food", 3,4, "food"]
+hungry(print)
+console.log(print)
+
+var print2 = [1,2,3,4,5]
+hungry(print2)
+console.log(print2)
 
 
 // Swap Toward the Center - Given an array, swap the first and last values, third and third-to-last values, etc.  Example: swapTowardCenter([true,42,"Ada",2,"pizza"]) turns the array into ["pizza", 42, "Ada", 2, true].  swapTowardCenter([1,2,3,4,5,6]) turns the array into [6,2,4,3,5,1].  No need to return the array this time.
 
-
+function swap(arr){
+    for (var x = 0; x < arr.length/2; x+=2){
+        var temp = arr[x]
+        arr[x] = arr[arr.length-1-x]
+        arr[arr.length -1-x] = temp
+    }
+    return arr
+}
+console.log(swap([1,2,3,4,5,6]))
 
 
 // Scale the Array - Given an array arr and a number num, multiply all values in the array arr by the number num, and return the changed array arr.  For example, scaleArray([1,2,3], 3) should return [3,6,9].
 
+function scale(arr, num){
+    var newArr = [];
+    for (var x=0; x < arr.length; x++){
+        arr[x] = arr[x] * num;
+    }
+    newArr.push(x)
+    return arr
+}
+console.log(scale([1,2,3],3))
 
 
 // ------------------------------------------------------------------
-// Intermediate Foundation
+// Intermediate Foundation - level advanced
 
 
 // Sigma - Implement function sigma(num) that, given a number, returns the sum of all positive integers up to the given number (inclusive).  Ex: sigma(3) = 6 (or 1+2+3); sigma(5) = 15 (or 1+2+3+4+5).
 
+function sigma(num){
 
+}
+
+function sigma(num){
+    var sum=[];
+  for(var i=1; i<=num; i++){
+    if(sum==sum+i);
+    sum.push(i);
+  }
+  return sum;
+}
+console.log(sigma(5));
+
+
+function sigma(num) {
+    var sum = 0;
+    for (var i = 0; i <= num; i++) {
+    sum += i;
+}
+    console.log(sum);
+
+    return sum;
+}
+sigma(5);
+sigma(4);
+sigma(3);
+sigma(2);
 
 
 // Factorial - Write a function factorial(num) that, given a number, returns the product (multiplication) of all positive integers from 1 up to the given number (inclusive).  For example, factorial(3) = 6 (or 1*2*3); factorial(5) = 120 (or 1*2*3*4*5).
