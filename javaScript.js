@@ -141,7 +141,7 @@ console.log("average = " + average([1,2,3,4,5]))
 // Array odd - Write a function that would return an array of all the odd numbers between 1 to 50. (ex. [1,3,5, .... , 47,49]). Hint: Use 'push' method.
 
 function oddArr(){
-    var newArr = [];
+    const newArr = [];
     for(var j = 0; j <= 50; j++){
         if (j % 2 == 1){
             newArr.push(j)
@@ -709,3 +709,4 @@ function doubleTrouble(arr){
     console.log(arr);
     }
    repeatArray();
+  }
