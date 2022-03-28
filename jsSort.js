@@ -54,6 +54,28 @@ function bubble(arr){
 bubble([6,5,3,1,8,7,2,4])
 
 
+function bubble(arr){
+    for (var x=0; x < arr.length - 1; x++){
+        for (var y=0; y < arr.length-x-1; y++){
+            // console.log('index', y, "value", arr[y]);
+            // console.log('compairing', arr[y], arr[y+1]);
+            if (arr[y] > arr[y+1]){
+                // can also use the below code instead of a temp
+                [arr[y], arr[y+1]] = [arr[y+1], arr[y]]
+                //the above code will replace the code below
+                // var temp = arr[y]
+                // arr[y] = arr[y+1]
+                // arr[y+1] = temp
+                // console.log("swapped", arr[x], arr[x+1]);
+                // console.log("new arr", arr);
+            }
+        }
+    }
+    console.log(arr);
+}
+bubble([6,5,3,1,8,7,2,4])
+
+
 // selection sort - find the minimum value in the arr and move it to the front
 
 function select(arr){
