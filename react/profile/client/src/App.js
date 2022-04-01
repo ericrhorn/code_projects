@@ -9,7 +9,7 @@ import Tech from "./views/Tech";
 
 
 // import Image1 from "./views/Images/Image1";
-// import Image2 from "./views/Images/Image2";
+import Image2 from "./views/Images/Image2";
 // import Image3 from "./views/Images/Image3";
 import "./style.css";
 
@@ -24,13 +24,17 @@ function App() {
         <section className="home">
             <Home path="/"/>
           </section>
-
+          
           <section className="about" id="about">
             <About path="/about"/>
           </section>
 
           <section className="tech" id="tech">
             <Tech path="/tech"/>
+          </section>
+
+          <section>
+            <Image2/>
           </section>
 
           <section className="projects" id="projects">

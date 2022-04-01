@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "../style.css";
-
+import python from "../python.jpeg"
+import java from "../java.jpeg"
+import react from "../logo.svg"
 
 
 
@@ -13,8 +16,8 @@ const Tech =()=>{
                         color: "white"
                     }}
                     >Technologies I Use</h1>
-                    <h4 style={{color: "lightgray"}}
-                    >These are Technologies I use in my projects</h4>
+                    {/* <h4 style={{color: "lightgray"}}
+                    >These are Technologies I use in my projects</h4> */}
                 </div>
             </section>
             <section>
@@ -53,6 +56,36 @@ const Tech =()=>{
                     </div>
                 </div>
             </section>
+            <div class="homeImages row align-items-end">
+
+            <div class="col">
+                <img
+                    style={{
+                        width:200,
+                        height:125,
+                        
+                    }}
+                    src={python}
+                />
+                <img
+                    class="App-logo" alt="logo"
+                    style={{
+                        width:200,
+                        height:125,
+                        
+                    }}
+                    src={react}
+                />
+                <img
+                    style={{
+                        width:200,
+                        height:125,
+                    }}
+                    src={java}
+                />
+            </div>
+                
+            </div> 
         </div>
     )
 }

@@ -1,21 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import {Parallax} from 'react-parallax'
 import alaska from "./IMG_1180.jpeg"
 
 const Image2 =()=>{
     return (
+
         <div>
-            <div >
-            <img
-                class="image1 ng-isolate-scope"
-                src={alaska}
-                alt="alaska"
-                style={{
-                    // transform: translat3d(0, 211, 0),
-                    opacity: 1,
-                }}
-                />
-            </div>
+            <Parallax className="image2" bgImage={alaska} strength={800}>
+
+            </Parallax>
         </div>
     )
 }
@@ -23,3 +17,4 @@ const Image2 =()=>{
 
 
 export default Image2;
+
