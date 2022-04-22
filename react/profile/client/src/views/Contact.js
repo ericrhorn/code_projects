@@ -16,7 +16,7 @@ const Contact =()=>{
             <div class="container contactIcons">
                 <div class="row contactIcons ">
                     <div class="col">
-                        <a href="mailto:baratheon.development@gmail.com?subject=I was just visiting your site&body=Hi Eric,">
+                        <a href="mailto:hornericr@me.com?subject=I was just visiting your site&body=Hi Eric,">
                         <img
                                 style={{
                                     width:70,
@@ -88,7 +88,7 @@ const Contact =()=>{
                     </div>
 
                     <div class="col">
-                        <a href="https://docs.google.com/document/d/1uLcO1LXtW7n0mFPpEdfcBy8NnZz-3UehVhr-DDH_uS0/edit?usp=sharing"
+                        <a href="https://drive.google.com/file/d/1-uLpvvPELJ2XbpAKsNKXZW9WZSp_cmn8/view?usp=sharing"
                         target="blank"
                         >
                         <img
