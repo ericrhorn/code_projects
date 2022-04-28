@@ -60,7 +60,17 @@
             })
 
             $("#html").click(function(){
-                $(".html").html()
+                $(".html").html("<h1>WOW</h1>")
+            })
+
+            $("#attr").click(function(){
+                $(".attr").attr("class", "blue")
+            })
+            $("#val").click(function(){
+                $(".val").val("minh")
+            })
+            $("#text").click(function(){
+                $(".text").text("this is awesome!")
             })
 
 
@@ -179,22 +189,22 @@
     <div style="border-bottom: solid;">
         <h1>attr</h1>
         <div>
-            <button>attr</button>
-            <p>this is the attr function</p>
+            <button id="attr">attr</button>
+            <p class="attr">this is the attr function</p>
         </div>
     </div>
     <div style="border-bottom: solid;">
         <h1>val</h1>
         <div>
-            <button>val</button>
-            <p>this is the val function</p>
+            <button id="val">val</button>
+            <p class="var">this is the val function</p>
         </div>
     </div>
     <div style="border-bottom: solid;">
         <h1>text</h1>
         <div>
-            <button>text</button>
-            <p>this is the text function</p>
+            <button id="text">text</button>
+            <p class="text">this is the text function</p>
         </div>
     </div>
 </body>
