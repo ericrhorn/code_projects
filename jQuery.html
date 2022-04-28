@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log("ready")
+            // alert("you are now working with jQuery!")
+
+            $("a").click(function(){
+                alert("you are headding to google!")
+            })
+
+            // effects methods toggle the visibility of items
+
+            // anything under document.ready (ready) will work on page load
+            // .hide under page load will hide when the page is loaded, does not need an event lisener
+            // $('p').hide();
+
+            $("#hide").click(function(){
+                $('p').hide();
+            })
+            
+            $("#show").click(function(){
+                $('p').show();
+            })
+
+            // manipulation methods add either text or html to a document 
+            $("h3").hover(function(){
+                $("h3").text("go see quary park!");
+            }, function(){
+                $("h3").text("Rocklin, Ca");
+            })
+            $("h2").hover(function(){
+                $("h2").text("go see the Sharks!");
+            }, function(){
+                $("h2").text("San Jose, Ca");
+            })
+            
+            $(".append").click(function(){
+                $(".result").append("<h1>This is super cool<h1>")
+            })
+
+            $("button").click(function(){
+                $("button").css("background-color", "blue")
+            })
+
+            // .this will apply to the first funciton call. It can clean up code by allowing us to use one function for many items
+            
+            $("#pTag").click(function(){
+                $(this).hide();
+            })
+        
+        })
+
+    </script>
+</head>
+<body>
+    <p>this is a paragraph</p>
+    <p>this is also a paragraph</p>
+    <div>
+        <button id="hide" >this will hide all paragraphs</button>
+        <button id="show">click to show all paragraphs</button>
+        <a id="link" href="http://www.google.com">Google</a>
+    </div>
+    <div>
+       <h3>Rocklin, Ca</h3>
+    </div>
+    <div>
+        <h2>San Jose, Ca</h2>
+    </div>
+    <div>
+        <button class="append">
+            click to see .append work
+        </button>
+        <div class="result"></div>
+    </div>
+    <div>
+        <p id="pTag">this is a this test</p>
+        <p id="pTag">this is a this test</p>
+        <p id="pTag">this is a this test</p>
+        <p id="pTag">this is a this test</p>
+        <p id="pTag">this is a this test</p>
+        <p id="pTag">this is a this test</p>
+    </div>
+</body>
+</html>

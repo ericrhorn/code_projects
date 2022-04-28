@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log("ready")
+
+            $("#click").click(function(){
+                $(".clickP").css("color", "red")
+            })
+
+            $("#hide").click(function(){
+                $(".hideP").hide()
+            })
+
+            $("#show").click(function(){
+                $(".hideP").show()
+            })
+           
+            $("#toggle").click(function(){
+                $(".toggleP").toggle()
+            })
+
+            $("#slide").click(function(){
+                $(".slideP").slideDown()
+            })
+
+            $("#slideup").click(function(){
+                $(".slideup").slideUp()
+            })
+
+            $("#slideT").click(function(){
+                $(".slideTP").slideToggle()
+            })
+
+            $("#fadeIn").click(function(){
+                $(".fadeIn").fadeIn()
+            })
+            $("#fadeOut").click(function(){
+                $(".fadeOut").fadeOut()
+            })
+
+            $("#addClass").click(function(){
+                $(".addClass").addClass("newClassStyle")
+            })
+
+            $("#before").click(function(){
+                $(".before").before("<b>This is cool stuff</b>")
+            })
+            $("#after").click(function(){
+                $(".after").after("<b>This is cool stuff</b>")
+            })
+
+            $("#append").click(function(){
+                $(".result").append("<h1>This is super cool<h1>")
+            })
+
+            $("#html").click(function(){
+                $(".html").html()
+            })
+
+
+        })
+
+    </script>
+    <style>
+        .newClassStyle{
+            color: red;
+            font-size: 150%;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="border-bottom: solid;">
+        <h1>Click</h1>
+        <div>
+            <button id="click">click</button>
+            <p class="clickP">this is the click function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>Hide</h1>
+        <div>
+            <button id="hide">Hide</button>
+            <p class="hideP">this is the hide function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>show</h1>
+        <div>
+            <button id="show">show</button>
+            <p class="hideP">this is the show function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>toggle</h1>
+        <div>
+            <button id="toggle">toggle</button>
+            <p class="toggleP">this is the toggle function</p>
+            <p class="toggleP" style="display: none;">BYE!</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>slideDown</h1>
+        <div>
+            <button id="slide">slideDown</button>
+            <p class="slideP" style="display: none;">this is the slideDown function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>slideUp</h1>
+        <div>
+            <button id="slideup">slideUp</button>
+            <p class="slideup">this is the slideUp function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>slideToggle</h1>
+        <div>
+            <button id="slideT">slideToggle</button>
+            <p class="slideTP">this is the slideToggle function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>fadeIn</h1>
+        <div>
+            <button id="fadeIn">fadeIn</button>
+            <p class="fadeIn" style="display: none;">this is the fadeIn function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>fadeOut</h1>
+        <div>
+            <button id="fadeOut">fadeOut</button>
+            <p class="fadeOut">this is the fadeOut function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>addClass</h1>
+        <div>
+            <button id="addClass">addClass</button>
+            <p class="addClass">this is the addClass function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>before</h1>
+        <div>
+            <button id="before">before</button>
+            <p class="before">this is the before function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>after</h1>
+        <div>
+            <button id="after">after</button>
+            <p class="after">this is the after function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>append</h1>
+        <div>
+            <button id="append">append</button>
+            <p>this is the append function</p>
+            <div class="result"></div>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>html</h1>
+        <div>
+            <button id="html">html</button>
+            <p class="html">this is the html function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>attr</h1>
+        <div>
+            <button>attr</button>
+            <p>this is the attr function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>val</h1>
+        <div>
+            <button>val</button>
+            <p>this is the val function</p>
+        </div>
+    </div>
+    <div style="border-bottom: solid;">
+        <h1>text</h1>
+        <div>
+            <button>text</button>
+            <p>this is the text function</p>
+        </div>
+    </div>
+</body>
+</html>
