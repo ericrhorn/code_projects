@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+
+    <script>
+        $(document).ready(function(){
+            console.log("page ready");
+
+            $(".img").click(function(){
+                $(".img").toggle();
+            })
+            $(".img1").click(function(){
+                $(".img1").toggle();
+            })
+            $(".img2").click(function(){
+                $(".img2").toggle();
+            })
+            $(".img3").click(function(){
+                $(".img3").toggle();
+            })
+            $(".img4").click(function(){
+                $(".img4").toggle();
+            })
+
+            // another way to do it (maybe better)
+            $(".method2").click(function(){
+                var temp = $(this).attr("data-alt-src");
+                $(this).attr("data-alt-src", $(this).attr("src"));
+                $(this).attr("src", temp);
+            })
+        })
+
+    </script>
+</head>
+<body style="margin: 50px;">
+    <h1>Cat To Ninja</h1>
+    <div id="image">
+        <img class="img" src="img/cat0.png" alt="cat0">
+        <img class="img" style="display: none;" src="img/ninja0.png" alt="ninja0">
+    </div>
+    <div>
+        <img class="img1" src="img/cat1.png" alt="cat1">
+        <img class="img1" style="display: none;" src="img/ninja1.png" alt="ninja1">
+    </div>
+    <div>
+        <img class="img2" src="img/cat2.png" alt="cat2">
+        <img class="img2" style="display: none;" src="img/ninja2.png" alt="ninja2">
+    </div>
+    <div>
+        <img class="img3" src="img/cat3.png" alt="cat3">
+        <img class="img3" style="display: none;" src="img/ninja3.png" alt="ninja3">
+    </div>
+    <div>
+        <img class="img4" src="img/cat4.png" alt="cat4">
+        <img class="img4" style="display: none;" src="img/ninja4.png" alt="ninja4">
+    </div>
+    <div style="margin-top: 50px;" id="container">
+        <h1>Ninja to Cat</h1>
+        <img class="method2" src="img/ninja0.png" data-alt-src="img/cat0.png">
+        <img class="method2" src="img/ninja1.png" data-alt-src="img/cat1.png">
+        <img class="method2" src="img/ninja2.png" data-alt-src="img/cat2.png">
+        <img class="method2" src="img/ninja3.png" data-alt-src="img/cat3.png">
+        <img class="method2" src="img/ninja4.png" data-alt-src="img/cat4.png">
+    </div>
+</body>
+</html>

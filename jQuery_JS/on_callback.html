@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+
+    <!-- .on function -->
+    <!-- <script>
+        $(document).ready(function(){
+            console.log("ready!");
+
+            // only applies to current static content 
+            // $(".alert1").click(function(){
+            //     alert("you clicked me!")
+            // })
+
+            $(".new_btn").click(function(){
+                $("#buttons").append("<button class='alert1'>New Dynamic Button</button>")
+            })
+
+            // will apply to all content (static and dynamic) as it reads the whole document
+            $(document).on('click', '.alert1', function(){
+                alert('you clicked me');
+            })
+
+        })
+    </script> -->
+
+    <!-- callbacks -->
+    <!-- create a function or event handler outside the document.ready but inside the script -->
+    <script>
+        // a callback is calling a function ar some time from withn another function
+
+        function attach_handler(){
+            $(".alert1").click(function(){
+                alert("you clicked me!")
+            })
+        }
+
+        $(document).ready(function(){
+            console.log("ready!");
+
+            // calling the handler function for the static content
+            attach_handler();
+
+            $(".new_btn").click(function(){
+                $("#buttons").append("<button class='alert1'>New Dynamic Button</button>");
+                // calling the function for the dynamic content
+                attach_handler();
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+    <h1>Using .on to add handlers to dynamic content</h1>
+    <h2>Static Content</h2>
+    <div>
+        <button class="alert1">Click me for a message</button>
+        <button class="alert1">Click me for a message</button>
+        <button class="alert1">Click me for a message</button>
+        <button class="new_btn">Click me to add a new button</button>
+    </div>
+    <h2>Dynamically Rendered Content</h2>
+    <div id="buttons">
+    </div>
+</body>
+</html>
