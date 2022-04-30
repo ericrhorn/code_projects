@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+ 
+
+    $(document).ready(function(){
+        console.log("ready!")
+
+    // function planet(){
+    //     $.get('https://swapi.dev/api/planets', function(planet){
+    //         console.log(planet)
+    //     })
+    //     return planet;
+    // }
+    // planet();
+
+    // var displayPlanet = `
+    //     <div>
+    //         <h1>${planet.name}</h1>
+    //     </div>
+    // `;
+    // $('#planets').append(displayPlanet);
+
+
+        //talk to the api to get the first 10 characters info
+
+        // once we get the response display the info
+
+    
+            $.get('https://swapi.dev/api/planets/1', function(planet){
+            console.log(planet)
+            var displayPlanet = `
+                    <div>
+                        <h1>${planet.name}</h1>
+                    </div>
+            `;
+            $('#planets').append(displayPlanet);
+        }, 'JSON')
+
+        
+
+        for (var x =1; x <= 10; x++){
+            $.get('https://swapi.dev/api/people/'+x, function(person){
+            console.log(person);
+            var displayPeople = `
+                    <div>
+                        <h1>${person.name}</h1>
+                        <p>${person.homeworld}</p>
+                    </div>
+            `;
+            $('#people').append(displayPeople);
+        }, 'JSON')
+        }
+        
+    })
+
+</script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="people">
+    </div>
+    <div id="planets">
+    </div>
+</body>
+</html>
