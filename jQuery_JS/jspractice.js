@@ -1,3 +1,20 @@
+// Write a program that will take an integer and print Fizz if the number is divisible by 3, Buzz if the number is divisible by 5, FizzBuzz if the number is divisible by 3 and 5, and the number itself for all other cases.
+
+function fizzBuzz(){
+    for (var x=1; x <= 100; x++){
+        if(x % 3 === 0 && x % 5 === 0){
+            console.log("FizzBuzz")
+        }else if (x % 5 === 0){
+            console.log("Buzz")
+        }else if (x % 3 === 0){
+            console.log("Fizz")
+        }else{
+            console.log(x)
+        }
+    }
+}
+fizzBuzz();
+
 // Get 1 to 255 - Write a function that returns an array with all the numbers from 1 to 255.
 
 function arr(){

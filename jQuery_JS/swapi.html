@@ -46,12 +46,12 @@
         for (var x =1; x <= 10; x++){
             $.get('https://swapi.dev/api/people/'+x, function(person){
             console.log(person);
-            var displayPeople = `
-                    <div>
-                        <h1>${person.name}</h1>
-                        <p>${person.homeworld}</p>
-                    </div>
-            `;
+            // var displayPeople = `
+            //         <div>
+            //             <h1>${person.name}</h1>
+            //             <p>${person.homeworld}</p>
+            //         </div>
+            // `;
             $('#people').append(displayPeople);
         }, 'JSON')
         }
@@ -63,6 +63,7 @@
 </head>
 <body>
     <div id="people">
+        <p>${person.name}</p>
     </div>
     <div id="planets">
     </div>
