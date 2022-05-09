@@ -9,20 +9,20 @@
 
  
 
-    $(document).ready(function(){
+    $(document).ready(async function(){
         console.log("ready!")
 
-    function planet(){
-        $.get('https://swapi.dev/api/planets', function(planet){
-            // console.log(planet)
-            for (var x=1; x <= planet.length; x++){
-                // console.log(planet)
-            }
-            console.log(x)
-        })
-        return planet;
-    }
-    planet();
+    // function planet(){
+    //     $.get('https://swapi.dev/api/planets', function(planet){
+    //         // console.log(planet)
+    //         for (var x=1; x <= planet.length; x++){
+    //             // console.log(planet)
+    //         }
+    //         console.log(x)
+    //     })
+    //     return planet;
+    // }
+    // planet();
     
 
         //talk to the api to get the first 10 characters info
@@ -43,29 +43,28 @@
 
         
 
-        for (var x =1; x <= 10; x++){
-            $.get('https://swapi.dev/api/people/'+x, function(person){
+        for (var x =1; x <= 30; x++){
+            await $.get('https://swapi.dev/api/people/' + x, function(person){
             console.log(person);
-            // var displayPeople = `
-            //         <div>
-            //             <h1>${person.name}</h1>
-            //             <p>${person.homeworld}</p>
-            //         </div>
-            // `;
+                $.get(person.homeworld, function(home){
+                    var displayPeople = `
+                        <div>
+                            <h1>${person.name}</h1>
+                            <h2>${home.name}</h2>
+                            <p>${person.url}<p>
+                        </div>
+                    `;
             $('#people').append(displayPeople);
-        }, 'JSON')
-        }
-        
-    })
+            })
+        })
+    }
+})
 
 </script>
     <title>Document</title>
 </head>
 <body>
     <div id="people">
-        <p>${person.name}</p>
-    </div>
-    <div id="planets">
     </div>
 </body>
 </html>
