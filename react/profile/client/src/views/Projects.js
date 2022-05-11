@@ -19,7 +19,7 @@ const Projects =()=>{
                     <div class="col col-offset-1 projInfo">
                         <h3 style={{color: "blue"}}>Join Me</h3>
                         <p>Technologies Used: Java | Java Spring | MySql</p>
-                        <p>Join Me is a web app designed for people to create and join local events. See what events your friends created and which events they are attending. View the events location and price and follow the events link to the official page to purchase tickets if nessesary. 
+                        <p>Join Me is a web app designed for people to create and join local events. See what events your friends created and which events they are attending. View the events location and price and follow the link to the events official page to purchase tickets. 
                         </p>
                         <a 
                         href="https://github.com/ericrhorn/code_projects/tree/main/java/events"
@@ -52,7 +52,7 @@ const Projects =()=>{
                     <div class="col col-offset-1 projInfo">
                     <h3 style={{color: "blue"}}>Market Planner</h3>
                         <p>Technologies Used: React | Express | MongoDB | Finance API</p>
-                        <p>Market Planner is a web app designed to view ticker informaiton from selected stock to provide historical API data. Future use of this app would include a paid API that includes current market data.  </p>
+                        <p>Market Planner is a web app designed to view ticker informaiton about a selected stock providing historical data via an API. Future use of this app would include current market data via a paid API.  </p>
                         <a 
                         href="https://github.com/ericrhorn/code_projects/tree/main/java/events"
                         target="blank"

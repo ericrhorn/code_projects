@@ -43,21 +43,38 @@
 
         
 
-        for (var x =1; x <= 30; x++){
+        for (var x =1; x <= 16; x++){
             await $.get('https://swapi.dev/api/people/' + x, function(person){
             console.log(person);
-                $.get(person.homeworld, function(home){
+            var id = person.url.split('/')[5];
                     var displayPeople = `
-                        <div>
+                        <div data-id='${x}'>
                             <h1>${person.name}</h1>
-                            <h2>${home.name}</h2>
-                            <p>${person.url}<p>
                         </div>
                     `;
             $('#people').append(displayPeople);
-            })
         })
     }
+
+    $('#people').on('click', 'div', function(){
+        var id = $(this).attr('data-id');
+        $.get('https://swapi.dev/api/people/' + id, function(person){
+            
+                $.get(person.homeworld, function(home){
+                    var displayOne = `
+                <div>
+                    <h1>${person.name}</h1>
+                    <p>Height: ${person.height}</p>
+                    <p>Weight: ${person.mass}</p>
+                    <p>DOB: ${person.birth_year}</p>
+                    <p>Gender: ${person.gender}</p>
+                    <p>Homeworld: ${home.name}</p>
+                </div>    
+            `;
+        $('#info').html(displayOne);
+        }, 'json')
+        })
+    })
 })
 
 </script>
@@ -65,6 +82,8 @@
 </head>
 <body>
     <div id="people">
+    </div>
+    <div id="info">
     </div>
 </body>
 </html>
