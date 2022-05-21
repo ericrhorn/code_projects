@@ -169,3 +169,15 @@ function insertion(arr) {
     return arr;
 }
 console.log(insertion([9,3,78,12,76,0,-2]))
+
+//numeric sort using js sort function
+
+const num = [10,8,6,3,1,2,5,7,4,9];
+num.sort(function(a,b){return a-b});
+console.log(num)
+
+// js sort descending
+
+const num2 = [10,8,6,3,1,2,5,7,4,9];
+num2.sort(function(a,b){return b-a});
+console.log(num2)
