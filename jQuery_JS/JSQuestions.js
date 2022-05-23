@@ -6,6 +6,8 @@
 // >=	greater than or equal to	1 >= 2 => false; 2 >= 2 => true
 // <=	less than or equal to	1 <= 2 => true; 2 <= 2 => true
 
+// 3 ways to reverse a string
+
 
 // Write a program that will take an integer and print Fizz if the number is divisible by 3, Buzz if the number is divisible by 5, FizzBuzz if the number is divisible by 3 and 5, and the number itself for all other cases.
 

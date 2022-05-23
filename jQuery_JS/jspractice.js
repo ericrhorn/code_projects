@@ -1,3 +1,81 @@
+function tossCoin() {
+    return Math.random() > 0.5 ? "heads" : "tails";
+}
+
+function fiveHeadsSync() {
+        let headsCount = 0;
+        let attempts = 0;
+        while(headsCount < 5) {
+            attempts++;
+            let result = tossCoin();
+            console.log(`${result} was flipped`);
+            if(result === "heads") {
+                headsCount++;
+            } else {
+                headsCount = 0;
+            }
+        }
+        return `It took ${attempts} tries to flip five "heads"`;
+    }
+    console.log( fiveHeadsSync() );
+    console.log( "This is run after the fiveHeadsSync function completes" );
+
+// the above function using promises 
+
+
+function tossCoin() {
+    return Math.random() > 0.5 ? "heads" : "tails";
+}
+
+function fiveHeads() {
+    return new Promise( (resolve, reject) => {
+        // your code here!
+        if() {
+            resolve("heads 5 times!");
+        } else {
+            reject("keep flipping");
+        }
+    });
+}
+fiveHeads()
+    .then( res => console.log(res) )
+    .catch( err => console.log(err) );
+console.log( "When does this run now?");
+
+function tossCoin() {
+    return Math.random() > 0.5 ? "heads" : "tails";
+  }
+  
+  function fiveHeads() {
+    return new Promise((resolve, reject) => {
+      let headsCount = 0;
+      let attempts = 0;
+      let maxAttempts = 100;
+  
+      while (headsCount < 5 && attempts <= maxAttempts) {
+        attempts++;
+        let result = tossCoin();
+        console.log(`${result} was flipped`);
+        if (result === "heads") {
+          headsCount++;
+        } else {
+          headsCount = 0;
+        }
+      }
+      if (attempts <= maxAttempts) {
+        resolve(`It took ${attempts} tries to flip five "heads"`);
+      } else {
+        reject(`Attempts have exceeded ${maxAttempts} flips.`);
+      }
+    });
+  }
+  
+  fiveHeads()
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+  
+  console.log("When does this run now?");
+
 // Write a program that will take an integer and print Fizz if the number is divisible by 3, Buzz if the number is divisible by 5, FizzBuzz if the number is divisible by 3 and 5, and the number itself for all other cases.
 
 function fizzBuzz(){
