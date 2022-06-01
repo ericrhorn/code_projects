@@ -13,6 +13,7 @@ function solution(year) {
     var century = Math.ceil(year/100);
     return century
 }
+console.log(solution(2019))
 
 //given a string check to see if it is a palindrome
 
