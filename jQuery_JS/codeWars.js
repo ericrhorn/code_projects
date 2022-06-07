@@ -168,3 +168,25 @@ function validatePIN (pin) {
     return goodPin;
   }
   console.log(validatePIN("1234"))
+
+
+  function grow(x){
+    var sum = 1;
+    for (var y=0; y<x.length; y++){
+      sum *= x[y];
+    }
+    return sum;
+  }
+  console.log(grow([1,2,3,4]))
+
+
+
+function zeroFuel(dist, mpg, fuel){
+  if (fuel * mpg < dist){
+    return false
+  }
+  if (fuel * mpg >= dist){
+    return true
+  }
+}
+console.log(zeroFuel(50, 25, 2))
