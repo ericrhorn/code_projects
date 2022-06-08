@@ -190,3 +190,73 @@ function zeroFuel(dist, mpg, fuel){
   }
 }
 console.log(zeroFuel(50, 25, 2))
+
+
+// return string and int
+
+function sleepSheep(num){
+  var sheep = '';
+  for (var x=1; x <= num; x++){
+    sheep += x + ' sheep... '
+  }
+  return sheep;
+}
+console.log(sleepSheep(3))
+
+
+function sleepSheep(num){
+  var sheep = '';
+  for (var x=1; x <= num; x++){
+    sheep += `${x} sheep... `;
+  }
+  return sheep;
+}
+console.log(sleepSheep(3))
+
+var countSheep = function (num){
+  var sheep = '';
+  for (var x=1; x <= num; x++){
+    sheep += x + " sheep...";
+  }
+  return sheep;
+}
+countSheep(3)
+
+
+sleepSheep = (num) => {
+  const sheep = '';
+  for (var x=1; x <= num; x++){
+    sheep + x + ' sheep... '
+  }
+  return sheep;
+}
+console.log(sleepSheep(3))
+
+function DNAtoRNA(dna) {
+  // create a function which returns an RNA sequence from the given DNA sequence
+  // var dna = "GCAT"
+  // var dnaArr = dna.split("");
+  // console.log(dnaArr)
+  var rna = '';
+  for (var x=0; x < dna.length; x++){
+    if (dna[x] == 'T'){
+      rna += 'U'
+    } else {
+      rna += dna[x]
+    }
+  }
+  return rna;
+}
+console.log(DNAtoRNA('GCAT'))
+
+function DNAtoRNA(dna){
+  return dna.replace(/T/g, 'U');
+}
+console.log(DNAtoRNA("GCAT"))
+
+
+function digitize(n) {
+  return n.toString().split('').map(Number).reverse()
+  console.log(numArr)
+}
+digitize(348597)
