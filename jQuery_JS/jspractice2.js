@@ -6,6 +6,45 @@
 // >=	greater than or equal to	1 >= 2 => false; 2 >= 2 => true
 // <=	less than or equal to	1 <= 2 => true; 2 <= 2 => true
 
+
+
+// print int from 17-53
+// multiples of 2 print foo
+// multiples of 5 print bar
+// multiples of 2 and 5 print foobar
+
+function fooBar(){
+    for (var x=17; x <= 53; x++){
+        if (x % 2 == 0 && x % 5 == 0){
+            console.log('FooBar')
+        }
+        else if (x % 2 == 0) {
+            console.log('Foo')
+        }
+        else if (x % 5 ==0){
+            console.log('Bar')
+        }
+        else{
+            console.log(x)
+        }
+    }
+}
+fooBar()
+
+
+/*
+Find the 2nd largest and 2nd smallest number in two arrays of numbers combined
+
+[10,5,7,2,4,1,24]
+[8,23,29,25,40,0,24]
+2nd Largest: 29 , 2nd Smallest: 1
+*/
+
+
+
+
+
+
 // 3 ways to reverse a string
 
 // reverse a string with built in methods

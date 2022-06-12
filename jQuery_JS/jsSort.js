@@ -85,6 +85,24 @@ function bubble(arr){
 bubble([6,5,3,1,8,7,2,4])
 
 
+function bubble(arr){
+    for (var x=0; x < arr.length; x++){
+        for (var y=0; y < arr.length; y++){
+            if (arr[y] > arr[y+1]){
+                [arr[y], arr[y+1]] = [arr[y+1], arr[y]]
+            }
+        }
+    }
+    console.log(arr);
+}
+bubble([6,5,3,1,8,7,2,4])
+
+function sortArr(arr){
+   return arr.sort((a, b) => a - b);
+}
+console.log(sortArr([6,5,3,1,8,7,2,4]))
+
+
 // selection sort - find the minimum value in the arr and move it to the front
 
 function select(arr){
