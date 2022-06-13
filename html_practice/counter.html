@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var counterVal = 0;
+
+        function increaseCount(){
+            updateCount(counterVal++)
+            console.log(counterVal)
+        }
+        function decreaseCount(){
+            updateCount(counterVal--)
+            console.log(counterVal)
+        }
+
+        function resetCount(){
+            counterVal = 0;
+            updateCount(counterVal);
+        }
+
+        function updateCount(){
+            document.getElementById("countNum").innerHTML = counterVal;
+            // innerHTML modifies the content of an html element
+        }
+    </script>
+</head>
+<body>
+    <h1>Counter</h1>
+    <p>Current Count: <span id="countNum"></span></p>
+    <button onclick="increaseCount()">Count Up</button>
+    <button onClick="decreaseCount()">Count Down</button>
+    <button onclick="resetCount()">Reset Count</button>
+</body>
+</html>
