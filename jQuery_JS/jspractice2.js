@@ -431,22 +431,39 @@ console.log(swap([1]))
 
 // recursive
 function rFib( n ) {
-        if ( n < 2 ) {
-            return n;
-        }
-        return rFib( n-1 ) + rFib( n-2 );
+        if ( n <= 1 ) {
+            return n;
+        }
+        return rFib( n-1 ) + rFib( n-2 );
     }
-    rFib(20);
+    console.log(rFib(3));
+
+
     // iterative
     function iFib( n ) {
-        const vals = [ 0, 1 ];
-        while(vals.length-1 < n) {
-            let len = vals.length;
-            vals.push( vals[len-1] + vals[len-2] );
-        }
-        return vals[n];
+        const vals = [ 0, 1 ];
+        while(vals.length-1 < n) {
+        let len = vals.length;
+            vals.push( vals[len-1] + vals[len-2] );
+        }
+        return vals[n];
     }
-    iFib(20);
+    console.log(iFib(3));
+
+    function fib(num){
+        var a = 1;
+        var b = 0;
+        var temp;
+
+        while (num >= 0){
+            temp = a;
+            a = a + b;
+            b = temp;
+            num --;
+        }
+        return b;
+    }
+    console.log(fib(10))
 
 
 

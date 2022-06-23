@@ -46,15 +46,51 @@ console.log(twoSum([2,7,11,15], 9))
 // valid parentheses
 
 function isValid(s){
-    var newArr = []
     var brackets = {
         '(' : ')',
         '[' : ']',
         '{' : '}'
     }
-    for (var x = 0; x < s.length; x++)
-}
+    var arr = []
 
+    for (var x = 0; x < s.length; x++){
+        if (arr.length > 0 && brackets[arr[arr.length-1]] === s[x]){
+            arr.pop()
+        }
+        else {
+            arr.push(s[x])
+        }
+    }
+    return arr.length === 0
+}
+console.log(isValid('(), [], {}'))
+console.log(isValid('(}'))
+
+
+
+// es6 soloution
+function isValid(s){
+    var brackets = {
+        '(' : ')',
+        '[' : ']',
+        '{' : '}'
+    }
+    var newArr = []
+
+    for (let char of s){
+        if (brackets[char]){
+            newArr.push(brackets[char])
+        }
+        else{
+            if(newArr.pop() !== char){
+                return false
+            }
+        } 
+    }
+    return (!newArr.length)
+}
+console.log(isValid('(), [], {}'))
+console.log(isValid('(}'))
 
 // merge two sorted lists
 
@@ -180,5 +216,177 @@ console.log(maxSubArray2([-2,1,-3,4,-1,2,1,-5,4]))
 
 
 
-// climbing stairs
+// climbing stairs (fibonacci)
+// recursive
+var climbStairs = function(n) {
+    if (n <= 1) {
+        return 1
+    }
+    return climbStairs(n-1) + climbStairs(n-2);
+};
+console.log(climbStairs(3))
+
+var climbStairs2 = function (n){
+    var vals = [0,1];
+    for (var x=0; x < n; x++){
+        vals = [vals[1], vals[0] + vals[1]]
+    }
+    return vals[1]
+}
+console.log(climbStairs2(2))
+console.log(climbStairs2(3))
+console.log(climbStairs2(5))
+
+// the only one that meets the time complexity
+
+var climbStairs3 = function (n){
+    var total = 0;
+    var first = 0;
+    var second = 1;
+    var x = 0;
+
+    while (x < n){
+        total = first + second
+        first = second
+        second = total 
+        x++
+    }
+    return total;
+}
+console.log(climbStairs3(2))
+console.log(climbStairs3(3))
+console.log(climbStairs3(5))
+
+// systemic tree
+
+var isSymmetric = function(root) {
+    var broot = root[0];
+    var left = 0;
+    var right = 0;
+    
+    while (x < root){
+
+    }
+};
+
+
+// best time to buy and sell stock
+
+var maxProfit = function(prices) {
+    var bestSellPrice = 0;
+
+    for (var x = 0; x < prices.length -1; x++){
+        for (var y = x+1; y < prices.length; y++){
+            var currentVal = prices[y] - prices[x];
+
+            if (currentVal > bestSellPrice){
+                bestSellPrice = currentVal
+            }
+        }
+      
+    }
+    return bestSellPrice
+};
+
+console.log(maxProfit([7,1,5,3,6,4]))
+
+
+var maxProfit = function(prices){
+    var maxProfit = 0;
+    var buy = prices[0];
+
+    for (var x = 0; x < prices.length; x++){
+        var sell = prices[x]
+        var profit = sell - buy
+
+        maxProfit = Math.max(maxProfit, profit)
+
+        if (sell < buy){
+            buy = sell
+        }
+    }
+    return maxProfit
+}
+console.log(maxProfit([7,1,5,3,6,4]))
+
+
+// single number
+
+var singleNumber = function(nums) {
+    var sortedList = nums.sort((a,b) => (a-b))
+    var list = sortedList.length;
+    
+    for (var x=0; x < list; x++){
+        if (sortedList[x-1] !== sortedList[x] && sortedList[x+1] !== sortedList[x]){
+            return sortedList[x]
+        }
+    }
+};
+console.log(singleNumber([2,2,1]))
+console.log(singleNumber([4,1,2,1,2]))
+console.log(singleNumber([1]))
+
+
+// majority elements
+
+var majorityElement = function(nums) {
+    var majority = nums[0];
+
+    for (var x=0; x < nums.length; x++){
+        if ()
+    }
+};
+
+// reverse linked list 
+
+var reverseList = function(head) {
+    if(head == null || head.next == null) {
+        return head
+    }
+    newHead = reverseList(head.next);
+    head.next.next = head;
+    head.next = null;
+    return newHead;
+};
+
+console.log(reverseList([1,2,3,4,5]))
+
+
+var reverseList = function(head) {
+    // pre will hold the reversed list
+    var pre = null;
+    // next will be a temporary variable to store the remaining nodes in the list at each loop
+    var next = null;
+
+    // while there are nodes remaining in the list
+    while(head != null) {
+        // temporarily store the remaining list without the current node
+        next = head.next;
+        // take the current node of the list, append the reversed nodes to it, then assign it back to the reversed list
+        head.next = pre;
+        pre = head;
+        // assign the remaining list back so head points to the new current node, repeat until there are nodes remaining in the list
+        head = next;
+    }
+
+    return pre;
+};
+console.log(reverseList([1,2,3,4,5]))
+
+
+
+
+// move zeros
+
+var moveZeroes = function(nums) {
+    for (var x=0; x<nums.length; x++){
+        if (nums[x] === 0){
+            nums.pop(nums[x])
+        }
+    }
+    return nums
+};
+console.log(moveZeroes([0,1,0,3,12]))
+
+
 
