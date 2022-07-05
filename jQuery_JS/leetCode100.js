@@ -123,12 +123,87 @@ console.log(mergeTwoLists([1,2,4], [1,3,4]))
 // 3 whichever node from L1 or L2 is smaller append it to the new list and move the pointer to the next node 
 // 4 continue this process untill you reack the end of a linked list.
 
-function mergeLinkedList(l1, l2){
-    var newHead = 0;
-    var newList = [];
-
-    for (var x=0; x<)
+function ListNode(val, next){
+    this.val = val;
+    this.next = null;
 }
+
+var mergeTwoLists = function(list1, list2) {
+    var newList = new ListNode(null, null);
+    var prev = newList;
+
+    while (list1 !== null && list2 !== null){
+        if (list1.val <= list2.val) {
+            prev.next = list1
+            list1 = list1.next;
+        }
+        else {
+            prev.next = list2
+            list2 = list2.next
+        }
+        prev = prev.next
+    }
+    if (list1 === null) {prev.next = list2}
+    if (list2 === null) {prev.next = list1}
+    return newList.next;
+};
+
+// another way
+
+var mergeTwoLists = function(list1, list2) {
+    // initilize a linked list with a dummy Listnode
+    var newList = new ListNode(null, null);
+    // pointer to head of new linked list
+    var headOfNewList = newList;
+
+    // while both list contain elements 
+    while (list1 !== null && list2 !== null){
+        // if l1 value is smaller
+        if (list1.val <= list2.val) {
+            // add l1 value to new list
+            newList.next = list1
+            // move l1 to its next elements
+            list1 = list1.next;
+        }
+        else {
+            newList.next = list2
+            list2 = list2.next
+        }
+        newList = newList.next
+    }
+    if (list1 === null) {newList.next = list2}
+    if (list2 === null) {newList.next = list1}
+    return headOfNewList.next;
+};
+
+
+
+var mergeTwoLists = function(l1, l2) {
+    const head = new ListNode(0);
+    let merged = head;
+    
+    while (l1 && l2) {
+        if (l1.val < l2.val) {
+            merged.next = l1;
+            l1 = l1.next;
+        } else {
+            merged.next = l2;
+            l2 = l2.next;
+        }
+        
+        merged = merged.next;
+    }
+    
+    if (l1) {
+        merged.next = l1;
+    } else {
+        merged.next = l2;
+    }
+    
+    return head.next;
+};
+
+
 
 
 // Search insert position
