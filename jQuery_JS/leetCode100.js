@@ -116,10 +116,19 @@ var mergeTwoLists = function(list1, list2,) {
 console.log(mergeTwoLists([1,2,4], [1,3,4]))
 
 
+// merge two sorted linked list 
 
-const spliceArr = [1,2,3,4,5,6,7,8,9,10]
-    spliceArr.splice(2, 1)
-console.log(spliceArr)
+// 1 create a new head pointer to an empty list
+// 2 check the first values of both linked lists 
+// 3 whichever node from L1 or L2 is smaller append it to the new list and move the pointer to the next node 
+// 4 continue this process untill you reack the end of a linked list.
+
+function mergeLinkedList(l1, l2){
+    var newHead = 0;
+    var newList = [];
+
+    for (var x=0; x<)
+}
 
 
 // Search insert position
