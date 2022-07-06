@@ -107,11 +107,11 @@
         <section>
             <table class="table">
                 <thead>
-                    <th>Destination</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Plan</th>
-                    <th>Want to join?</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Plan</th>
+                    <th scope="col">Want to join?</th>
                 </thead>
                 <tbody>
                     {% for trip in trips %}
@@ -131,9 +131,13 @@
         </section>
     </div>
     
+
+
+
+
     <div id='container'>
         <div id='create_trip'>
-            <h2>Hello {{ user.first_name }}! Add an Event!</h1>
+            <h2>Add Events Here!</h1>
         </div>
         <div id = "container">
             {% if messages %}
@@ -164,6 +168,14 @@
                             <input type="text" name="eventUrl" id="eventUrl"></input>
                         </div>
                         <div>
+                            <label for="start_time">Start Time</label>
+                            <input type="time" name="start_time" id="start_time"></input>
+                        </div>
+                        <div>
+                            <label for="end_time">End Time</label>
+                            <input type="time" name="end_time" id="end_time"></input>
+                        </div>
+                        <div>
                             <label for="start_date">Start Date</label>
                             <input type="date" name="start_date" id="start_date"></input>
                         </div>
@@ -182,8 +194,13 @@
                             <label for="description">Description</label>
                             <textarea name="description" id="description" cols="50" rows="5"></textarea>
                         </div>
+                        <div>
+                            <label for="event_notes">Notes</label>
+                            <textarea name="event_notes" id="event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
+                        </div>
                         <div class='links'>
                             <a href="/dashboard"><button type="button">Cancel</button></a>
+                            <button type="reset" value="reset">Clear Form</button>
                             <button type="text">Submit</button>
                         </div>
                     </div>
