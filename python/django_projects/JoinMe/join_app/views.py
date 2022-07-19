@@ -6,16 +6,61 @@ import bcrypt
 from django.shortcuts import render, HttpResponse
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "home.html")
 
 def register(request):
-    return render(request, "register.html")
+    if request.method == 'POST': 
+        errors = User.objects.registration_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.item():
+                messages.error(request, value)
+            return redirect("/")
+        else: 
+            password = request.POST['password']
+            pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt(4)).decode()
+            user = User.objects.create(
+                first_name = request.POST ['first_name'],
+                last_name = request.POST ['last_name'],
+                user_name = request.POST ['user_name'],
+                email = request.POST ['email'],
+                password = pw_hash,
+            )
+            request.session['user_id'] = user.id
+            return redirect('dashboard')
+    return redirect('/')
 
 def login(request):
-    return render(request, "login.html")
+    if request.method == 'POST':
+        errors = User.objects.login_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.item():
+                messages.error(request, value)
+            return redirect('/')
+        else:
+            logged_user = User.objects.filter(email = request.POST['email'])
+            request.session['user_id'] = logged_user[0].id
+            
+            logged_user = User.objects.filter(user_name = request.POST['user_name'])
+            request.session['user_id'] = logged_user[0].id
+
+        return redirect('/dashboard')
+    return redirect('/')
 
 def dashboard(request):
-    return render(request, "dashboard.html")
+    if 'user_id' not in request.session:
+        return redirect('/')
+    else:
+        logged_user = User.objects.filter(id=request.sesison['user_id'])
+        context = {
+            'event' : Event.objects.all(),
+            'user' : logged_user[0],
+            'all_users' : User.objects.all(),
+        }
+    return render(request, "dashboard.html", context)
+
+
+
+
 
 def new_event(request):
     return render(request, "new_event.html")
