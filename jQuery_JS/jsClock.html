@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        window.onload = function() {
+            console.log("page is loaded")
+            alert("page is loaded")
+            document.getElementById("btm").onclick = displayTime;
+    
+        function displayTime(){
+            document.getElementById("time").innerHTML = Date()
+        }
+
+
+        document.getElementById("myBtn").onclick = displayDate;
+
+        function displayDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <h1>Java Script Clock</h1>
+    <button id="btm">Click For Time</button>
+    <p id = "time"></p>
+
+    <button id="myBtn">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+</script>
+</body>
+</html>
