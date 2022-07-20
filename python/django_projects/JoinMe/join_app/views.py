@@ -12,7 +12,7 @@ def register(request):
     if request.method == 'POST': 
         errors = User.objects.registration_validator(request.POST)
         if len(errors) > 0:
-            for key, value in errors.item():
+            for key, value in errors.items():
                 messages.error(request, value)
             return redirect("/")
         else: 
@@ -26,23 +26,20 @@ def register(request):
                 password = pw_hash,
             )
             request.session['user_id'] = user.id
-            return redirect('dashboard')
+            return redirect('/dashboard')
     return redirect('/')
 
 def login(request):
     if request.method == 'POST':
         errors = User.objects.login_validator(request.POST)
         if len(errors) > 0:
-            for key, value in errors.item():
+            for key, value in errors.items():
                 messages.error(request, value)
             return redirect('/')
         else:
             logged_user = User.objects.filter(email = request.POST['email'])
             request.session['user_id'] = logged_user[0].id
             
-            logged_user = User.objects.filter(user_name = request.POST['user_name'])
-            request.session['user_id'] = logged_user[0].id
-
         return redirect('/dashboard')
     return redirect('/')
 
@@ -50,20 +47,46 @@ def dashboard(request):
     if 'user_id' not in request.session:
         return redirect('/')
     else:
-        logged_user = User.objects.filter(id=request.sesison['user_id'])
+        logged_user = User.objects.filter(id=request.session['user_id'])
         context = {
-            'event' : Event.objects.all(),
+            'events' : Event.objects.all(),
             'user' : logged_user[0],
             'all_users' : User.objects.all(),
         }
     return render(request, "dashboard.html", context)
 
 
-
-
-
 def new_event(request):
-    return render(request, "new_event.html")
+    if request.method == 'POST':
+        errors = Event.objects.event_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/dashboard')
+        else:
+            user = User.objects.get(id=request.session['user_id'])
+            events = Event.objects.create(
+                event_name = request.POST ['event_name'],
+                location = request.POST ['location'],
+                price = request.POST ['price'],
+                event_url = request.POST ['event_url'],
+                start_date = request.POST ['start_date'],
+                end_date = request.POST ['end_date'],
+                start_time = request.POST ['start_time'],
+                end_time = request.POST ['end_time'],
+                description = request.POST ['description'],
+                event_notes = request.POST ['event_notes'],
+                # private = request.POST ['private'],
+                # join_event = request.POST ['join_event'],
+                created_by = user,
+            )
+        return redirect ('/dashboard')
+    return redirect("/")
+
+
+
+
+
 
 def all_events(request):
     return render(request, "all_events.html")

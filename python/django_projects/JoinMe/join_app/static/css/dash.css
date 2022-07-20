@@ -1,0 +1,41 @@
+.navbar{
+    padding-left: 10px;
+}
+
+.eventBox{
+    margin: 50px;
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    width: 800px;
+    height: 200px;
+}
+
+.title{
+    text-align: center;
+    color: red;
+}
+
+.eventImg{
+    border-style: solid;
+    border-color: red;
+}
+
+.new_trip{
+    margin: 50px;
+}
+#create_trip{
+    margin: 50px;
+}
+
+
+label{
+    width: 100px;
+    display: inline-block;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+
+.events-display{
+    padding: 25px;
+}
