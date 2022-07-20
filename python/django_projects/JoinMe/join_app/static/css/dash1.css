@@ -1,0 +1,25 @@
+.navbar{
+    padding-left: 10px;
+}
+
+/* .new_trip{
+    margin: 50px;
+}
+#create_trip{
+    margin: 50px;
+} */
+
+#container1{
+    margin-left: 50px;
+}
+
+label{
+    width: 100px;
+    display: inline-block;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+
+.events-display{
+    padding: 25px;
+}

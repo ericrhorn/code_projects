@@ -3,7 +3,6 @@ from django.contrib import messages
 from .models import *
 import bcrypt
 
-from django.shortcuts import render, HttpResponse
 
 def index(request):
     return render(request, "home.html")
@@ -26,7 +25,7 @@ def register(request):
                 password = pw_hash,
             )
             request.session['user_id'] = user.id
-            return redirect('/dashboard')
+        return redirect('/dashboard')
     return redirect('/')
 
 def login(request):
