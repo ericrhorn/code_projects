@@ -116,7 +116,7 @@ class Event(models.Model):
     
     event_notes = models.TextField(max_length=500)
 
-    private = models.BooleanField(default=False)
+    private = models.BooleanField()
 
     created_by = models.ForeignKey(User, related_name='event_planned', on_delete=models.CASCADE)
 

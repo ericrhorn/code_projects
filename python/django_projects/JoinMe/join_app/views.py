@@ -56,31 +56,70 @@ def dashboard(request):
 
 
 def new_event(request):
-    if request.method == 'POST':
-        errors = Event.objects.event_validator(request.POST)
-        if len(errors) > 0:
-            for key, value in errors.items():
-                messages.error(request, value)
-            return redirect('/dashboard')
-        else:
-            user = User.objects.get(id=request.session['user_id'])
-            events = Event.objects.create(
-                event_name = request.POST ['event_name'],
-                location = request.POST ['location'],
-                price = request.POST ['price'],
-                event_url = request.POST ['event_url'],
-                start_date = request.POST ['start_date'],
-                end_date = request.POST ['end_date'],
-                start_time = request.POST ['start_time'],
-                end_time = request.POST ['end_time'],
-                description = request.POST ['description'],
-                event_notes = request.POST ['event_notes'],
-                # private = request.POST ['private'],
-                # join_event = request.POST ['join_event'],
-                created_by = user,
-            )
-        return redirect ('/dashboard')
-    return redirect("/")
+    if 'user_id' not in request.session:
+        redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    if 'private' not in request.POST:
+        events = Event.objects.create(
+            event_name = request.POST ['event_name'],
+            location = request.POST ['location'],
+            price = request.POST ['price'],
+            event_url = request.POST ['event_url'],
+            start_date = request.POST ['start_date'],
+            end_date = request.POST ['end_date'],
+            start_time = request.POST ['start_time'],
+            end_time = request.POST ['end_time'],
+            description = request.POST ['description'],
+            event_notes = request.POST ['event_notes'],
+            private = False,
+            # join_event = request.POST ['join_event'],
+            created_by = user,
+        )
+    else:
+        events = Event.objects.create(
+            event_name = request.POST ['event_name'],
+            location = request.POST ['location'],
+            price = request.POST ['price'],
+            event_url = request.POST ['event_url'],
+            start_date = request.POST ['start_date'],
+            end_date = request.POST ['end_date'],
+            start_time = request.POST ['start_time'],
+            end_time = request.POST ['end_time'],
+            description = request.POST ['description'],
+            event_notes = request.POST ['event_notes'],
+            private = request.POST ['private'],
+            # join_event = request.POST ['join_event'],
+            created_by = user,
+        )
+    return redirect ('/dashboard')
+
+
+
+    # if request.method == 'POST':
+    #     errors = Event.objects.event_validator(request.POST)
+    #     if len(errors) > 0:
+    #         for key, value in errors.items():
+    #             messages.error(request, value)
+    #         return redirect('/dashboard')
+    #     else:
+    #         user = User.objects.get(id=request.session['user_id'])
+    #         events = Event.objects.create(
+    #             event_name = request.POST ['event_name'],
+    #             location = request.POST ['location'],
+    #             price = request.POST ['price'],
+    #             event_url = request.POST ['event_url'],
+    #             start_date = request.POST ['start_date'],
+    #             end_date = request.POST ['end_date'],
+    #             start_time = request.POST ['start_time'],
+    #             end_time = request.POST ['end_time'],
+    #             description = request.POST ['description'],
+    #             event_notes = request.POST ['event_notes'],
+    #             private = False,
+    #             # join_event = request.POST ['join_event'],
+    #             created_by = user,
+    #         )
+    #     return redirect ('/dashboard')
+    # return redirect("/")
 
 
 
@@ -100,7 +139,11 @@ def logout(request):
     request.session.flush()
     return redirect('/')
 
-def delete(request):
+def delete(request, event_id):
+    if request.method == 'POST':
+        delete = Event.objects.get(id=event_id)
+        delete.delete()
+        return redirect('/dashboard')
     return redirect('/')
 
 

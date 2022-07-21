@@ -59,7 +59,8 @@
                         <th scope="col">Time</th>
                         <th scope="col">Price</th>
                         <th scope="col">who?</th>
-                        <!-- <th scope="col">Actions</th> -->
+                        <th scope="col">private?</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,12 +75,17 @@
                             <td>{{event.start_time}}</td>
                             <td>{{event.price}}</td>
                             <td>{{event.created_by.first_name}}</td>
-                            <!-- <td>{{trip.actions}}
-                                <form action="/{{ trip.id }}/delete" method='POST'>
+                            {% if event.private == False %}
+                                <td>NO</td>
+                            {% else %}
+                                <td>YES</td>
+                            {% endif %}
+                            <td>{{event.actions}}
+                                <form action="/{{ event.id }}/delete" method='POST'>
                                     {% csrf_token %}
-                                    <input type="submit" value=Remove> | <a href="/{{ trip.id }}/edit">Edit</a>
+                                    <input type="submit" value=Remove>
                                 </form> 
-                            </td> -->
+                            </td>
                         </tr>
                     {% endif %}
                 {% endfor %}
@@ -200,8 +206,8 @@
                             <input type="date" name="end_date" id="end_date"></input>
                         </div>
                         <div>
-                            <input type="radio" id="private" value="private" name="private">
                             <label for="private">Private Event</label>
+                            <input type="radio" id="private" value="True" name="private">
                         </div>
                         <div>
                             <label for="description">Description</label>
