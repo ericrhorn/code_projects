@@ -81,14 +81,21 @@ WSGI_APPLICATION = 'JoinMe.wsgi.application'
 # BD_USER = 'db_user'
 # BD_PASSWORD = 'password'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'joinme',
+#         'USER': 'db_user',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'joinme',
-        'USER': 'db_user',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
