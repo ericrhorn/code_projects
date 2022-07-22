@@ -67,6 +67,9 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['user_name']
+
 class EventManager(models.Manager):
     def event_validator(self, postData):
         errors = {}
