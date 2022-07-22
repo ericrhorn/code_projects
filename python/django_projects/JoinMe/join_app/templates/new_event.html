@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,81 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>new event</h1>
+    
+    <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
+        <h2>Add Events Here!</h1>
+        <div class="row" style="padding-left: 25px;">
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+                </ul>
+        </div>
+            
+        <form action="/new_event" method="POST">
+            {% csrf_token %}
+            
+                <div class="mb-3 mt-3">
+                    <label for="event_name">Event Name</label>
+                    <input class="form-control" type="text" name="event_name" id="event_name"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="location">Location</label>
+                    <input class="form-control" type="text" name="location" id="location"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="price">Price</label>
+                    <input class="form-control" type="text" name="price" id="price"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="event_url">Event URL</label>
+                    <input class="form-control" type="text" name="event_url" id="event_url"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="start_time">Start Time</label>
+                    <input class="form-control" type="time" name="start_time" id="start_time"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="end_time">End Time</label>
+                    <input class="form-control" type="time" name="end_time" id="end_time"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="start_date">Start Date</label>
+                    <input class="form-control" type="date" name="start_date" id="start_date"></input>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="end_date">Start Date</label>
+                    <input class="form-control" type="date" name="end_date" id="end_date"></input>
+                </div>
+                <!-- <div class="mb-3 mt-3">
+                    <label  for="private">Private Event</label>
+                    <input type="radio" id="private" value="True" name="private">
+                </div> -->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="private" id="private" value="True">
+                    <label class="form-check-label" for="private">
+                    Private Event
+                    </label>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" cols="50" rows="5"></textarea>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="event_notes">Notes</label>
+                    <textarea class="form-control" name="event_notes" id="event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
+                </div>
+                <div>
+                    <a href="/dashboard"><button class="btn btn-primary" type="button">Cancel</button></a>
+                    <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
+                    <button class="btn btn-primary" type="text">Submit</button>
+                </div>
+            
+        </form>
+
+    </div>    
 </body>
 </html>
+{% endblock content %}

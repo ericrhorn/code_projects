@@ -27,8 +27,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# from join_app.views import (
+#     home_screen_view
+# )
+
 urlpatterns = [
     path('', include('join_app.urls')),	   
+    # path('', home_screen_view, name='home'),	   
     path('', include('friend_app.urls')),	   
     path('', include('user_app.urls')),
     path('admin/', admin.site.urls),
