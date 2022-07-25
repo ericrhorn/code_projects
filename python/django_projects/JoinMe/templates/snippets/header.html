@@ -65,10 +65,10 @@
                         </div>
 
                         <div class="btn-group dropstart" style="padding-right: 10px;">
-                            <div class="d-flex notifications-icon-container round-circle align-items-center mr-3" id="id_notification_dropdown_toggle" data-bs-toggle="dropdown">
+                            <!-- <div class="d-flex notifications-icon-container round-circle align-items-center mr-3" id="id_notification_dropdown_toggle" data-bs-toggle="dropdown">
                                 <span id="id_general_notifications_count" class="notify-badge"></span>
-                                <span class="d-flex material-symbols-outlined notifications-material-icon m-auto align-items-center">person</span>
-                            <!-- <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{% static 'images/user_icon.png' %}" alt="user_icon" height="30" width="30"> -->
+                                <span class="d-flex material-symbols-outlined notifications-material-icon m-auto align-items-center">person</span> -->
+                            <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile_img.url}}"  height="30" width="30">
                             <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                 <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                 <a  href="/logout" class="dropdown-item">Logout</a>
