@@ -1,11 +1,11 @@
 .about_info{
     /* min-width: 200px;
     width: 500px; */
-    margin-top: 3em;
+    /* margin-top: 3em;
     font-family: sans-serif;
     color: white;
     margin-left: 50px;
-    padding-right: 100px;
+    padding-right: 100px; */
 }
 
 .home_headder {
@@ -13,13 +13,13 @@
     padding-top: 100px;
 }
 
-input{
+/* input{
     margin-bottom: 10px;
-}
+} */
 
-.navbar{
+/* .navbar{
     padding-left: 10px;
-}
+} */
 
 /* .eventBox{
     margin: 50px;

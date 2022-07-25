@@ -1,70 +1,80 @@
+from email.policy import default
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-import bcrypt
-import re
-
 
 
 
 # class UserManager(models.Manager):
-#     def registration_validator(self, postData):
-#         errors = {}
-#         if len(postData["first_name"]) < 2:
-#             errors["first_name"] = "First Name should be at least 2 characters"
-#         if len(postData['last_name']) < 2:
-#             errors["last_name"] = "Last Name should be at least 2 characters"
+class UserManager(BaseUserManager):
 
-#         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-#         if not EMAIL_REGEX.match(postData['email']):
-#             errors['email'] = "Invalid email address!"
-#         elif not EMAIL_REGEX.match(postData['email']):
-#             errors['email'] = "Must be a valid email address"
 
-#         logged_user = User.objects.filter(email=postData["email"])
-#         if len(logged_user) > 0:
-#             errors['duplicate'] = "Email is already registered"
+    def create_user(self, email, username, password=None):
+        if not email:
+            raise ValueError("User must add an email")
+        if not username:
+            raise ValueError("User must add a user name")
+        user = self.model(
+            email=self.normalize_email(email),
+            username=username,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
-#         if len(postData['user_name']) < 2:
-#             errors['user_name'] = "User Name should be at least 2 characters"
+    def create_superuser(self, email, username, password):
+        user = self.create_user(
+            email=self.normalize_email(email),
+            username=username,
+            password=password
+        )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
 
-#         # logged_user = User.objects.filter(user_name=postData["user_name"])
-#         # if len(logged_user) > 0:
-#         #     errors['duplicate'] = "User Name is already registered"
 
-#         if len(postData['password']) < 5:
-#             errors["password"] = "Passwords should be at least 5 charicters"
+def get_profile_image_filepath(self):
+    return f'profile_images/{self.pk}/{"profile_image.png"}'
 
-#         if postData['password'] != postData ['password_confirm']:
-#             errors["password_confirm"] = "Passwords must match"
+def get_default_profile_image():
+    return "temp_img/temp.png"
 
-#         return errors
-
-#     def login_validator(self, postData):
-#         errors = {}
-#         logged_user = User.objects.filter(email=postData['email'])
-#         if len(logged_user) !=1:
-#             errors['email'] = 'Email is not registered'
-#         if len(postData['email']) == 0:
-#             errors['email'] = 'Please enter an email address'
-
-#         # logged_user = User.objects.filter(user_name=postData['user_name'])
-#         # if len(logged_user) !=1:
-#         #     errors['user_name'] = 'User Name is not registered'
-#         # if len(postData['user_name']) == 0:
-#         #     errors['user_name'] = 'Please enter a User Name'
-
-#         if len(postData['password']) < 5:
-#             errors["password"] = "Passwords should be at least 5 charicters"
-#         elif bcrypt.checkpw(postData['password'].encode(), logged_user[0].password.encode())!= True:
-#             errors['password_check'] = 'Invalid email or password'
-#         return errors
 
 
 # class User(models.Model):
-#     first_name = models.CharField(max_length=45)
-#     last_name = models.CharField(max_length=45)
-#     email = models.TextField(max_length = 50)
-#     user_name = models.CharField(max_length = 50)
-#     password = models.TextField(max_length=60)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     objects = UserManager()
+class Account(AbstractBaseUser):
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+
+    email = models.EmailField(verbose_name='email', max_length = 50, unique=True)
+    username = models.CharField(max_length = 50, unique=True)
+
+    created_at = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='last login', auto_now=True)
+
+    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+
+    profile_img = models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True, default=get_default_profile_image)
+    
+    hide_email = models.BooleanField(default=True)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.username
+
+    def get_profile_image_filename(self):
+        return str(self.profile_image)[str(self.profile_image).index(f'profile_images/{self.pk}/'):]
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return True

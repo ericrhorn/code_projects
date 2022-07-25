@@ -6,108 +6,109 @@ import bcrypt
 
 # def home_screen_view(request):
 #     return render(request, "home.html")
-def index(request):
-    return render(request, "home.html")
+def home_screen_view(request, *args, **kwargs):
+    context = {}
+    return render(request, "home.html", context)
 
-def register_user(request):
-    return render(request, "register.html")
-
-
-def register(request):
-    if request.method == 'POST': 
-        errors = User.objects.registration_validator(request.POST)
-        if len(errors) > 0:
-            for key, value in errors.items():
-                messages.error(request, value)
-            return redirect("/register")
-        else: 
-            password = request.POST['password']
-            pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt(4)).decode()
-            user = User.objects.create(
-                first_name = request.POST ['first_name'],
-                last_name = request.POST ['last_name'],
-                username = request.POST ['username'],
-                email = request.POST ['email'],
-                password = pw_hash,
-            )
-            request.session['user_id'] = user.id
-        return redirect('/dashboard')
-    return redirect('/')
+# def register_user(request):
+#     return render(request, "register.html")
 
 
-def login_user(request):
-    return render(request, "login.html")
+# def register(request):
+#     if request.method == 'POST': 
+#         errors = User.objects.registration_validator(request.POST)
+#         if len(errors) > 0:
+#             for key, value in errors.items():
+#                 messages.error(request, value)
+#             return redirect("/register")
+#         else: 
+#             password = request.POST['password']
+#             pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt(4)).decode()
+#             user = User.objects.create(
+#                 first_name = request.POST ['first_name'],
+#                 last_name = request.POST ['last_name'],
+#                 username = request.POST ['username'],
+#                 email = request.POST ['email'],
+#                 password = pw_hash,
+#             )
+#             request.session['user_id'] = user.id
+#         return redirect('/dashboard')
+#     return redirect('/')
 
 
-def login(request):
-    if request.method == 'POST':
-        errors = User.objects.login_validator(request.POST)
-        if len(errors) > 0:
-            for key, value in errors.items():
-                messages.error(request, value)
-            return redirect('/user_login')
-        else:
-            logged_user = User.objects.filter(email = request.POST['email'])
-            request.session['user_id'] = logged_user[0].id
+# def login_user(request):
+#     return render(request, "login.html")
+
+
+# def login(request):
+#     if request.method == 'POST':
+#         errors = User.objects.login_validator(request.POST)
+#         if len(errors) > 0:
+#             for key, value in errors.items():
+#                 messages.error(request, value)
+#             return redirect('/user_login')
+#         else:
+#             logged_user = User.objects.filter(email = request.POST['email'])
+#             request.session['user_id'] = logged_user[0].id
             
-        return redirect('/dashboard')
-    return redirect('/')
+#         return redirect('/dashboard')
+#     return redirect('/')
 
 
-def dashboard(request):
-    if 'user_id' not in request.session:
-        return redirect('/')
-    else:
-        logged_user = User.objects.filter(id=request.session['user_id'])
-        context = {
-            'events' : Event.objects.all(),
-            'user' : logged_user[0],
-            'all_users' : User.objects.all(),
-        }
-    return render(request, "dashboard.html", context)
+# def dashboard(request):
+#     if 'user_id' not in request.session:
+#         return redirect('/')
+#     else:
+#         logged_user = User.objects.filter(id=request.session['user_id'])
+#         context = {
+#             'events' : Event.objects.all(),
+#             'user' : logged_user[0],
+#             'all_users' : User.objects.all(),
+#         }
+#     return render(request, "dashboard.html", context)
 
 
-def newEvent(request):
-    return render(request, "new_event.html")
+# def newEvent(request):
+#     return render(request, "new_event.html")
 
 
-def new_event(request):
-    if 'user_id' not in request.session:
-        redirect('/')
-    user = User.objects.get(id=request.session['user_id'])
-    if 'private' not in request.POST:
-        events = Event.objects.create(
-            event_name = request.POST ['event_name'],
-            location = request.POST ['location'],
-            price = request.POST ['price'],
-            event_url = request.POST ['event_url'],
-            start_date = request.POST ['start_date'],
-            end_date = request.POST ['end_date'],
-            start_time = request.POST ['start_time'],
-            end_time = request.POST ['end_time'],
-            description = request.POST ['description'],
-            event_notes = request.POST ['event_notes'],
-            private = False,
-            # join_event = request.POST ['join_event'],
-            created_by = user,
-        )
-    else:
-        events = Event.objects.create(
-            event_name = request.POST ['event_name'],
-            location = request.POST ['location'],
-            price = request.POST ['price'],
-            event_url = request.POST ['event_url'],
-            start_date = request.POST ['start_date'],
-            end_date = request.POST ['end_date'],
-            start_time = request.POST ['start_time'],
-            end_time = request.POST ['end_time'],
-            description = request.POST ['description'],
-            event_notes = request.POST ['event_notes'],
-            private = request.POST ['private'],
-            # join_event = request.POST ['join_event'],
-            created_by = user,
-        )
-    return redirect ('/dashboard')
+# def new_event(request):
+#     if 'user_id' not in request.session:
+#         redirect('/')
+#     user = User.objects.get(id=request.session['user_id'])
+#     if 'private' not in request.POST:
+#         events = Event.objects.create(
+#             event_name = request.POST ['event_name'],
+#             location = request.POST ['location'],
+#             price = request.POST ['price'],
+#             event_url = request.POST ['event_url'],
+#             start_date = request.POST ['start_date'],
+#             end_date = request.POST ['end_date'],
+#             start_time = request.POST ['start_time'],
+#             end_time = request.POST ['end_time'],
+#             description = request.POST ['description'],
+#             event_notes = request.POST ['event_notes'],
+#             private = False,
+#             # join_event = request.POST ['join_event'],
+#             created_by = user,
+#         )
+#     else:
+#         events = Event.objects.create(
+#             event_name = request.POST ['event_name'],
+#             location = request.POST ['location'],
+#             price = request.POST ['price'],
+#             event_url = request.POST ['event_url'],
+#             start_date = request.POST ['start_date'],
+#             end_date = request.POST ['end_date'],
+#             start_time = request.POST ['start_time'],
+#             end_time = request.POST ['end_time'],
+#             description = request.POST ['description'],
+#             event_notes = request.POST ['event_notes'],
+#             private = request.POST ['private'],
+#             # join_event = request.POST ['join_event'],
+#             created_by = user,
+#         )
+#     return redirect ('/dashboard')
 
 
 
@@ -142,25 +143,25 @@ def new_event(request):
 
 
 
-def all_events(request):
-    return render(request, "all_events.html")
+# def all_events(request):
+#     return render(request, "all_events.html")
 
-def update(request):
-    return render(request, "edit_event.html")
+# def update(request):
+#     return render(request, "edit_event.html")
 
-def info(request):
-    return render(request, "event_details.html")
+# def info(request):
+#     return render(request, "event_details.html")
 
-def user_logout(request):
-    request.session.flush()
-    return redirect('/')
+# def user_logout(request):
+#     request.session.flush()
+#     return redirect('/')
 
-def delete(request, event_id):
-    if request.method == 'POST':
-        delete = Event.objects.get(id=event_id)
-        delete.delete()
-        return redirect('/dashboard')
-    return redirect('/')
+# def delete(request, event_id):
+#     if request.method == 'POST':
+#         delete = Event.objects.get(id=event_id)
+#         delete.delete()
+#         return redirect('/dashboard')
+#     return redirect('/')
 
 
 

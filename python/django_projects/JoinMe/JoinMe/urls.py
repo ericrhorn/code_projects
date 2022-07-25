@@ -24,19 +24,24 @@ Including another URLconf
 #     path('admin/', admin.sites.urls)         # comment out, or just delete
 # ]
 
-from xml.dom.minidom import Document
+# from xml.dom.minidom import Document
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
-# from join_app.views import (
-#     home_screen_view
-# )
+from join_app.views import (
+    home_screen_view
+)
+
+from user_app.views import (
+    register_view,
+)
 
 urlpatterns = [
-    path('', include('join_app.urls')),	   
-    # path('', home_screen_view, name='home'),	   
+    # path('', include('join_app.urls')),	   
+    path('', home_screen_view, name='home'),	   
+    path('register/', register_view, name='register'),	   
     path('', include('friend_app.urls')),	   
     path('', include('user_app.urls')),
     path('admin/', admin.site.urls),
