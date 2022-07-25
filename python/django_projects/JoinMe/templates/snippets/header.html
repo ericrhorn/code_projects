@@ -41,8 +41,7 @@
                 <div class="dropdown dropstart show p-2" >
                     <div class="d-flex flex-row" >
 
-                        <a href="/logout" class='logout'>Logout</a>
-                        <a href="/new" class='newEvent'>New Event</a>
+                        
 
                         <div class="btn-group dropstart" style="padding-right: 10px;">
                             <div class="d-flex notifications-icon-container round-circle align-items-center mr-3" id="id_chat_notification_dropdown_toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +70,7 @@
                             <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile_img.url}}"  height="30" width="30">
                             <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                 <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                <a href="/new" class='dropdown-item'>New Event</a>
                                 <a  href="/logout" class="dropdown-item">Logout</a>
                             </div>
                         </div>
