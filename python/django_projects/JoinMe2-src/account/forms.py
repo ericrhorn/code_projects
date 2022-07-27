@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-
 from account.models import Account
+
+
+
 
 class RegistrationForm(UserCreationForm):
 
@@ -11,24 +13,22 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = Account
         fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2')
-
-        def clean_email(self):
-            email = self.cleaned_data['email'].lower()
-            try:
-                account = Account.objects.get(email=email)
-            except Exception as e:
-                raise
-            raise forms.ValidationError(f"email {email} is already registered")
         
-        
-        def clean_username(self):
-            username = self.cleaned_data['username']
-            try:
-                account = Account.objects.get(username=username)
-            except Exception as e:
-                raise
-            raise forms.ValidationError(f"username {username} is already registered")
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        try:
+            account = Account.objects.get(email=email)
+        except Account.DoesNotExist:
+            return email
+        raise forms.ValidationError('Email "%s" is already in use.' % account)
 
+    def clean_username(self):
+        username = self.cleaned_data['username'].lower()
+        try:
+            account = Account.objects.get(username=username)
+        except Account.DoesNotExist:
+            return username
+        raise forms.ValidationError('Username "%s" is already in use.' % account)
 
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
