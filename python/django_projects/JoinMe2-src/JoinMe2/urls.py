@@ -31,6 +31,7 @@ from account.views import (
     login_view,
     logout_view,
     all_accounts,
+    edit_account,
 )
 
 urlpatterns = [
@@ -38,6 +39,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', namespace='account')),
     path('search/', all_accounts, name='search'),
+    path('edit_account/', edit_account, name='edit_account'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),

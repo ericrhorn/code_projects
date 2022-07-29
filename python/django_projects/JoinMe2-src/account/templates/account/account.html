@@ -113,7 +113,8 @@
     transition: all .3s;
     }
     .menu-box-menu li{
-    height: 60px;
+    margin-top: 5px;
+    height: 50px;
     position: relative;							
     }
 
@@ -125,9 +126,9 @@
     transition: background .2s;
     }
 
-    .menu-box-tab:hover .menu-box-number {
+    /* .menu-box-tab:hover .menu-box-number {
     background: lightblue;
-    }
+    } */
 
     .profile {
         /* padding-top: 75px; */
@@ -159,18 +160,23 @@
                 </div>
                 <h1 class="users-name">{{ first_name }} {{ last_name }}</h1>
                 <div class="profile-description">
+                    {% if is_self %}
                     <p class="mt-4 mb-1 field-heading">User Name</p>
                     <h5>{{ username }}</h5>
                     <p class="mt-4 mb-1 field-heading">Email</p>
-                    {% if is_self %}
                         <h5>{{ email }}</h5>
                         <p>this is me</p>
                     {% else %}
+                    <div style="margin-left: 100px;">
+                        <p class="mt-4 mb-1 field-heading">User Name</p>
+                        <h5>{{ username }}</h5>
+                        <p class="mt-4 mb-1 field-heading">Email</p>
                         {% if hide_email %}
                             <h5>*****@***.***</h5>
                         {% else %}
                             <h5>{{ email }}</h5>
                         {% endif %}
+                    </div>
                     {% endif %}
                 </div>
                 {% if is_self %}
@@ -184,7 +190,8 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 400px; min-width: 250px;" >
+            {% if is_self %}
+            <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 400px; min-width: 250px; max-width: 400px;" >
                 <ul class="menu-box-menu">
                     <li>
                         <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Friends<div class="menu-box-number">24</div></a>                            
@@ -206,6 +213,21 @@
                     </li>
                 </ul>
             </div>
+            {% else %}
+            <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 200px; min-width: 100px; max-width: 200px;" >
+                <ul class="menu-box-menu">
+                    <li>
+                        <button class="btn btn-outline-danger btn-sm">Send Friend Request</button>                           
+                    </li>
+                    <li>
+                        <button class="btn btn-outline-success btn-sm">Send Friend Request</button>                           
+                    </li> 
+                    <li>
+                        <button class="btn btn-outline-success btn-sm">Send Friends List</button>                           
+                    </li> 
+                </ul>
+            </div>
+            {% endif %}
         </div>
     </div>
 </body>

@@ -81,6 +81,8 @@ def account_view(request, *args, **kwargs):
     if account:
         context['id'] = account.id
         context['username'] = account.username
+        context['first_name'] = account.first_name
+        context['last_name'] = account.last_name
         context['email'] = account.email
         context['profile_img'] = account.profile_img.url
         context['hide_email'] = account.hide_email
@@ -113,3 +115,9 @@ def all_accounts(request, *args, **kwargs):
         context['accounts'] = accounts
 
     return render(request, "account/all_accounts.html", context)
+
+
+def edit_account(request, *args, **kwargs):
+    context = {}
+
+    return render(request, "account/edit_account.html", context)

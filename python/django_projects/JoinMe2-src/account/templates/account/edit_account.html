@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+
+
+    /* ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+} */
+
+    /* h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    p {
+        font-size: 15px;
+    } */
+
+
+
+
+    /* h1, h2, p, a, span{
+        color: #fff;
+    } */
+
+.clear {
+	clear: both;
+}
+
+
+    .profile-picture {
+        border-radius: 100%;
+        overflow: hidden;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;	
+    }
+	.big-profile-picture {
+		margin: 0 auto;		
+		border: 2px solid black;
+		width: 200px;
+		height: 200px;
+	}
+
+	
+	/** CONTAINERS **/
+	.container {
+		/* float: left; */
+		/* width: 300px; */
+	}
+    .block {
+        /* margin-bottom: 25px; */
+        /* background: #394264; */
+        /* border-radius: 5px; */
+    }
+
+    /*  menu box */
+
+    /* .titular {
+	display: block;
+	line-height: 60px;
+	margin: 0;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+    } */
+    .menu-box {
+    /* height: 360px; */
+    }
+    /* .menu-box .titular {
+    background: #11a8ab;
+    } */
+
+    /* .menu-box-menu .icon {
+    display: inline-block;
+    vertical-align: top;
+    width: 28px;
+    margin-left: 20px;
+    margin-right: 15px;
+    }
+
+    .menu-box-number {
+    width: 36px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    } */
+    /* .menu-box-menu li{
+    margin-top: 5px;
+    height: 50px;
+    position: relative;							
+    } */
+
+    /* .menu-box-tab {
+    line-height: 60px;
+    display: block;
+    border: 1px solid #1f253d;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    } */
+
+    /* .menu-box-tab:hover .menu-box-number {
+    background: lightblue;
+    } */
+
+    .profile {
+        /* padding-top: 75px; */
+        /* height: 410px; */
+    }
+
+    .users-name {
+    margin: 25px 0 16px;
+    text-align: center;
+    }
+    .profile-description {
+    /* width: 210px; */
+    margin: 20px;
+    /* text-align: center; */
+    }
+</style>
+
+
+<body>
+    <div class=" container border border-1 rounded-3 shadow p-3 mb-3" style=" margin-top: 50px; max-width: 400px;">
+        <div class="row ">
+            <div class="middle-container col border border-1 rounded-3 shadow p-3 mb-3 profile" style="margin: 25px; margin-left: 45px; height: 650px; max-width: 300px;" >
+                <div class="profile-picture big-profile-picture clear">
+                    <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ request.user.profile_img.url }}"  height="200" width="200">
+                </div>
+                <h1 class="users-name">{{ first_name }} {{ last_name }}</h1>
+                <div class="profile-description">
+                    <form method="POST">
+                        {% csrf_token %}
+                      <div class="mb-3 mt-3">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{form.initial.first_name}}" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{form.initial.last_name}}" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{form.initial.email}}">
+                      </div>
+                      <div class="mb-3">
+                        <label for="username">User Name:</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{form.initial.username}}" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="hide_email">Hide Email:</label>
+                        <input type="checkbox" id="id_input_hide_email" name="hide_email" {% if form.initial.hide_email %} checked {% endif %} required>
+                      </div>
+                      
+                      {% for field in form %}
+                        <p>
+                          {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                          {% endfor %}
+                        </p>
+                      {% endfor %}
+                      {% if form.non_field_errors %}
+                      <div style="color: red">
+                        <p>{{ form.non_field_errors }}</p>
+                      </div>
+                      {% endif %}
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock content %}
