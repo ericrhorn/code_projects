@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .profile-picture {
+        border-radius: 100%;
+        overflow: hidden;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;	
+    }
+	.big-profile-picture {
+		margin: 0 auto;		
+		border: 2px solid black;
+		width: 100px;
+		height: 100px;
+	}
+    .users-name {
+    /* margin: 25px 0 16px; */
+    margin-top: 15px;
+    text-align: center;
+    }
+    .profile-description {
+    margin: 20px;
+    }
+</style>
+
+
+<body>
+    <div class=" container border border-1 rounded-3 shadow p-3 mb-3" style=" margin-top: 50px; max-width: 1125px; min-width: 300px;">
+        <div class="row" style="margin-left: 5px;">
+
+            {% if accounts %}
+                <div class="middle-container col border border-1 rounded-3 shadow p-3 mb-3 profile" style="margin: 10px; height: 475px; min-width: 250px; max-width: 250px;" >
+
+                {% for account in accounts %}
+                <div class="profile-picture big-profile-picture">
+                    <img class="account-image rounded-circle dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ account.0.profile_img.url }}"  height="100" width="100">
+                </div>
+                <h4 class="users-name">{{ account.0.username }} Filler Name</h4>
+
+                <div class="profile-description">
+                    <p class="mt-4 mb-1 field-heading">User Name</p>
+                    <h6>{{ account.0.username }} Filler UserName</h6>
+                    <p class="mt-4 mb-1 field-heading">Email</p>
+                    <h6>{{ account.0.username }} Filler Email</h6>
+
+
+                    <div class = "d-grid gap-1" style="padding-top: 25px;">
+
+                        {% if account.1 %}
+                            <button class="btn btn-outline-primary btn-sm" href="{% url 'account:view' user_id=account.0.id %}">View Profile</button>
+                            <button class="btn btn-outline-success btn-sm" href="" onclick="createOrReturnPrivateChat('{{ account.0.id }}')">Send Message</button>
+                        {% else %}
+                            {% if account.0 != request.user %}
+                                <button class="btn btn-outline-primary btn-sm" href="{% url 'account:view' user_id=account.0.id %}">View Profile</button>
+                                <button class="btn btn-outline-danger btn-sm">Send Friend Request</button>
+                                <button class="btn btn-outline-success btn-sm">See Public Events</button>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
+                    <h4>No Results</h4>
+                </div>
+            </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+    {#% include "chat/create_or_return_private_chat.html" %#}
+
+    <script type="text/javascript">
+        function createOrReturnPrivateChat(user_id){
+            // placeholder
+        }
+    
+    </script>
+</body>
+</html>
+
+{% endblock content %}

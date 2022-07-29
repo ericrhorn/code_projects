@@ -1,3 +1,4 @@
+from dataclasses import is_dataclass
 from multiprocessing import context
 from time import strftime
 from django.shortcuts import render, redirect
@@ -5,7 +6,8 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 
 from account.forms import AccountAuthenticationForm, RegistrationForm
-
+from account.models import Account
+from django.conf import settings
 # Create your views here.
 
 def register_view(request, *args, **kwargs):
@@ -71,4 +73,43 @@ def get_redirect_if_exists(request):
 
 def account_view(request, *args, **kwargs):
     context = {}
-    return render(request, "account/account.html", context)
+    user_id = kwargs.get('user_id')
+    try:
+        account = Account.objects.get(pk=user_id)
+    except Account.DoesNotExist:
+        return HttpResponse('This user does not exist')
+    if account:
+        context['id'] = account.id
+        context['username'] = account.username
+        context['email'] = account.email
+        context['profile_img'] = account.profile_img.url
+        context['hide_email'] = account.hide_email
+
+        is_self = True
+        is_friend = False
+        user = request.user
+        if user.is_authenticated and user != account:
+            is_self = False
+        elif not user.is_authenticated:
+            is_self = False
+
+        context['is_self'] = is_self
+        context['is_friend'] = is_friend
+        context['BASE_URL'] = settings.BASE_URL
+
+        return render(request, "account/account.html", context)
+
+
+def all_accounts(request, *args, **kwargs):
+    context = {}
+
+    if request.method == 'GET':
+        search_query = request.GET.get('q')
+        if len(search_query) > 0:
+            search_results = Account.objects.filter(email__icontains=search_query).filter(username__icontains=search_query).distinct()
+        accounts = [] 
+        for account in search_results:
+            accounts.append((account, False))
+        context['accounts'] = accounts
+
+    return render(request, "account/all_accounts.html", context)
