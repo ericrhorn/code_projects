@@ -46,16 +46,17 @@ class AccountAuthenticationForm(forms.ModelForm):
                 raise forms.ValidationError('Invalid Login')
 
 
-class AccountUpdateForm(UserCreationForm):
+class AccountUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Account
+        # fields = ('email', 'username', 'profile_img', 'hide_email')
         fields = ('first_name', 'last_name', 'email', 'username', 'profile_img', 'hide_email')
         
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
         try:
-            account = Account.objects.get(email=email)
+            account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
         except Account.DoesNotExist:
             return email
         raise forms.ValidationError('Email "%s" is already in use.' % account)
@@ -63,11 +64,19 @@ class AccountUpdateForm(UserCreationForm):
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         try:
-            account = Account.objects.get(username=username)
+            account = Account.objects.exclude(pk=self.instance.pk).get(username=username)
         except Account.DoesNotExist:
             return username
         raise forms.ValidationError('Username "%s" is already in use.' % account)
 
     def save(self, commit=True):
         account = super(AccountUpdateForm, self).save(commit=False)
-        account.first_name
+        account.username = self.cleaned_data['username']
+        account.email = self.cleaned_data['email']
+        account.profile_img = self.cleaned_data['profile_img'] 
+        account.hide_email = self.cleaned_data['hide_email']
+        if commit:
+            account.save()
+        return account  
+
+

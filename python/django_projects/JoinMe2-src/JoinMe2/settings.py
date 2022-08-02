@@ -42,6 +42,7 @@ AUTHENTICATION_BACKENDS = (
 INSTALLED_APPS = [
     'welcome',
     'account',
+    'friend',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -167,5 +168,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 BASE_URL = "localhost:8000"
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 #1024 bits in kb * 1024 kb in mb (= 1mb) * 10 for 10 mb 
 
 TEMP = os.path.join(BASE_DIR, 'media_cdn/temp')

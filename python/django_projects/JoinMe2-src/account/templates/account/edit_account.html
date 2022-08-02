@@ -8,170 +8,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <style type="text/css">
 
-
-    /* ul {
-	list-style-type: none;
-	margin: 0;
-	padding-left: 0;
-} */
-
-    /* h1 {
-        font-size: 23px;
-    }
-
-    h2 {
-        font-size: 17px;
-    }
-
-    p {
-        font-size: 15px;
-    } */
-
-
-
-
-    /* h1, h2, p, a, span{
-        color: #fff;
-    } */
-
-.clear {
-	clear: both;
+.image-container{
+    max-width: 250px;
+    height: auto;
+    position: relative;
+    /* margin-left: 18px; */
 }
 
+.img_crop{
+    justify-content: center;
+}
 
-    .profile-picture {
-        border-radius: 100%;
-        overflow: hidden;
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;	
-    }
-	.big-profile-picture {
-		margin: 0 auto;		
-		border: 2px solid black;
-		width: 200px;
-		height: 200px;
-	}
+.material-icons:hover{
+    cursor: pointer;
+}
 
-	
-	/** CONTAINERS **/
-	.container {
-		/* float: left; */
-		/* width: 300px; */
-	}
-    .block {
-        /* margin-bottom: 25px; */
-        /* background: #394264; */
-        /* border-radius: 5px; */
-    }
-
-    /*  menu box */
-
-    /* .titular {
-	display: block;
-	line-height: 60px;
-	margin: 0;
-	text-align: center;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-    } */
-    .menu-box {
-    /* height: 360px; */
-    }
-    /* .menu-box .titular {
-    background: #11a8ab;
-    } */
-
-    /* .menu-box-menu .icon {
-    display: inline-block;
-    vertical-align: top;
-    width: 28px;
-    margin-left: 20px;
-    margin-right: 15px;
-    }
-
-    .menu-box-number {
-    width: 36px;
-    line-height: 22px;
-    text-align: center;
-    border-radius: 15px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-    } */
-    /* .menu-box-menu li{
-    margin-top: 5px;
-    height: 50px;
-    position: relative;							
-    } */
-
-    /* .menu-box-tab {
-    line-height: 60px;
-    display: block;
-    border: 1px solid #1f253d;
-    -webkit-transition: background .2s;
-    transition: background .2s;
-    } */
-
-    /* .menu-box-tab:hover .menu-box-number {
-    background: lightblue;
-    } */
-
-    .profile {
-        /* padding-top: 75px; */
-        /* height: 410px; */
-    }
-
-    .users-name {
-    margin: 25px 0 16px;
-    text-align: center;
-    }
-    .profile-description {
-    /* width: 210px; */
-    margin: 20px;
-    /* text-align: center; */
-    }
 </style>
 
 
 <body>
     <div class=" container border border-1 rounded-3 shadow p-3 mb-3" style=" margin-top: 50px; max-width: 400px;">
         <div class="row ">
-            <div class="middle-container col border border-1 rounded-3 shadow p-3 mb-3 profile" style="margin: 25px; margin-left: 45px; height: 650px; max-width: 300px;" >
-                <div class="profile-picture big-profile-picture clear">
-                    <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ request.user.profile_img.url }}"  height="200" width="200">
+            <div class="col border border-1 rounded-3 shadow p-3 mb-3 profile" style="margin: 25px; height: 750px; max-width: 350px;" >
+
+                <div id="id_image_crop_confirm" class="mb-2 img_crop d-flex flex-row p-4 justify-content-between">
+                    <span id="cancel" class="material-icons">close</span>
+                    <span id="confirm" class="material-icons">done</span>
                 </div>
-                <h1 class="users-name">{{ first_name }} {{ last_name }}</h1>
+                
+                <div class="image-container" id="id_image_container" style="margin-left: 55px;">
+                    <img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="id_profile_image_display" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ form.initial.profile_img.url }}"  height="200" width="200">
+                    <div class="middle" id="id_middle_container" style="margin-left: -25px;">
+                        <!-- <div class="text" id="id_text" style="height: 50px; width: 50px">Edit</div> -->
+                        <button class="btn btn-primary" id="id_text">Edit</button>
+                    </div>
+                </div>
+
+                <!-- <h1 class="users-name">{{ first_name }} {{ last_name }}</h1> -->
                 <div class="profile-description">
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+                        <input class="d-none" type="file" name="profile_img" id="id_profile_image" onchange="readURL(this)">
                       <div class="mb-3 mt-3">
                         <label for="first_name">First Name:</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{form.initial.first_name}}" required>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{form.initial.first_name}}">
                       </div>
                       <div class="mb-3">
                         <label for="last_name">Last Name:</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{form.initial.last_name}}" required>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{form.initial.last_name}}">
                       </div>
                       <div class="mb-3">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{form.initial.email}}">
+                        <input type="email" class="form-control" id="id_input_email" name="email" value="{{form.initial.email}}">
                       </div>
                       <div class="mb-3">
                         <label for="username">User Name:</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{form.initial.username}}" required>
+                        <input type="text" class="form-control" id="id_input_username" name="username" value="{{form.initial.username}}">
                       </div>
                       <div class="mb-3">
                         <label for="hide_email">Hide Email:</label>
-                        <input type="checkbox" id="id_input_hide_email" name="hide_email" {% if form.initial.hide_email %} checked {% endif %} required>
+                        <input type="checkbox" id="id_input_hide_email" name="hide_email" {% if form.initial.hide_email %} checked {% endif %}>
                       </div>
                       
                       {% for field in form %}
@@ -192,6 +93,209 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+
+        var cropper;
+        var imageFile;
+        var base64ImageString;
+        var cropX;
+        var cropY;
+        var cropWidth;
+        var cropHeight;
+
+
+        enableImageOverlay()
+
+        function readURL(input){
+            if(input.files && input.files[0]){
+                var reader = new FileReader()
+                reader.onload = function(e){
+                    disableImageOverlay()
+                    var image = e.target.result
+                    var imageField = document.getElementById("id_profile_image_display")
+                    imageField.src = image
+                    cropper = new Cropper(imageField, {
+                        aspectRatio: 1/1,
+                        crop(event){
+                            console.log("CROP START")
+                            console.log("x: " + event.detail.x)
+                            console.log("y: " + event.detail.y)
+                            console.log("width: " + event.detail.width)
+                            console.log("height: " + event.detail.height)
+                            setImageCropProperties(
+                                image,
+                                event.detail.x,
+                                event.detail.y,
+                                event.detail.width,
+                                event.detail.height
+                            )
+                        }
+                    })
+                }
+                reader.readAsDataURL(input.files[0])
+            }
+        }
+
+        function setImageCropProperties(image, x, y, width, height){
+            imageFile = image
+            cropX = x
+            cropY = y
+            cropWidth = width
+            cropHeight = height
+        }
+
+
+        function isImageSizeValid(image){
+		// console.log("max size: {{DATA_UPLOAD_MAX_MEMORY_SIZE}}")
+		// console.log(image)
+		var startIndex = image.indexOf("base64,") + 7;
+		var base64str = image.substr(startIndex);
+		var decoded = atob(base64str);
+		// console.log("FileSize: " + decoded.length);
+		if(decoded.length >= "{{DATA_UPLOAD_MAX_MEMORY_SIZE}}"){
+			return null
+		}
+		return base64str
+	}
+
+    function cropImage(image, x, y, width, height){
+        // console.log(image)
+		base64ImageString = isImageSizeValid(image)
+
+		if(base64ImageString != null){
+			var requestData = {
+				"csrfmiddlewaretoken": "{{ csrf_token }}",
+				"image": base64ImageString,
+				"cropX": cropX,
+				"cropY": cropY,
+				"cropWidth": cropWidth,
+				"cropHeight": cropHeight
+			}
+			displayLoadingSpinner(true)
+			$.ajax({
+				type: 'POST',
+				dataType: "json",
+				url: "{% url 'account:crop_image' user_id=form.initial.id %}",
+				data: requestData,
+				timeout: 10000,
+				success: function(data) {
+					if(data.result == "success"){
+                        console.log("the error is in the success case???")
+						document.getElementById("cancel").click()
+					}
+					else if(data.result == "error"){
+                        console.log("the error is in the else data result")
+						alert(data.exception)
+						document.getElementById("cancel").click()
+					}
+				},
+				error: function(data) {
+					console.error("ERROR...", data)
+				},
+				complete: function(data){
+					displayLoadingSpinner(false)
+				}
+			});
+		}
+		else{
+			alert("Upload an image smaller than 10 MB");
+			document.getElementById("id_cancel").click()
+		}
+	}
+
+        function enableImageOverlay(){
+            var text = document.getElementById("id_text")
+            text.style.background = "#0066ff"
+            text.style.color = "white"
+            text.style.fontSize = "16px"
+            text.style.padding = "16px, 32px"
+            text.style.cursor = "pointer"
+
+            var profileImage = document.getElementById("id_profile_image")
+            profileImage.style.opacity = "1"
+            profileImage.style.display = "block"
+            profileImage.style.width = "100%"
+            profileImage.style.height = "auto"
+            profileImage.style.transition = ".5s ease "
+            profileImage.style.backfaceVisibility = "hidden"
+            profileImage.style.cursor = "pointer"
+
+            var middleContainer = document.getElementById("id_middle_container")
+            // middleContainer.style.transition = ".5s ease"
+            middleContainer.style.opacity = "0"
+            middleContainer.style.position = "absolute"
+            middleContainer.style.top = "50%"
+            middleContainer.style.left = "50%"
+            middleContainer.style.transform = "translate(-50%, -50%)"
+
+            var imageContainer = document.getElementById("id_image_container")
+            // imageContainer.style.border = "1px solid #000"
+            imageContainer.addEventListener('mouseover', function(event){
+                profileImage.style.opacity = "0.3"
+                middleContainer.style.opacity = "1"
+            })
+            imageContainer.addEventListener('mouseout', function(event){
+                profileImage.style.opacity = "1"
+                middleContainer.style.opacity = "0"
+            })
+            imageContainer.addEventListener('click', function(event){
+                document.getElementById('id_profile_image').click()
+            })
+
+            var cropConfirm = document.getElementById("id_image_crop_confirm")
+            cropConfirm.classList.add('d-none')
+
+        }
+
+        function disableImageOverlay(){
+            var profileImage = document.getElementById("id_profile_image_display")
+            var middleContainer = document.getElementById("id_middle_container")
+            var imageContainer = document.getElementById("id_image_container")
+            var text = document.getElementById("id_text")
+
+            imageContainer.removeEventListener("mouseover", function(event){
+                // profileImage.style.opacity = ".3"
+                // middleContainer.style.opacity = "1"
+            })
+
+            imageContainer.removeEventListener("mouseout", function(event){
+                // profileImage.style.opacity = ".3"
+                // middleContainer.style.opacity = "1"
+            })
+
+            profileImage.style.opacity = "1"
+            middleContainer.style.opacity = "0"
+            text.style.cursor = "default"
+            text.style.opacity = "0"
+
+            imageContainer.removeEventListener("click", function(event){
+                event.preventDefault()
+            })
+
+            document.getElementById("id_profile_image").addEventListener("click", function(event){
+                event.preventDefault()
+            })
+
+            var cropConfirm = document.getElementById("id_image_crop_confirm")
+            cropConfirm.classList.remove('d-none')
+
+            var confirm = document.getElementById("confirm")
+            confirm.addEventListener("click", function(event){
+                cropImage(imageFile, cropX, cropY, cropWidth, cropHeight)
+            })
+            
+            var cancel = document.getElementById("cancel")
+            cancel.addEventListener("click", function(event){
+                console.log("reload")
+                window.location.reload()
+            })
+
+
+        }
+
+        
+
+    </script>
 </body>
 </html>
 
