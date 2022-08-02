@@ -28,17 +28,6 @@
 	padding-left: 0;
 }
 
-    /* h1 {
-        font-size: 23px;
-    }
-
-    h2 {
-        font-size: 17px;
-    }
-
-    p {
-        font-size: 15px;
-    } */
 
     a {
         text-decoration: none;
@@ -46,10 +35,6 @@
         color: black;
     }
 
-
-    /* h1, h2, p, a, span{
-        color: #fff;
-    } */
 
 .clear {
 	clear: both;
@@ -69,35 +54,6 @@
 		width: 200px;
 		height: 200px;
 	}
-
-	
-	/** CONTAINERS **/
-	.container {
-		/* float: left; */
-		/* width: 300px; */
-	}
-    .block {
-        /* margin-bottom: 25px; */
-        /* background: #394264; */
-        /* border-radius: 5px; */
-    }
-
-    /*  menu box */
-
-    /* .titular {
-	display: block;
-	line-height: 60px;
-	margin: 0;
-	text-align: center;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-    } */
-    .menu-box {
-    /* height: 360px; */
-    }
-    /* .menu-box .titular {
-    background: #11a8ab;
-    } */
 
     .menu-box-menu .icon {
     display: inline-block;
@@ -134,15 +90,6 @@
     border: 1px solid #1f253d;
     -webkit-transition: background .2s;
     transition: background .2s;
-    }
-
-    /* .menu-box-tab:hover .menu-box-number {
-    background: lightblue;
-    } */
-
-    .profile {
-        /* padding-top: 75px; */
-        /* height: 410px; */
     }
 
     .users-name {
@@ -199,47 +146,88 @@
                     </div>
                 {% endif %}
             </div>
-            {% if is_self %}
-            <div class="col border border-1 rounded-3 shadow p-3 mb- 3 menu-box" style="margin: 25px; height: 400px; min-width: 250px; max-width: 400px;" >
-                <ul class="menu-box-menu">
-                    <li>
-                        <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Friends<div class="menu-box-number">24</div></a>                            
-                    </li>
-                    <li>
-                        <a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Friend Requests<div class="menu-box-number">3</div></a>                            
-                    </li>
-                    <li>
-                        <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Your Events<div class="menu-box-number">5</div></a>                            
-                    </li>
-                    <li>
-                        <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Messages<div class="menu-box-number">5</div></a>                            
-                    </li>
-                    <li>
-                        <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Invites<div class="menu-box-number">5</div></a>                            
-                    </li>
-                    <li>
-                        <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events Your Attending<div class="menu-box-number">5</div></a>                            
-                    </li>
-                </ul>
-            </div>
-            {% else %}
-            <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 200px; min-width: 100px; max-width: 200px;" >
-                <ul class="menu-box-menu">
-                    <li>
-                        <button class="btn btn-outline-danger btn-sm">Send Friend Request</button>                           
-                    </li>
-                    <li>
-                        <button class="btn btn-outline-success btn-sm">Send Friend Request</button>                           
-                    </li> 
-                    <li>
-                        <button class="btn btn-outline-success btn-sm">Send Friends List</button>                           
-                    </li> 
-                </ul>
-            </div>
+            {#% if is_self %#}
+
+       
+
+            {% if request.user.is_authenticated %}
+                {% if is_self %}
+                <div class="col border border-1 rounded-3 shadow p-3 mb- 3 menu-box" style="margin: 25px; height: 400px; min-width: 250px; max-width: 400px;" >
+                    <ul class="menu-box-menu">
+                        <li>
+                            <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Friends<div class="menu-box-number">{{friends|length}}</div></a>                            
+                        </li>
+                        <li>
+                            {% if friend_requests %}
+                            <a class="menu-box-tab" href="{% url 'friend:friend-requests' user_id=id %}"><span class="icon entypo-paper-plane scnd-font-color"></span>New Friend Requests<div class="menu-box-number">{{friend_requests|length}}</div></a>                            
+                            {% else %}
+                            <a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>No New Friend Requests</a>   
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Your Events<div class="menu-box-number">5</div></a>                            
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Messages<div class="menu-box-number">5</div></a>                            
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Invites<div class="menu-box-number">5</div></a>                            
+                        </li>
+                        <li>
+                            <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events Your Attending<div class="menu-box-number">5</div></a>                            
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 200px; min-width: 100px; max-width: 300px;" >
+                    <ul class="menu-box-menu">
+                        {% if is_friend == False and is_self == False %}
+                        <li>
+                            <div class="d-grid gap-2 col-7 mx-auto">
+                                {% if request_sent == -1 %}
+                                <button class="btn btn-outline-success btn-sm" id="id_send_friend_request_btn">Send Friend Request</button>
+                                {% endif %}
+                                {% if request_sent == 1 %}
+                                <button class="btn btn-outline-danger btn-sm">Cancel Friend Request</button>
+                                {% endif %}
+                            </div>
+                        </li>
+                            {% if is_friend %}
+                            <li>    
+                                <div class="d-grid gap-2 col-7 mx-auto">
+                                    <button class="btn btn-outline-success btn-sm">Unfriend</button>                          
+                                </div>
+                            </li>
+                            {% endif %}
+                        {% endif %}
+                        <li>
+                            <div class="d-grid gap-2 col-7 mx-auto">
+                                <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Friends<div class="menu-box-number">{{friends|length}}</div></a>                            
+                            </div>
+                        </li> 
+                    </ul>
+                </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>
+    <script type="text/javascript">
+
+        function onFriendRequestSent(){
+            location.reload();
+        }
+
+        var sendFriendRequestBtn = document.getElementById("id_send_friend_request_btn")
+        if (sendFriendRequestBtn != null){
+            sendFriendRequestBtn.addEventListener('click', function(){
+                sendFriendRequest("{{id}}", onFriendRequestSent)
+            })
+        }
+
+    </script>
 </body>
 </html>
+
+    {% include 'friend/snippets/send_friend_request.html' %}
 
 {% endblock content %}

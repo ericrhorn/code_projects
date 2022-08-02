@@ -8,7 +8,7 @@ from psycopg2 import Timestamp
 
 # Create your models here.
 
-class FriendList(models.Models):
+class FriendList(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user')
     friends = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='friends')
 
