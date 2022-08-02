@@ -14,12 +14,12 @@
                 if(data['response'] == "Friend request sent"){
 
                 }
-                else if(data['response' != null]){
+                else if(data['response'] != null){
                     alert(data['response'])
                 }
             },
             error: function(data){
-                alert("Something went wrong!!!!!!: " + data)
+                alert("Something went wrong")
             },
             complete: function(data){
                 uiUpdateFunction()

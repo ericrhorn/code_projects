@@ -16,6 +16,7 @@
     height: auto;
     position: relative;
     margin: 0 auto;		
+    margin-top: 15px;
     /* border: 2px solid black; */
     /* width: 200px;
     height: 200px; */
@@ -161,7 +162,7 @@
                             {% if friend_requests %}
                             <a class="menu-box-tab" href="{% url 'friend:friend-requests' user_id=id %}"><span class="icon entypo-paper-plane scnd-font-color"></span>New Friend Requests<div class="menu-box-number">{{friend_requests|length}}</div></a>                            
                             {% else %}
-                            <a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>No New Friend Requests</a>   
+                            <a class="menu-box-tab"><span class="icon entypo-paper-plane scnd-font-color"></span>No New Friend Requests</a>   
                             {% endif %}
                         </li>
                         <li>
@@ -181,14 +182,25 @@
                 {% else %}
                 <div class="col border border-1 rounded-3 shadow p-3 mb-3 menu-box" style="margin: 25px; height: 200px; min-width: 100px; max-width: 300px;" >
                     <ul class="menu-box-menu">
+                        {% if request_sent == 0 %}
+                        <li>
+                            <div class="d-grid gap-2 col-7 mx-auto">
+
+                                <a class="btn btn-outline-primary btn-sm" style="width: 200px;" role="button" id="id_confirm_{{id}}" onclick='triggerAcceptFriendRequest("{{pending_friend_request_id}}")'>Accept</a>
+                                <a class="btn btn-outline-primary btn-sm" style="width: 200px;" role="button" id="id_cancel_{{id}}" onclick='triggerDeclineFriendRequest("{{pending_friend_request_id}}")'>Decline</a>
+
+                            </div>
+                        </li>
+                        {% endif %}
                         {% if is_friend == False and is_self == False %}
                         <li>
                             <div class="d-grid gap-2 col-7 mx-auto">
                                 {% if request_sent == -1 %}
                                 <button class="btn btn-outline-success btn-sm" id="id_send_friend_request_btn">Send Friend Request</button>
                                 {% endif %}
+
                                 {% if request_sent == 1 %}
-                                <button class="btn btn-outline-danger btn-sm">Cancel Friend Request</button>
+                                <button class="btn btn-outline-danger btn-sm" id="id_Cancel_friend_request_btn">Cancel Friend Request</button>
                                 {% endif %}
                             </div>
                         </li>
@@ -217,11 +229,49 @@
             location.reload();
         }
 
+        function onFriendRequestCancelled(){
+            location.reload();
+        }
+
+        function onFriendRemove(){
+            location.reload();
+        }
+        
+        function onFriendRequestAccepted(){
+            location.reload();
+        }
+
+        function onFriendRequestDeclined(){
+            location.reload();
+        }
+
         var sendFriendRequestBtn = document.getElementById("id_send_friend_request_btn")
         if (sendFriendRequestBtn != null){
-            sendFriendRequestBtn.addEventListener('click', function(){
+            sendFriendRequestBtn.addEventListener("click", function(){
                 sendFriendRequest("{{id}}", onFriendRequestSent)
             })
+        }
+
+        var cancelFriendRequestBtn = document.getElementById("id_cancel_friend_request_btn")
+        if (cancelFriendRequestBtn != null){
+            cancelFriendRequestBtn.addEventListener('click', function(){
+                cancelFriendRequest("{{id}}", onFriendRequestCancelled)
+            })
+        }
+
+        var removeFrientBtn = document.getElementById("id_unfriend_btn")
+        if (removeFriendBtn != null){
+            removeFriendBtn.addEventListener('click', function(){
+                removeFriend("{{id}}", onFriendRemove)
+            })
+        }
+
+        function triggerAcceptFriendRequest(friend_request_id){
+            acceptFriendRequest(friend_request_id, onFriendRequestAccepted)
+        }
+
+        function triggerDeclineFriendRequest(friend_request_id){
+            declineFriendRequest(friend_request_id, onFriendRequestDeclined)
         }
 
     </script>
@@ -229,5 +279,6 @@
 </html>
 
     {% include 'friend/snippets/send_friend_request.html' %}
+    {% include 'friend/snippets/accept_friend_request.html' %}
 
 {% endblock content %}

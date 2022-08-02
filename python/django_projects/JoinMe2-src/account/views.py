@@ -117,8 +117,10 @@ def account_view(request, *args, **kwargs):
 
         is_self = True
         is_friend = False
+
         request_sent = FriendRequestStatus.NO_REQUEST_SENT.value
         friend_requests = None
+
         user = request.user
         if user.is_authenticated and user != account:
             is_self = False
@@ -130,7 +132,7 @@ def account_view(request, *args, **kwargs):
                     request_sent = FriendRequestStatus.THEM_SENT_TO_YOU.value
                     context['pending_friend_request_id'] = get_friend_request_or_false(sender=account, receiver=user).id
 
-                elif get_friend_request_or_false(sender=account, receiver=user) != False:
+                elif get_friend_request_or_false(sender=user, receiver=account) != False:
                     request_sent = FriendRequestStatus.YOU_SENT_TO_THEM.value
                 else:
                     request_sent = FriendRequestStatus.NO_REQUEST_SENT.value
