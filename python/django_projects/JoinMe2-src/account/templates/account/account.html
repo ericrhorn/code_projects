@@ -200,17 +200,17 @@
                                 {% endif %}
 
                                 {% if request_sent == 1 %}
-                                <button class="btn btn-outline-danger btn-sm" id="id_Cancel_friend_request_btn">Cancel Friend Request</button>
+                                <button class="btn btn-outline-danger btn-sm" id="id_cancel_friend_request_btn">Cancel Friend Request</button>
                                 {% endif %}
                             </div>
                         </li>
-                            {% if is_friend %}
-                            <li>    
-                                <div class="d-grid gap-2 col-7 mx-auto">
-                                    <button class="btn btn-outline-success btn-sm">Unfriend</button>                          
-                                </div>
-                            </li>
-                            {% endif %}
+                        {% endif %}
+                        {% if is_friend %}
+                        <li>    
+                            <div class="d-grid gap-2 col-7 mx-auto">
+                                <button class="btn btn-outline-danger btn-sm" id="id_unfriend_btn">Unfriend</button>                          
+                            </div>
+                        </li>
                         {% endif %}
                         <li>
                             <div class="d-grid gap-2 col-7 mx-auto">
@@ -254,12 +254,12 @@
 
         var cancelFriendRequestBtn = document.getElementById("id_cancel_friend_request_btn")
         if (cancelFriendRequestBtn != null){
-            cancelFriendRequestBtn.addEventListener('click', function(){
+            cancelFriendRequestBtn.addEventListener("click", function(){
                 cancelFriendRequest("{{id}}", onFriendRequestCancelled)
             })
         }
 
-        var removeFrientBtn = document.getElementById("id_unfriend_btn")
+        var removeFriendBtn = document.getElementById("id_unfriend_btn")
         if (removeFriendBtn != null){
             removeFriendBtn.addEventListener('click', function(){
                 removeFriend("{{id}}", onFriendRemove)
@@ -280,5 +280,7 @@
 
     {% include 'friend/snippets/send_friend_request.html' %}
     {% include 'friend/snippets/accept_friend_request.html' %}
+    {% include 'friend/snippets/cancel_friend_request.html' %}
+    {% include 'friend/snippets/remove_friend.html' %}
 
 {% endblock content %}

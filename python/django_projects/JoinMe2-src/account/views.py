@@ -157,8 +157,9 @@ def all_accounts(request, *args, **kwargs):
     context = {}
 
     if request.method == 'GET':
+        search_results = None
         search_query = request.GET.get('q')
-        if len(search_query) > 0:
+        if len(search_query) >= 0:
             search_results = Account.objects.filter(email__icontains=search_query).filter(username__icontains=search_query).distinct()
         accounts = [] 
         for account in search_results:
