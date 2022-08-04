@@ -48,32 +48,26 @@
 <body>
     <div class="container">
         <div class="card">
-            {% if accounts %}
+            {% if friends %}
             <div class="d-flex flex-wrap">    
-                {% for account in accounts %}
+                {% for friend in friends %}
                 <div class="card flex-grow-1 p-2 mx-2 my-2 align-items-center" style="min-width: 250px;">
                     <div class="image-container" id="id_image_container">
-                        <img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="id_profile_image" aria-haspopup="true" aria-expanded="false" src="{{ account.0.profile_img.url }}">
+                        <img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="id_profile_image" aria-haspopup="true" aria-expanded="false" src="{{ friend.0.profile_img.url }}">
                     </div>
-                    <h4 class="users-name">{{ account.0.first_name}} {{ account.0.last_name}}</h4>
+                    <h4 class="users-name">{{ friend.0.first_name}} {{ friend.0.last_name}}</h4>
 
                     <div class="profile-description">
                         <p class="mt-4 mb-1 field-heading">User Name</p>
-                        <h6>{{ account.0.username }}</h6>
+                        <h6>{{ friend.0.username }}</h6>
                         <p class="mt-4 mb-1 field-heading">Email</p>
-                        <h6>{{ account.0.email }}</h6>
+                        <h6>{{ friend.0.email }}</h6>
 
 
                         <div class = "d-grid gap-1" style="padding-top: 25px;">
-                                <a class="btn btn-outline-primary btn-sm" role="button" href="{% url 'account:view' user_id=account.0.id %}">View Profile</a>
-                            {% if account.1 %}
+                                <a class="btn btn-outline-primary btn-sm" role="button" href="{% url 'account:view' user_id=friend.0.id %}">View Profile</a>
+                            {% if friend.1 %}
                                 <a class="btn btn-outline-success btn-sm" role="button" href="" onclick="createOrReturnPrivateChat('{{ account.0.id }}')">Send Message</a>
-                                <a class="btn btn-info disabled btn-sm" role="button" href="">We are friends</a>
-                            {% else %}
-                                {% if account.0 != request.user %}
-                                <a class="btn btn-danger disabled btn-sm" role="button" href="">We are not friends</a>
-                                <!-- <a class="btn btn-outline-primary btn-sm" role="button" href="">View Public Events</a> -->
-                                {% endif %}
                             {% endif %}
                         </div>
                     </div>

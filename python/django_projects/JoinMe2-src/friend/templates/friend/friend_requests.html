@@ -65,8 +65,8 @@
                         <div>
                             <div class = "d-grid gap-1" style="padding-top: 25px;">
                                 <a class="btn btn-outline-primary btn-sm" style="width: 200px;" role="button" href="{% url 'account:view' user_id=request.sender.id %}">View Profile</a>
-                                <a class="btn btn-outline-primary btn-sm" style="width: 200px;" role="button" id="id_confirm_{{request.sender.id}}" onclick='triggerAcceptFriendRequest("{{request.id}}")'>Accept</a>
-                                <a class="btn btn-outline-primary btn-sm" style="width: 200px;" role="button" id="id_cancel_{{request.sender.id}}" onclick='triggerDeclineFriendRequest("{{request.id}}")'>Decline</a>
+                                <a class="btn btn-outline-success btn-sm" style="width: 200px;" role="button" id="id_confirm_{{request.sender.id}}" onclick='triggerAcceptFriendRequest("{{request.id}}")'>Accept</a>
+                                <a class="btn btn-outline-danger btn-sm" style="width: 200px;" role="button" id="id_cancel_{{request.sender.id}}" onclick='triggerDeclineFriendRequest("{{request.id}}")'>Decline</a>
                             </div>
                         </div>
                     </div>
