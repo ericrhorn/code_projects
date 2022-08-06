@@ -20,6 +20,8 @@
         <p>{{ user.username }}</p>
         <p>{{ user.email }}</p>
 
+        <p>{{ event_list }}</p>
+
         <section>
             <h4>My Events</h4>
             <table class="table">
@@ -30,33 +32,36 @@
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Price</th>
-                        <th scope="col">who?</th>
+                        <th scope="col">Host</th>
                         <th scope="col">private?</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                {% for event in events %}
-                    {% if event.created_by.id == request.session.user_id %}
+                {% for event in event_list %}
+                    {% if event.host.id == request.user.id %}
                         <tr>
                             <!-- <td><a href="/{{ trip.id }}/info">{{trip.destination}}</a></td> -->
                             <td>{{event.event_name}}</td>
-                            <td>{{event.location}}</td>
+                            <td>{{event.venue.location}}</td>
                             <td>{{event.start_date|date:"SHORT_DATE_FORMAT"}}</td>
                             <!-- <td>{{trip.end_date|date:"SHORT_DATE_FORMAT"}}</td> -->
                             <td>{{event.start_time}}</td>
                             <td>{{event.price}}</td>
-                            <td>{{event.created_by.first_name}}</td>
-                            {% if event.private == False %}
+                            <td>{{event.host.username}}</td>
+                            {% if event.private_event == False %}
                                 <td>NO</td>
                             {% else %}
                                 <td>YES</td>
                             {% endif %}
                             <td>{{event.actions}}
-                                <form action="/{{ event.id }}/delete" method='POST'>
-                                    {% csrf_token %}
-                                    <input type="submit" value=Remove>
-                                </form> 
+                                <div>
+                                    <form action="/{{ event.id }}/delete" method='POST'>
+                                        {% csrf_token %}
+                                        <input type="button" class="btn btn-outline-danger btn-sm" value=Remove>
+                                    </form> 
+                                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                                </div>
                             </td>
                         </tr>
                     {% endif %}

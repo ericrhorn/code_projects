@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'welcome',
     'account',
     'friend',
+    'event',
 
     'django.contrib.admin',
     'django.contrib.auth',

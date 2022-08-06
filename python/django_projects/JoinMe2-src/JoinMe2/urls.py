@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from argparse import Namespace
+from unicodedata import name
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,8 +23,13 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from welcome.views import (
-    dashboard_view,
+    # dashboard_view,
     home_screen_view
+)
+
+from event.views import (
+    new_event_view,
+    new_venue_view,
 )
 
 from account.views import (
@@ -39,12 +45,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', namespace='account')),
     path('friend/', include('friend.urls', namespace='friend')),
+    path('dashboard/', include('event.urls', namespace='dashboard')),
     path('search/', all_accounts, name='search'),
     # path('edit_account/', edit_account, name='edit_account'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),
-    path('dashboard/', dashboard_view, name='dashboard'),
+    path('new_event/', new_event_view, name='new_event'),
+    path('new_venue/', new_venue_view, name='new_venue'),
 
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_reset/password_change_confirm.html'), name='password_change_confirm'),
 

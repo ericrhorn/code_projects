@@ -47,7 +47,7 @@ def register_view(request, *args, **kwargs):
 			destination = kwargs.get("next")
 			if destination:
 				return redirect(destination)
-			return redirect('dashboard')
+			return redirect('/dashboard/<user_id>')
 		else:
 			context['registration_form'] = form
 
@@ -79,7 +79,8 @@ def login_view(request, *args, **kwargs):
                 destination = get_redirect_if_exists(request)
                 if destination:
                     return redirect(destination)
-                return redirect('dashboard')
+                return redirect('/dashboard/<user_id>')
+                
         else: 
             context['login_form'] = form
     return render(request, 'account/login.html', context)

@@ -70,8 +70,9 @@
                             <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ request.user.profile_img.url }}"  height="30" width="30">
                             <div class="dropdown-menu" aria-labelledby="id_profile_links">
                                 <a class="dropdown-item" href="{% url 'account:view' user_id=request.user.id %}">Account</a>
-                                <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
-                                <a href="/new" class='dropdown-item'>New Event</a>
+                                <a class="dropdown-item" href="{% url 'event:dashboard' user_id=request.user.id %}">Dashboard</a>
+                                <a href="{% url 'new_event' %}" class='dropdown-item'>New Event</a>
+                                <a href="{% url 'new_venue' %}" class='dropdown-item'>New Venue</a>
                                 <a  href="{% url 'logout' %}" class="dropdown-item">Logout</a>
                             </div>
                         </div>
