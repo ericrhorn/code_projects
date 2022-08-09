@@ -21,6 +21,7 @@ from friend.friend_request_status import FriendRequestStatus
 
 from account.forms import AccountAuthenticationForm, RegistrationForm, AccountUpdateForm
 from account.models import Account
+from event.models import Event, Venue
 from django.conf import settings
 
 from friend.models import FriendList, FriendRequest
@@ -47,7 +48,7 @@ def register_view(request, *args, **kwargs):
 			destination = kwargs.get("next")
 			if destination:
 				return redirect(destination)
-			return redirect('/dashboard/<user_id>')
+			return redirect('home')
 		else:
 			context['registration_form'] = form
 
@@ -79,7 +80,7 @@ def login_view(request, *args, **kwargs):
                 destination = get_redirect_if_exists(request)
                 if destination:
                     return redirect(destination)
-                return redirect('/dashboard/<user_id>')
+                return redirect('home')
                 
         else: 
             context['login_form'] = form
@@ -91,6 +92,13 @@ def get_redirect_if_exists(request):
         if request.GET.get('next'):
             redirect = str(request.GET.get('next'))
     return redirect 
+
+def dashboard_view(request, *args, **kwargs):
+    # context = {}
+    event_list = Event.objects.all()
+    return render(request, "account/dashboard.html", {'event_list' : event_list})
+
+    
 
 def account_view(request, *args, **kwargs):
     context = {}

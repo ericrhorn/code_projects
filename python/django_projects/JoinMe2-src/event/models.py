@@ -12,8 +12,10 @@ class Venue(models.Model):
     city = models.CharField(max_length=55)
     zip_code = models.CharField(max_length=15)
     web_address = models.URLField('web address', blank=True)
-    event_notes = models.TextField(max_length=500)
+    venue_notes = models.TextField(max_length=500, blank=True)
     private_venue = models.BooleanField(default=False)
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='owner')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

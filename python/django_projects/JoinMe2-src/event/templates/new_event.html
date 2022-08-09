@@ -32,18 +32,26 @@
                     <input class="form-control" type="text" name="event_name" id="event_name"></input>
                 </div>
                 <div>
-                    {% for venue in venue_list %}
+                    
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                         <option selected>Choose a Public Venue</option>
-                        <option value="venue">{{ venue.location }}</option>
+                        {% for venue in venue_list %}
+                            {% if venue.private_venue != True %}
+                                <option value="venue">{{ venue.location }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
-                    {% endfor %}
-                    {% for venue in venue_list %}
+                    
+                    
                     <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example">
                         <option selected>Choose a Private Venue</option>
-                        <option value="venue">{{ venue.location }}</option>
+                        {% for venue in venue_list %}
+                            {% if venue.private_venue == True and venue.owner.id == request.user.id %}
+                                <option value="venue">{{ venue.location }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
-                    {% endfor %}
+                    
                     <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'new_venue' %}">Add Venue</a>                     
 
                 </div>
@@ -94,7 +102,7 @@
                     <textarea class="form-control" name="event_notes" id="event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
                 </div>
                 <div>
-                    <a href="{% url 'event:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                    <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
                     <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
                     <button class="btn btn-primary" type="text">Submit</button>
                 </div>

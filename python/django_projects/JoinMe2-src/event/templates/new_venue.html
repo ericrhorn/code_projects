@@ -24,35 +24,35 @@
                 </ul>
         </div>
             
-        <form action="/new_venue" method="POST">
+        <form  method="POST">
             {% csrf_token %}
                 <div class="mb-3 mt-3">
                     <label for="location">Location</label>
                     <input class="form-control" type="text" name="location" id="id_location"></input>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="price">Street Address</label>
+                    <label for="address">Street Address</label>
                     <input class="form-control" type="text" name="address" id="id_address"></input>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="event_url">State</label>
+                    <label for="state">State</label>
                     <input class="form-control" type="text" name="state" id="id_state"></input>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="start_time">City</label>
+                    <label for="city">City</label>
                     <input class="form-control" type="text" name="city" id="id_city"></input>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="end_time">Zip Code</label>
+                    <label for="zip_code">Zip Code</label>
                     <input class="form-control" type="text" name="zip_code" id="id_zip_code"></input>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="start_date">web_address</label>
-                    <input class="form-control" type="url" name="web_address" id="id_web_address"></input>
+                    <label for="web_address">web_address</label>
+                    <input class="form-control" type="url" name="web_address" id="id_web_address" blank="True"></input>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="private_venue" id="id_private_venue" value="True">
-                    <label class="form-check-label" for="private">
+                    <label class="form-check-label" for="private_venue">
                     Private Event
                     </label>
                 </div>
@@ -61,7 +61,7 @@
                     <textarea class="form-control" name="venue_notes" id="id_venue_notes" cols="50" rows="2" placeholder="Parking location, hills, long walk from the parking lot...?"></textarea>
                 </div>
                 <div>
-                    <a href="{% url 'event:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                    <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
                     <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
                     <button class="btn btn-primary" type="text">Submit</button>
                 </div>

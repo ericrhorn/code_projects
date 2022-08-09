@@ -45,7 +45,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', namespace='account')),
     path('friend/', include('friend.urls', namespace='friend')),
-    path('dashboard/', include('event.urls', namespace='dashboard')),
+    # path('event/', include('event.urls', namespace='event')),
     path('search/', all_accounts, name='search'),
     # path('edit_account/', edit_account, name='edit_account'),
     path('login/', login_view, name='login'),

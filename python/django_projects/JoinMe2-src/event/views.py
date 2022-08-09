@@ -1,25 +1,12 @@
-from django.shortcuts import render
+from multiprocessing import context
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from event.forms import newVenueForm
 from event.models import Event, Venue
+from account.models import Account
 
 
-# Create your views here.
-def dashboard_view(request, *args, **kwargs):
-    # context = {}
-    event_list = Event.objects.all()
-    return render(request, "dashboard.html", {'event_list' : event_list})
 
-
-# def dashboard(request):
-#     if 'user_id' not in request.session:
-#         return redirect('/')
-#     else:
-#         logged_user = User.objects.filter(id=request.session['user_id'])
-#         context = {
-#             'events' : Event.objects.all(),
-#             'user' : logged_user[0],
-#             'all_users' : User.objects.all(),
-#         }
-#     return render(request, "dashboard.html", context)
 
 def new_event_view(request, *args, **kwargs):
     venue_list = Venue.objects.all()
@@ -28,6 +15,28 @@ def new_event_view(request, *args, **kwargs):
 
 
 def new_venue_view(request, *args, **kwargs):
-    return render(request, "new_venue.html")
+    # context = {}
+    
+    if request.method == "POST":
+        form = newVenueForm(request.POST)
+        if form.is_valid():
+            venue = form.save(commit=False)
+            user = request.user
+            # user_id = kwargs.get('user_id')
+            # owner = Account.objects.get(pk=user_id)
+            venue.owner = user
+            # venue.owner = Account.objects.get(id = 'user_id')
+            venue.save()
+            # form.save()
+            # return HttpResponseRedirect('/dashboard/<user_id>')
+        # else:
+            # context['new_venue_form'] = form
+
+    else:
+        form = newVenueForm()
+        # context['new_venue_form'] = form
+    return render(request, "new_venue.html", {'form' : form})
+
+
 
 
