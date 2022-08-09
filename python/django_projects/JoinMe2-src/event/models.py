@@ -29,15 +29,15 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     start_time = models.TimeField()
     end_time = models.TimeField()
 
     description = models.TextField(max_length=500)
     
-    event_notes = models.TextField(max_length=500)
+    event_notes = models.TextField(max_length=500, blank=True)
 
     private_event = models.BooleanField(default=False)
 

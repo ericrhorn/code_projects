@@ -125,7 +125,7 @@ li{
         <div class="row" style="margin: 15px;">
 
             <!-- profile box -->
-            <div class="col-lg-9 middle-container border border-1 rounded-3 shadow p-3 mb-3" >
+            <div class="col-lg-9 middle-container border border-1 rounded-3 shadow p-3 mb-3" style="background-color: white;" >
                 <!-- <div class="profile-picture big-profile-picture clear">
                     <img class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{ request.user.profile_img.url }}"  height="200" width="200">
                 </div> -->
@@ -170,7 +170,7 @@ li{
             {% if request.user.is_authenticated %}
                 {% if is_self %}
                 <div class="col-6 col-lg-2" >
-                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px;">
+                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; background-color: white;">
                     <!-- <div class="col border border-1 rounded-3 shadow p-3 mb-3" > -->
                         <ul class="menu-box-menu">
                             <li>
@@ -210,7 +210,7 @@ li{
                             </li>
                         </ul>
                     </div>
-                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px;">
+                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; background-color: white;">
                     <!-- <div class="col border border-1 rounded-3 shadow p-3 mb-3" > -->
                         <ul class="menu-box-menu-2">
                             <li>
@@ -239,7 +239,7 @@ li{
 
 
                     {% else %}
-                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; height: 150px; margin-left: 12px;">
+                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; height: 200px; margin-left: 12px;">
                         <ul class="menu-box-menu">
                             {% if request_sent == 0 %}
                             <li>

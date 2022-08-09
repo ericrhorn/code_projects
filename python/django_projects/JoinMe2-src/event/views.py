@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
-from event.forms import newVenueForm
+from event.forms import newEventForm, newVenueForm
 from event.models import Event, Venue
 from account.models import Account
 
@@ -10,7 +10,17 @@ from account.models import Account
 
 def new_event_view(request, *args, **kwargs):
     venue_list = Venue.objects.all()
-    return render(request, "new_event.html", {'venue_list' : venue_list})
+    if request.method == "POST":
+        form = newEventForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            user = request.user
+            event.host = user
+            event.save()
+            # return redirect('home')
+    else:
+        form = newEventForm()
+    return render(request, "new_event.html", {'venue_list' : venue_list, 'form' : form})
 
 
 

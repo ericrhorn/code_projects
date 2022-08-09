@@ -24,91 +24,95 @@
                 </ul>
         </div>
             
-        <form action="/new_event" method="POST">
+        <!-- <div>
+            
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                <option selected>Choose a Public Venue</option>
+                {% for venue in venue_list %}
+                    {% if venue.private_venue != True %}
+                        <option name="venue" id="id_venue" value="venue">{{ venue.location }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            
+            <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                <option selected>Choose a Private Venue</option>
+                {% for venue in venue_list %}
+                    {% if venue.private_venue == True and venue.owner.id == request.user.id %}
+                        <option name="venue" id="id_venue" value="venue">{{ venue.location }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'new_venue' %}">Add Venue</a>                      -->
+        
+        <form method="POST" id="id_add_event_form">
             {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for="event_name">Event Name</label>
+                <input class="form-control" type="text" name="event_name" id="id_event_name" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="price">Price</label>
+                <input class="form-control" type="text" name="price" id="id_price" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="start_time">Start Time</label>
+                <input class="form-control" type="time" name="start_time" id="id_start_time" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="end_time">End Time</label>
+                <input class="form-control" type="time" name="end_time" id="id_end_time" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="start_date">Start Date</label>
+                <input class="form-control" type="date" name="start_date" id="id_start_date" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="end_date">Start Date</label>
+                <input class="form-control" type="date" name="end_date" id="id_end_date" required>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="private_event" id="id_private_event" value="True">
+                <label class="form-check-label" for="private_event">
+                Private Event
+                </label>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="id_description" cols="50" rows="5" required></textarea>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="event_notes">Notes</label>
+                <textarea class="form-control" name="event_notes" id="id_event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
+            </div>
+            <div>
             
-                <div class="mb-3 mt-3">
-                    <label for="event_name">Event Name</label>
-                    <input class="form-control" type="text" name="event_name" id="event_name"></input>
-                </div>
-                <div>
-                    
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option selected>Choose a Public Venue</option>
-                        {% for venue in venue_list %}
-                            {% if venue.private_venue != True %}
-                                <option value="venue">{{ venue.location }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    
-                    
-                    <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option selected>Choose a Private Venue</option>
-                        {% for venue in venue_list %}
-                            {% if venue.private_venue == True and venue.owner.id == request.user.id %}
-                                <option value="venue">{{ venue.location }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    
-                    <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'new_venue' %}">Add Venue</a>                     
-
-                </div>
-                <!-- <div class="mb-3 mt-3">
-                    <label for="location">Location</label>
-                    <input class="form-control" type="text" name="location" id="location"></input>
-                </div> -->
-                <div class="mb-3 mt-3">
-                    <label for="price">Price</label>
-                    <input class="form-control" type="text" name="price" id="price"></input>
-                </div>
-                <!-- <div class="mb-3 mt-3">
-                    <label for="event_url">Event URL</label>
-                    <input class="form-control" type="text" name="event_url" id="event_url"></input>
-                </div> -->
-                <div class="mb-3 mt-3">
-                    <label for="start_time">Start Time</label>
-                    <input class="form-control" type="time" name="start_time" id="start_time"></input>
-                </div>
-                <div class="mb-3 mt-3">
-                    <label for="end_time">End Time</label>
-                    <input class="form-control" type="time" name="end_time" id="end_time"></input>
-                </div>
-                <div class="mb-3 mt-3">
-                    <label for="start_date">Start Date</label>
-                    <input class="form-control" type="date" name="start_date" id="start_date"></input>
-                </div>
-                <div class="mb-3 mt-3">
-                    <label for="end_date">Start Date</label>
-                    <input class="form-control" type="date" name="end_date" id="end_date"></input>
-                </div>
-                <!-- <div class="mb-3 mt-3">
-                    <label  for="private">Private Event</label>
-                    <input type="radio" id="private" value="True" name="private">
-                </div> -->
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="private_event" id="private_event" value="True">
-                    <label class="form-check-label" for="private_event">
-                    Private Event
-                    </label>
-                </div>
-                <div class="mb-3 mt-3">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" name="description" id="description" cols="50" rows="5"></textarea>
-                </div>
-                <div class="mb-3 mt-3">
-                    <label for="event_notes">Notes</label>
-                    <textarea class="form-control" name="event_notes" id="event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
-                </div>
-                <div>
-                    <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
-                    <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
-                    <button class="btn btn-primary" type="text">Submit</button>
-                </div>
-            
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                    <option selected>Choose a Public Venue</option>
+                    {% for venue in venue_list %}
+                        {% if venue.private_venue != True %}
+                            <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.location }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                
+                <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                    <option selected>Choose a Private Venue</option>
+                    {% for venue in venue_list %}
+                        {% if venue.private_venue == True and venue.owner.id == request.user.id %}
+                            <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.location }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'new_venue' %}">Add Venue</a>                     
+            <div style="margin-top: 10px;">
+                <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
+                <button class="btn btn-primary" type="text">Submit</button>
+            </div>
         </form>
-
     </div>    
 </body>
 </html>
