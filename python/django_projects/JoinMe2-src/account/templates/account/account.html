@@ -189,49 +189,36 @@ li{
                                 </div>
                             </li>
                             <li>
-                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Your Events<div class="menu-box-number">5</div></a> -->
-                                <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Events</a>   
-                                
-                            </li>
-                            <li>
                                 <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Messages<div class="menu-box-number">5</div></a> -->
                                 <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Messages</a>   
                                 
                             </li>
-                            <li>
-                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Invites<div class="menu-box-number">5</div></a> -->
-                                <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Invitations</a>   
-                                
-                            </li>
-                            <li>
-                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events Your Attending<div class="menu-box-number">5</div></a> -->
+                           
+                            <!-- <li>
+                                <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events Your Attending<div class="menu-box-number">5</div></a>
                                 <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">Not Attending Any Events</a>   
-                                
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; background-color: white;">
                     <!-- <div class="col border border-1 rounded-3 shadow p-3 mb-3" > -->
                         <ul class="menu-box-menu-2">
                             <li>
-                                <!-- <a class="menu-box-tab" href="{% url 'friend:friend-list' user_id=id %}"><span class="icon fontawesome-envelope scnd-font-color"></span>Friends<div class="menu-box-number">{{friends|length}}</div></a>         -->
                                 <div>
-                                    <a class="btn btn-outline-primary" style="min-width: 250px;" role="button" href="{% url 'friend:friend-list' user_id=id %}">Friends<div class="menu-box-number">{{friends|length}}</div></a>                     
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    {% if friend_requests %}
-                                    <a class="btn btn-outline-primary" style="min-width: 250px;" role="button"  href="{% url 'friend:friend-requests' user_id=id %}">New Friend Requests<div class="menu-box-number">{{friend_requests|length}}</div></a>                            
-                                    {% else %}
-                                    <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No New Friend Requests</a>   
+                                    {% if event_list %}
+                                    <a class="btn btn-outline-primary" style="min-width: 250px;" role="button" href="">My Events<div class="menu-box-number">{{event_list|length}}</div></a>
+                                    {% else %}                    
+                                    <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Events</a>   
                                     {% endif %}
                                 </div>
                             </li>
                             <li>
-                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Your Events<div class="menu-box-number">5</div></a> -->
-                                <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Events</a>   
-                                
+                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Invites<div class="menu-box-number">5</div></a> -->
+                                <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">No Invitations</a>   
+                            </li>
+                            <li>
+                                <!-- <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events Your Attending<div class="menu-box-number">5</div></a> -->
+                                <a class="btn btn-outline-dark disabled" style="min-width: 250px;" role="button">Not Attending Any Events</a>   
                             </li>
                         </ul>
                     </div>
@@ -239,52 +226,52 @@ li{
 
 
                     {% else %}
-                    <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; height: 200px; margin-left: 12px;">
-                        <ul class="menu-box-menu">
-                            {% if request_sent == 0 %}
-                            <li>
-                                <div>
-                                    <a class="btn btn-outline-success" style="min-width: 250px;" role="button" id="id_confirm_{{id}}" onclick='triggerAcceptFriendRequest("{{pending_friend_request_id}}")'>Accept</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <a class="btn btn-outline-danger" style="min-width: 250px;" role="button" id="id_cancel_{{id}}" onclick='triggerDeclineFriendRequest("{{pending_friend_request_id}}")'>Decline</a>
-                                </div>
-                            </li>
-                            {% else %}
-                                {% if is_friend == False and is_self == False %}
+                    <div class="col-6 col-lg-2">
+                        <div class="col border border-1 rounded-3 shadow p-3 mb-3" style="width: 300px; background-color: white;">
+                            <ul class="menu-box-menu">
+                                {% if request_sent == 0 %}
                                 <li>
                                     <div>
-                                        {% if request_sent == -1 %}
-                                        <button class="btn btn-outline-success" style="min-width: 250px;" id="id_send_friend_request_btn">Send Friend Request</button>
-                                        {% endif %}
-                                        {% if request_sent == 1 %}
-                                        <button class="btn btn-outline-danger" style="min-width: 250px;" id="id_cancel_friend_request_btn">Cancel Friend Request</button>
-                                        {% endif %}
+                                        <a class="btn btn-outline-success" style="min-width: 250px;" role="button" id="id_confirm_{{id}}" onclick='triggerAcceptFriendRequest("{{pending_friend_request_id}}")'>Accept</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <a class="btn btn-outline-danger" style="min-width: 250px;" role="button" id="id_cancel_{{id}}" onclick='triggerDeclineFriendRequest("{{pending_friend_request_id}}")'>Decline</a>
+                                    </div>
+                                </li>
+                                {% else %}
+                                    {% if is_friend == False and is_self == False %}
+                                    <li>
+                                        <div>
+                                            {% if request_sent == -1 %}
+                                            <button class="btn btn-outline-success" style="min-width: 250px;" id="id_send_friend_request_btn">Send Friend Request</button>
+                                            {% endif %}
+                                            {% if request_sent == 1 %}
+                                            <button class="btn btn-outline-danger" style="min-width: 250px;" id="id_cancel_friend_request_btn">Cancel Friend Request</button>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                {% endif %}
+                        
+                                {% if is_friend %}
+                                <li>
+                                    <div>
+                                        <button class="btn btn-outline-danger" style="min-width: 250px;" id="id_unfriend_btn">Unfriend</button> 
                                     </div>
                                 </li>
                                 {% endif %}
-                            {% endif %}
-                    
-                            {% if is_friend %}
-                            <li>
-                                <div>
-                                    <button class="btn btn-outline-danger" style="min-width: 250px;" id="id_unfriend_btn">Unfriend</button> 
-                                </div>
-                            </li>
-                            {% endif %}
-                            <li>
-                                <div >
-                                    <a class="btn btn-outline-primary" style="min-width: 250px;" role="button" href="{% url 'friend:friend-list' user_id=id %}">Friends<div class="menu-box-number">{{friends|length}}</div></a>                            
-                                </div>
-                            </li> 
-                        </ul>
+                                <li>
+                                    <div >
+                                        <a class="btn btn-outline-primary" style="min-width: 250px;" role="button" href="{% url 'friend:friend-list' user_id=id %}">Friends<div class="menu-box-number">{{friends|length}}</div></a>                            
+                                    </div>
+                                </li> 
+                            </ul>
+                        </div>
                     </div>
                     {% endif %}
-
                 </div>
-                
             {% endif %}
         </div>
     </div>

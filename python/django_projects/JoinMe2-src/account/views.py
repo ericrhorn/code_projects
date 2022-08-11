@@ -98,10 +98,21 @@ def dashboard_view(request, *args, **kwargs):
     event_list = Event.objects.all()
     return render(request, "account/dashboard.html", {'event_list' : event_list})
 
+
+# def dashboard_view(request, *args, **kwargs):
+#     context = {}
+#     event_list = Event.objects.all()
+#     for event in event_list.events.all():
+#         event.append(event)
+#     context['events'] = event
+#     return render(request, "account/dashboard.html", context)
+
     
 
 def account_view(request, *args, **kwargs):
     context = {}
+    event_list = Event.objects.all()
+    context['event_list'] = event_list
     user_id = kwargs.get('user_id')
     try:
         account = Account.objects.get(pk=user_id)

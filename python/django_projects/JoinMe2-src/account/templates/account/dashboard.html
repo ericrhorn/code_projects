@@ -13,8 +13,48 @@
     <!-- <link rel="stylesheet" href="{% static 'css/dash1.css' %}">  -->
 </head>
 <body>
+<h1>Welcome to the dashboard, {{ user.first_name }}</h1>
+<h4>My Events</h4>
+<p>{{ user.first_name }}</p>
+<p>{{ user.last_name }}</p>
+<p>{{ user.username }}</p>
+<p>{{ user.email }}</p>
+<p>{{ event_list }}</p>
+<div class="container">
+
+    <div class="card">
+        <div class='row card-group  mx-1 my-1'>
+            {% for event in event_list %}
+                {% if event.host.id == request.user.id %}
+                <div class="col-6 my-1">
+                <div class="card p-1">
+                    <div class="card-body">
+                        <h4>{{event.event_name}}</h4>
+                   
+                    </div>
+                    <span>
+                        <p class="card-text">filler data</p>
+                    </span>
+                    
+                </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
     <div class="events-display">
-        <h1>Welcome to the dashboard, {{ user.first_name }}</h1>
         <p>{{ user.first_name }}</p>
         <p>{{ user.last_name }}</p>
         <p>{{ user.username }}</p>
@@ -74,138 +114,3 @@
 </html>
 {% endblock content %}
 
-
-        <!-- <section>
-            <h4>Events I'm Attending</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Destination</th>
-                        <th scope="col" >Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Plan</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for trip in trips %}
-                    {% if trip.planned_by.id ==  request.session.user_id %}
-                        <tr>
-                            <td><a href="/{{ trip.id }}/info">{{trip.destination}}</a></td>
-                            <td>{{trip.start_date|date:"SHORT_DATE_FORMAT"}}</td>
-                            <td>{{trip.end_date|date:"SHORT_DATE_FORMAT"}}</td>
-                            <td>{{trip.plan}}</td>
-                            <td>{{trip.actions}}
-                                <form action="/{{ trip.id }}/delete" method='POST'>
-                                    {% csrf_token %}
-                                    <input type="submit" value=Remove> | <a href="/{{ trip.id }}/edit">Edit</a>
-                                </form> 
-                            </td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-                </tbody>
-            </table>
-        </section> -->
-
-
-        <!-- <h4>All Events</h4>
-        <section>
-            <table class="table">
-                <thead>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Plan</th>
-                    <th scope="col">Want to join?</th>
-                </thead>
-                <tbody>
-                    {% for trip in trips %}
-                        {% if trip.planned_by.id != request.session.user_id %}
-                            <tr>
-                                <td><a href="/{{ trip.id }}/info">{{trip.destination}}</a></td>
-                                <td>{{trip.start_date|date:"SHORT_DATE_FORMAT"}}</td>
-                                <td>{{trip.end_date|date:"SHORT_DATE_FORMAT"}}</td>
-                                <td>{{trip.plan}}</td>
-                                <td>Join</td>
-                                <td>{{trip.join}}</td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section> -->
-    
-
-    <!-- <div id='container1'>
-        <div id='create_event'>
-            <h2>Add Events Here!</h1>
-        </div>
-        <div id = "container">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li> {{ message }} </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            <div class = "wrapper">
-                <form action="/new_event" method="POST">
-                    {% csrf_token %}
-                    <div class="new_event">
-                        <div>
-                            <label for="event_name">Event Name</label>
-                            <input type="text" name="event_name" id="event_name"></input>
-                        </div>
-                        <div>
-                            <label for="location">Location</label>
-                            <input type="text" name="location" id="location"></input>
-                        </div>
-                        <div>
-                            <label for="price">Price</label>
-                            <input type="text" name="price" id="price"></input>
-                        </div>
-                        <div>
-                            <label for="event_url">Event URL</label>
-                            <input type="text" name="event_url" id="event_url"></input>
-                        </div>
-                        <div>
-                            <label for="start_time">Start Time</label>
-                            <input type="time" name="start_time" id="start_time"></input>
-                        </div>
-                        <div>
-                            <label for="end_time">End Time</label>
-                            <input type="time" name="end_time" id="end_time"></input>
-                        </div>
-                        <div>
-                            <label for="start_date">Start Date</label>
-                            <input type="date" name="start_date" id="start_date"></input>
-                        </div>
-                        <div>
-                            <label for="end_date">Start Date</label>
-                            <input type="date" name="end_date" id="end_date"></input>
-                        </div>
-                        <div>
-                            <label for="private">Private Event</label>
-                            <input type="radio" id="private" value="True" name="private">
-                        </div>
-                        <div>
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" cols="50" rows="5"></textarea>
-                        </div>
-                        <div>
-                            <label for="event_notes">Notes</label>
-                            <textarea name="event_notes" id="event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
-                        </div>
-                        <div class='links'>
-                            <a href="/dashboard"><button type="button">Cancel</button></a>
-                            <button type="reset" value="reset">Clear Form</button>
-                            <button type="text">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
-</html>

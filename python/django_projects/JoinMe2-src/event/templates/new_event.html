@@ -13,38 +13,20 @@
 <body>
     
     <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
-        <h2>Add an Event</h1>
-        <div class="row" style="padding-left: 25px;">
-            {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            {% endif %}
-                </ul>
+        
+        {% if submitted %}
+        <div class="row" style="max-width: 600px; height: 100px; align-items: center;">
+            <h4>Your event was added successfully</h4>
+            <div>
+                <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Dashboard</button></a>
+                <a href="{% url 'account:view' user_id=request.user.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Account</button></a>
+                <a href="{% url 'new_event' %}"><button class="btn btn-outline-primary btn-sm" type="button">Add Another Event</button></a>
+                <a href="{% url 'new_venue' %}"><button class="btn btn-outline-primary btn-sm" type="button">Add A New Venue</button></a>
+            </div>
         </div>
-            
-        <!-- <div>
-            
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
-                <option selected>Choose a Public Venue</option>
-                {% for venue in venue_list %}
-                    {% if venue.private_venue != True %}
-                        <option name="venue" id="id_venue" value="venue">{{ venue.location }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            
-            <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
-                <option selected>Choose a Private Venue</option>
-                {% for venue in venue_list %}
-                    {% if venue.private_venue == True and venue.owner.id == request.user.id %}
-                        <option name="venue" id="id_venue" value="venue">{{ venue.location }}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'new_venue' %}">Add Venue</a>                      -->
+        {% else %}
+
+        <h2>Add an Event</h2>
         
         <form method="POST" id="id_add_event_form">
             {% csrf_token %}
@@ -87,22 +69,16 @@
                 <textarea class="form-control" name="event_notes" id="id_event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?"></textarea>
             </div>
             <div>
-            
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
-                    <option selected>Choose a Public Venue</option>
-                    {% for venue in venue_list %}
-                        {% if venue.private_venue != True %}
-                            <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.location }}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-                
+                <label for="">Your private venues will show for other users</label>
                 <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
-                    <option selected>Choose a Private Venue</option>
+                    <option selected>Choose a Venue</option>
                     {% for venue in venue_list %}
                         {% if venue.private_venue == True and venue.owner.id == request.user.id %}
                             <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.location }}</option>
                         {% endif %}
+                        {% if venue.private_venue != True %}
+                        <option  name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.location }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -113,6 +89,7 @@
                 <button class="btn btn-primary" type="text">Submit</button>
             </div>
         </form>
+        {% endif %}
     </div>    
 </body>
 </html>
