@@ -5,6 +5,7 @@ import LoginUser from "./components/login";
 import RegisterUser from "./components/register";
 import Header from './views/header';
 import Recipies from './components/recipies';
+import MealPlan from './views/mealPlan';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               // numberOfResults = {numberOfResults}
               // setNumberOfResults = {setNumberOfResults}
           />
+          <MealPlan path = '/meal_plan'/>
         </Router>
       </div>
     </div>

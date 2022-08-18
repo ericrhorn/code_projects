@@ -56,6 +56,7 @@ const login = (req, res) => {
                                 expires: new Date(Date.now() + 900000)
                             }
                             )
+                            
                             .json({
                                 message: "login successfull",
                                 userLoggedIn: userRecord.email,
