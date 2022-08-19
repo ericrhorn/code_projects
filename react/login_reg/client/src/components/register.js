@@ -9,11 +9,15 @@ const RegisterUser = (props) => {
     // const [lastName, setLastName] = useState("");
     // const [email, setEmail] = useState("");
 
+    const { isLoggedin, setIsLoggedin } = props;
+
+
     const [confirmReg, setConfirmReg] = useState("");
     const [errs, setErrs] = useState({});   
 
 
     // using a single state object to hold all the data
+    //this is what gets sent to the backend 
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
@@ -28,9 +32,9 @@ const RegisterUser = (props) => {
     //using a single function to update the state object
     // we can use the inputs name attribute as the key in to the object
     const handleChange = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value,
+        setUser({   // set state
+            ...user,    // spread the old state
+            [e.target.name]: e.target.value, // object as a state (put name in input field) : and where the value is located
         })
 }
 
@@ -47,15 +51,16 @@ const register = e => {
     .then(res => {
         console.log(res.data);
         // when we successfully create the account, reset state for registration form
+        setIsLoggedin(true);
 
-        setUser({
-            firstName: "",
-            lastName: "",
-            userName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-        })
+        // setUser({
+        //     firstName: "",
+        //     lastName: "",
+        //     userName: "",
+        //     email: "",
+        //     password: "",
+        //     confirmPassword: "",
+        // })
         setConfirmReg("Thank you for registering");
         setErrs({})     // remember to reset error state if it was successfull
         navigate("/profile")

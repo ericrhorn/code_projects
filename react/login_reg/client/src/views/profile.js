@@ -8,7 +8,19 @@ const Profile = (props) => {
 
     //destructure from props
     const { isLoggedin, setIsLoggedin } = props;
-    // const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
+
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/user/current-user', {withCredentials: true})
+    .then((res)=>{
+        console.log(res.data);
+        setUser(res.data);
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+  },[]);
 
     // useEffect = e => {
     //     axios.get('http://localhost:8000/api/user/profile',{
@@ -31,16 +43,14 @@ const Profile = (props) => {
 //     }
 //     }, []);
 
-const logout = e => {
-    e.preventDefault();
-    axios.post('http://localhost:8000/api/user/logout', {
- 
-    }, {
-      withCredentials: true, 
-    })
+const logout = (e) => {
+    axios.post('http://localhost:8000/api/user/logout', {}, {withCredentials: true, })
     .then((res) => {
-        console.log(res.data);
-        navigate("/")
+      // setUser(null)
+      // res.removeItem('userToken')
+      // res.sendStatus(200);
+      console.log("successfully logged out")  
+      navigate("/")
     })
     .catch(err => {
       console.log(err);
@@ -50,14 +60,25 @@ const logout = e => {
 
   return (
     <div>
+      {user ? (
+        <div>
+              <h1>profile</h1>
+            <h4>hello {user.firstName} {user.lastName} </h4>
       
-        <h1>profile</h1>
-        <h4>hello {props.isLoggedin.firstName} {props.isLoggedin.lastName}</h4>
-        <p>{props.isLoggedin.email}</p>
-        <p>{props.isLoggedin.id}</p>
-      <div>
-        <button onClick={(e) => logout(e)}>Logout</button>
-      </div>
+          <div>
+            <button onClick={logout}>Logout</button>
+          </div>
+
+        </div>
+       
+
+      ) : (
+        <div>
+            <h1>You are not authorised to view this page</h1>
+        </div>
+        )}
+      
+        
       
     </div>
     
