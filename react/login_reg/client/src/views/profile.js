@@ -7,7 +7,7 @@ import axios from "axios";
 const Profile = (props) => {
 
     //destructure from props
-    const { user, setUser } = props;
+    const { isLoggedin, setIsLoggedin } = props;
     // const [user, setUser] = useState({})
 
     // useEffect = e => {
@@ -52,9 +52,9 @@ const logout = e => {
     <div>
       
         <h1>profile</h1>
-        <h4>hello {props.user.firstName} {props.user.lastName}</h4>
-        <p>{props.user.email}</p>
-        <p>{props.user.id}</p>
+        <h4>hello {props.isLoggedin.firstName} {props.isLoggedin.lastName}</h4>
+        <p>{props.isLoggedin.email}</p>
+        <p>{props.isLoggedin.id}</p>
       <div>
         <button onClick={(e) => logout(e)}>Logout</button>
       </div>

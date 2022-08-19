@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 // const secret = "I can't believe this key is so secret!";
 // module.exports.secret = secret;
 module.exports.authenticate = (req, res, next) => {
-  jwt.verify(req.cookies.usertoken, 
+  jwt.verify(req.cookies.userToken, 
     process.env.FIRST_SECRET_KEY,
     // once we compare the unhashed version of the cookie, run this callback function
     (err, payload) => {

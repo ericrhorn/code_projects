@@ -1,14 +1,20 @@
+require('./config/mongoose.config');
+
 const express = require('express');
-const cors = require('cors')
+
 const app = express();
+
+const cors = require('cors')
+
 const cookieParser = require('cookie-parser');
 
-require('./config/mongoose.config');
+app.use(cookieParser());
+
 // load .end file so it can be used everywhere in our server. now all the variables in the .env file are avaiable to use
 require('dotenv').config();
 
 
-app.use(cookieParser());
+
 // Change the app.use(cors()) to the one below. add the ability to use credentials with cookies
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 // app.use(cors())    

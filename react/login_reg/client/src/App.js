@@ -9,19 +9,22 @@ import LogReg from './views/logreg';
 
 function App() {
   // const [firstName, setFirstName] = useState("");
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    id: "",
-  });
+  // const [user, setUser] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   id: "",
+  // });
+
+  const [isLoggedin, setIsLoggedin] = useState(false)
+
 
   return (
       <body>
         <Router>
-          <LogReg path ="/" user = {user} setUser = {setUser}/>
+          <LogReg path ="/" isLoggedin = {isLoggedin} setIsLoggedin = {setIsLoggedin}/>
           {/* <Dashboard firstName = {firstName}  path="/dashboard" /> */}
-          <Profile path="/profile" user = {user} setUser = {setUser} />
+          <Profile path="/profile" isLoggedin = {isLoggedin} setIsLoggedin = {setIsLoggedin} />
         </Router>
       </body>
     

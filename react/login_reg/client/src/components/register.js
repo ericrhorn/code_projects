@@ -17,6 +17,7 @@ const RegisterUser = (props) => {
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
+        userName: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -50,6 +51,7 @@ const register = e => {
         setUser({
             firstName: "",
             lastName: "",
+            userName: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -100,6 +102,20 @@ const register = e => {
                         type="text" 
                         name="lastName"
                         value={user.lastName}
+                        onChange = {(e)=> handleChange(e)}
+                    />
+                </p>
+                <p>
+                    <label>User Name</label><br/>
+                    {
+                    errs.userName ?
+                    <span className='error-text'>{errs.userName.message}</span>
+                    : null
+                    }
+                    <input 
+                        type="text" 
+                        name="userName"
+                        value={user.userName}
                         onChange = {(e)=> handleChange(e)}
                     />
                 </p>
