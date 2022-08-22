@@ -68,7 +68,6 @@ const Login2 = (props) => {
                         name = "email"
                         value = {user.email}
                         onChange = {(e)=> handleChange(e)}
-                        // onChange={login}
                     />
                 </p>
                 <p>
@@ -78,7 +77,6 @@ const Login2 = (props) => {
                         name = "password"
                         value = {user.password}
                         onChange = {(e)=> handleChange(e)}
-                        // onChange={login}
                     />
                 </p>
                 <div>

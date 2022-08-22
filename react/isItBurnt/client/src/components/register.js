@@ -1,35 +1,145 @@
+import React, { useState } from 'react'
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const RegisterUser = (props) => {
+
+  const navigate = useNavigate();
+  const {isLoggedin, setIsLoggedin} = props;
+  const [confirmReg, setConfirmReg] = useState('');
+  const [errs, setErrs] = useState({});
+
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }) 
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name] : e.target.value,
+    })
+  }
+
+  const registerUser = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:8000/api/user/register', user, {withCredentials: true})
+    .then((res) => {
+      console.log(res.data);
+      setIsLoggedin(true);
+      setConfirmReg('Thank you for registering');
+      setErrs({})
+      navigate('/');
+    })
+    .catch((err) => {
+      console.log(err)
+      setErrs(err.response.data.errors)
+    })
+  }
 
     return (
         <div class="container mt-5 rounded-3 shadow p-3 bg-body" style={{width: 500, backgroundColor: 'white'}}>
         <h2>Register</h2>
-        <form method="POST">
-          <div class="mb-3 mt-3">
-            <label for="first_name">First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required/>
+            {
+              confirmReg ?
+                  <h4 style={{color: "green"}}>{confirmReg}</h4>
+                  : null
+            }
+        <form onSubmit={registerUser}>
+          <div className='mb-3 mt-3'>
+              <label>First Name</label><br/>
+              {
+              errs.firstName ?
+              <span className='error-text'>{errs.firstName.message}</span>
+              : null
+              }
+              <input 
+                  className="form-control"
+                  type="text" 
+                  name="firstName"
+                  value={user.firstName}
+                  onChange = {handleChange}
+              />
           </div>
-          <div class="mb-3">
-            <label for="last_name">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required/>
+          <div className='mb-3'>
+          <label>Last Name</label><br/>
+              {
+              errs.lastName ?
+              <span className='error-text'>{errs.lastName.message}</span>
+              : null
+              }
+              <input className="form-control"
+                  type="text" 
+                  name="lastName"
+                  value={user.lastName}
+                  onChange = {handleChange}
+              />
           </div>
-          <div class="mb-3">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email"/>
+          <div className='mb-3'>
+          <label>User Name</label><br/>
+              {
+              errs.userName ?
+              <span className='error-text'>{errs.userName.message}</span>
+              : null
+              }
+              <input className="form-control"
+                  type="text" 
+                  name="userName"
+                  value={user.userName}
+                  onChange = {handleChange}
+              />
           </div>
-          <div class="mb-3">
-            <label for="username">User Name:</label>
-            <input type="text" class="form-control" id="username" name="username" required/>
+          <div className='mb-3'>
+          <label>Email</label><br/>
+              {
+              errs.email ?
+              <span className='error-text'>{errs.email.message}</span>
+              : null
+              }
+              <input className="form-control"
+                  type="email" 
+                  name="email"
+                  value={user.email}
+                  onChange = {handleChange}
+              />
           </div>
-          <div class="mb-3">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password1" required/>
+          <div className='mb-3'>
+          <label>Password</label><br/>
+              {
+              errs.password ?
+              <span className='error-text'>{errs.password.message}</span>
+              : null
+              }
+              <input className="form-control"
+                  type="password" 
+                  name="password"
+                  value={user.password}
+                  onChange = {handleChange}
+              />
           </div>
-          <div class="mb-3">
-            <label for="password_confirm">Password Confirm:</label>
-            <input type="password" class="form-control" id="password2" name="password2" required/>
+          <div className='mb-3'>
+          <label>Password Confirmation</label><br/>
+              {
+              errs.confirmPassword ?
+              <span className='error-text'>{errs.confirmPassword.message}</span>
+              : null
+              }
+              <input className="form-control"
+                  type="password" 
+                  name="confirmPassword"
+                  value={user.confirmPassword}
+                  onChange = {handleChange}
+              />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div>
+              <button className="btn btn-primary"
+                  type="submit"
+              >Register</button>
+          </div>
         </form>
       </div>
     )

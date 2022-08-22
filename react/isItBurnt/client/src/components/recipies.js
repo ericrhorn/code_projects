@@ -1,18 +1,12 @@
-import React, { useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import Main from '../views/main';
-import {navigate} from '@gatsbyjs/reach-router'
-import cookingImg from '../images/cooking.jpg'
-import Image, { propTypes } from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import RecipeList from '../components/recipieList';
-import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Recipie = (props) => {
@@ -91,9 +85,9 @@ const getMealData = (e) => {
     return (
         <>
         <h1>Recipies</h1>
-        <Container style={{marginBottom: 50}}>
+        <Container>
             <Row>
-                <Col sm={4}>
+                <Col lg={3} style={{marginBottom:10}}>
                     <Form>
                         <Form.Select value={cuisine} onChange={handleCuisineChange}>
                             <option>Cuisine</option>
@@ -114,10 +108,14 @@ const getMealData = (e) => {
                             Submit
                     </Button>
                 </Col>
-                <Col sm={8}>
-                {recipeData.map((recipe) => {
-                return <RecipeList key={recipe.id} recipe={recipe}/>
-                })}
+
+
+                <Col lg={9} style={{marginBottom:50}}>
+                    <Row className="g-4">
+                        {recipeData.map((recipe) => (
+                            <RecipeList key={recipe.id} recipe={recipe}/>
+                        ))}
+                    </Row>
                 </Col>
             </Row>
         </Container>
