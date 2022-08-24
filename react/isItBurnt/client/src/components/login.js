@@ -7,7 +7,7 @@ const LoginUser = (props) => {
 
     const navigate = useNavigate();
     const {isLoggedin, setIsLoggedin} = props;
-    const [errorMessage, setErrorMessage] = useState('');
+    const [err, setErr] = useState({});
 
     const [user, setUser] = useState({
         email : '',
@@ -25,12 +25,14 @@ const LoginUser = (props) => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/user/login', user, {withCredentials: true})
         .then((res) => {
+            console.log(res.data)
             setIsLoggedin(true);
+            setErr({})
             navigate('/')
         })
-        .catch(err => {
-            console.log(err.response);
-            setErrorMessage(err.response.data.message);
+        .catch((err) => {
+            console.log(err);
+            setErr(err.response.data.errors)
         })
     }
 
@@ -41,6 +43,12 @@ const LoginUser = (props) => {
                 
                 <div class="mb-3 mt-3">
                     <label>Email</label><br/>
+                    {
+                    err.email ? (
+                        <span className='error-text'>{err.email.message}</span>
+                    )
+                    : null
+                    }
                     <input
                         className='form-control'
                         type = "text"
@@ -51,6 +59,11 @@ const LoginUser = (props) => {
                 </div>
                 <div class="mb-3">
                     <label>Password</label><br/>
+                    {/* {
+                    err.password ?
+                    <span className='error-text'>{err.password.message}</span>
+                    : null
+                    } */}
                     <input
                         className='form-control'
                         type = "password"

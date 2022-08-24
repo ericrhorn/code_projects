@@ -76,6 +76,7 @@ const getMealData = (e) => {
         // setNumberOfResults(response.data.results)
         setRecipeData(response.data.results)
         // navigate('/recipies')
+
     })
     .catch((err) => console.log(err));
 }

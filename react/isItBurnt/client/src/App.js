@@ -6,6 +6,7 @@ import RegisterUser from "./components/register";
 import Header from './views/header';
 import Recipies from './components/recipies';
 import MealPlan from './views/mealPlan';
+import Dashboard from './views/dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/recipies' element={<Recipies />} />
           <Route path='/meal_plan' element={<MealPlan />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/login' element={<LoginUser setIsLoggedin = {setIsLoggedin}/>} />
           <Route path='/register' element={<RegisterUser setIsLoggedin = {setIsLoggedin}/>} />
         </Routes>
