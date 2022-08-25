@@ -47,9 +47,9 @@ function Header(props) {
             {user ?
             <>
             <Navbar.Brand>Hello {user.firstName}</Navbar.Brand>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/recipies">Recipies</NavDropdown.Item>
-                <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
+              <NavDropdown drop='start' title="Menu" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/recipies">Search Recipies</NavDropdown.Item>
+                <NavDropdown.Item href="/dashboard">My Recipies</NavDropdown.Item>
                 <NavDropdown.Item onClick={logout}>logout</NavDropdown.Item>
               </NavDropdown> 
             </>
@@ -57,7 +57,7 @@ function Header(props) {
             <>
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/register">Register</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown drop='start' title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/recipies">Recipies</NavDropdown.Item>
               </NavDropdown>
             </>

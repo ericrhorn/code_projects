@@ -65,23 +65,15 @@ const handleNumChange = (e) => {
 }
 
 const getMealData = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     return axios
     .get(`https://api.spoonacular.com/recipes/complexSearch/?apiKey=a204b3541d2f4c0da0e019afe998f3c6&query=${cuisine}&number=${numberOfResults}`)
-        // nest api for image data
-    // nest api for more info 
     .then((response) => {
         console.log(response.data.results);
-        // setCuisine(response.data.results);
-        // setNumberOfResults(response.data.results)
         setRecipeData(response.data.results)
-        // navigate('/recipies')
-
     })
     .catch((err) => console.log(err));
 }
-
-
 
     return (
         <>
@@ -109,8 +101,6 @@ const getMealData = (e) => {
                             Submit
                     </Button>
                 </Col>
-
-
                 <Col lg={9} style={{marginBottom:50}}>
                     <Row className="g-4">
                         {recipeData.map((recipe) => (

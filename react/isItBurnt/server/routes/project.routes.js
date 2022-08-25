@@ -6,7 +6,7 @@ module.exports = (app) => {
     // app.get('/api', ProjectController.index);
     app.post('/api/recipe/create-recipe', ProjectController.addRecipe);
     app.get('/api/recipe/show', ProjectController.showRecipe);
-    app.get('/api/recipe/one:_id', ProjectController.showOneRecipe);
-    app.put('/api/recipe/update:_id', ProjectController.updateRecipe);
-    app.get('/api/recipe/delete:_id', ProjectController.deleteRecipe);
+    app.get('/api/recipe/one/:id', ProjectController.showOneRecipe);
+    app.put('/api/recipe/update/:id', ProjectController.updateRecipe);
+    app.delete('/api/recipe/delete/:id', ProjectController.deleteRecipe);
 }

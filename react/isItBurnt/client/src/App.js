@@ -8,6 +8,8 @@ import Recipies from './components/recipies';
 import MealPlan from './views/mealPlan';
 import Dashboard from './views/dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UpdateRecipe from './views/updateRecipe';
+import OneRecipe from './views/oneRecipe';
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path='/recipies' element={<Recipies />} />
           <Route path='/meal_plan' element={<MealPlan />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/update/:id' element={<UpdateRecipe />} />
+          <Route path='/one-recipe/:id' element={<OneRecipe />} />
           <Route path='/login' element={<LoginUser setIsLoggedin = {setIsLoggedin}/>} />
           <Route path='/register' element={<RegisterUser setIsLoggedin = {setIsLoggedin}/>} />
         </Routes>

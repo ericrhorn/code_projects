@@ -17,13 +17,13 @@ const showRecipe = (req, res) => {
 };
 
 const showOneRecipe = (req, res) => {
-  Recipe.findOne({ _id: req.params._id })
+  Recipe.findOne({ _id: req.params.id })
     .then((oneRecipe) => res.json(oneRecipe))
     .catch((err) => res.status(400).json(err));
 };
 
 const updateRecipe = (req, res) => {
-  Recipe.findOneAndUpdate({ _id: req.params._id }, req.body, {
+  Recipe.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true,
     runValidators: true,
   })
@@ -32,7 +32,7 @@ const updateRecipe = (req, res) => {
 };
 
 const deleteRecipe = (req, res) => {
-  Recipe.deleteOne({ _id: req.params._id })
+  Recipe.deleteOne({ _id: req.params.id })
     .then((result) => res.json(result))
     .catch((err) => res.status(400).json(err));
 };
@@ -41,7 +41,6 @@ module.exports = {
     addRecipe,
     showRecipe,
     showOneRecipe,
-
     updateRecipe,
     deleteRecipe,
 };

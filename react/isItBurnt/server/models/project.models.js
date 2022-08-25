@@ -16,6 +16,12 @@ const recipeSchema = mongoose.Schema(
         },
         recipeComments: {
             type: String,
+        },
+        recipeInstructions: {
+            type: String,
+        },
+        recipeSummary: {
+            type: String,
         }
     }, {timestamps: true}
 );
