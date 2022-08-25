@@ -23,6 +23,12 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
     const [recipeInstructions, setRecipeInstructions] = useState(value)
     useEffect(()=> setRecipeInstructions(recipeInfo.instructions), [recipeInfo.instructions])
 
+    // const [recipeName, setRecipeName] = useState(recipeInfo?.title)
+    // const [recipeImage, setRecipeImage] = useState(recipeInfo?.image)
+    // const [recipeUrl, setRecipeUrl] = useState(recipeInfo?.sourceUrl)
+    // const [recipeUrlName, setRecipeUrlName] = useState(recipeInfo.sourceName)
+    // const [recipeSummary, setRecipeSummary] = useState(recipeInfo.summary)
+    // const [recipeInstructions, setRecipeInstructions] = useState(recipeInfo.instructions)
 
     const newRecipeHandler = (e) => {
         e.preventDefault();
@@ -58,6 +64,7 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
+                    {/* <div> */}
                     <div style={{display: 'none'}}>
                         <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                         <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
