@@ -23,6 +23,8 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
     const [recipeInstructions, setRecipeInstructions] = useState(value)
     useEffect(()=> setRecipeInstructions(recipeInfo.instructions), [recipeInfo.instructions])
 
+    const [recipeComments, setRecipeComments] = useState('')
+
     // const [recipeName, setRecipeName] = useState(recipeInfo?.title)
     // const [recipeImage, setRecipeImage] = useState(recipeInfo?.image)
     // const [recipeUrl, setRecipeUrl] = useState(recipeInfo?.sourceUrl)
@@ -37,9 +39,10 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
             recipeImage,
             recipeUrl,
             recipeUrlName,
+            recipeComments,
             recipeSummary,
             recipeInstructions,
-        })
+        }, {withCredentials: true})
         .then((res) => {
             console.log(res)
             console.log(res.data)
@@ -49,8 +52,6 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
             console.log(err)
         })
     }
-
-
 
 
     return (
@@ -64,23 +65,21 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
-                    {/* <div> */}
-                    <div style={{display: 'none'}}>
+                    <div>
+                    {/* <div style={{display: 'none'}}> */}
                         <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                         <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
                         <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeUrl(e.target.value)} />
                         <input type="text" name='recipeUrlName' value={recipeUrlName} onChange={(e) => setRecipeUrlName(e.target.value)} />
                         <textarea type="textarea" name='recipeSummary' value={recipeSummary} onChange={(e) => setRecipeSummary(e.target.value)} />
                         <textarea type="textarea" name='recipeInstructions' value={recipeInstructions} onChange={(e) => setRecipeInstructions(e.target.value)} />
-                        {/* <input type="text" name='recipeComments' value={newRecipe.recipeComments} onChange={(e) => setRecipeName(e.target.value)} /> */}
+                        <input type="text" name='recipeComments' value={recipeComments} onChange={(e) => setRecipeComments(e.target.value)} />
                     </div>
                     <button className="btn btn-primary mt-3" type='submit'>Save Recipe</button>
                 </form>
             </Card.Body>
         </Card>
         <br/>
-            {/* <p>{recipeInfo.extendedIngredients[0].name}</p>
-            <p>{recipeInfo.extendedIngredients[1].name}</p> */}
         </>
     )
 

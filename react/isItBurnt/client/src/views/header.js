@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -47,9 +47,10 @@ function Header(props) {
             {user ?
             <>
             <Navbar.Brand>Hello {user.firstName}</Navbar.Brand>
+            <Link to={`/dashboard/${user.userName}`}>My Recipies</Link>
               <NavDropdown drop='start' title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/recipies">Search Recipies</NavDropdown.Item>
-                <NavDropdown.Item href="/dashboard">My Recipies</NavDropdown.Item>
+                <NavDropdown.Item href="/dashboard" >My Recipies</NavDropdown.Item>
                 <NavDropdown.Item onClick={logout}>logout</NavDropdown.Item>
               </NavDropdown> 
             </>

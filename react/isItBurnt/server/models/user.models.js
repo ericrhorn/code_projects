@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, "An email is required"],
       validate: {
         validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
         message: "Please enter a valid email",
@@ -28,7 +28,7 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "password is required"],
+      required: [true, "A password is required"],
       minLength: [8, "password must be at least 8 characters"],
     },
     // confirm password is not here so it wont be saved to the database/collection

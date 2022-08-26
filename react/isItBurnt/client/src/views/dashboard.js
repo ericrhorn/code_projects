@@ -12,17 +12,32 @@ import Card from 'react-bootstrap/Card';
 const Dashboard = (props) => {
     const [recipeList, setRecipeList] = useState([]);
     // const {id} = useParams;
+    const {userName} = useParams();
 
+    // const {userName} = props;
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/recipe/show")
+        axios.get(`http://localhost:8000/api/recipe/my-recipies/${userName}`, 
+        {withCredentials: true}
+        )
         .then((res) => {
             console.log(res)
-            console.log(res.data)
+            console.log("data - ", res.data)
             setRecipeList(res.data);
         })
         .catch((err) => console.log(err.data));
     }, []);
+
+
+    // useEffect(() => {
+    //     axios.get("http://localhost:8000/api/recipe/show")
+    //     .then((res) => {
+    //         console.log(res)
+    //         console.log(res.data)
+    //         setRecipeList(res.data);
+    //     })
+    //     .catch((err) => console.log(err.data));
+    // }, []);
 
     const deleteHandler = (id) => {
         axios

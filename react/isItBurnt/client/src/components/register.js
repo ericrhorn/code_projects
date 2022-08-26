@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+// import { useNavigate } from '@gatsbyjs/reach-router';
 import { useNavigate } from "react-router-dom";
 
 const RegisterUser = (props) => {
@@ -44,17 +45,12 @@ const RegisterUser = (props) => {
     return (
         <div class="container mt-5 rounded-3 shadow p-3 bg-body" style={{width: 500, backgroundColor: 'white'}}>
         <h2>Register</h2>
-            {
-              confirmReg ?
-                  <h4 style={{color: "green"}}>{confirmReg}</h4>
-                  : null
-            }
         <form onSubmit={registerUser}>
           <div className='mb-3 mt-3'>
               <label>First Name</label><br/>
               {
               errs.firstName ?
-              <span className='error-text'>{errs.firstName.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.firstName.message}</span>
               : null
               }
               <input 
@@ -69,7 +65,7 @@ const RegisterUser = (props) => {
           <label>Last Name</label><br/>
               {
               errs.lastName ?
-              <span className='error-text'>{errs.lastName.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.lastName.message}</span>
               : null
               }
               <input className="form-control"
@@ -83,7 +79,7 @@ const RegisterUser = (props) => {
           <label>User Name</label><br/>
               {
               errs.userName ?
-              <span className='error-text'>{errs.userName.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.userName.message}</span>
               : null
               }
               <input className="form-control"
@@ -97,7 +93,7 @@ const RegisterUser = (props) => {
           <label>Email</label><br/>
               {
               errs.email ?
-              <span className='error-text'>{errs.email.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.email.message}</span>
               : null
               }
               <input className="form-control"
@@ -111,7 +107,7 @@ const RegisterUser = (props) => {
           <label>Password</label><br/>
               {
               errs.password ?
-              <span className='error-text'>{errs.password.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.password.message}</span>
               : null
               }
               <input className="form-control"
@@ -125,7 +121,7 @@ const RegisterUser = (props) => {
           <label>Password Confirmation</label><br/>
               {
               errs.confirmPassword ?
-              <span className='error-text'>{errs.confirmPassword.message}</span>
+              <span className='error-text' style={{color: "red"}}>{errs.confirmPassword.message}</span>
               : null
               }
               <input className="form-control"

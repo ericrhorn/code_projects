@@ -17,6 +17,7 @@ function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
 
 
+
   return (
     <>
     <BrowserRouter>
@@ -28,7 +29,7 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/recipies' element={<Recipies />} />
           <Route path='/meal_plan' element={<MealPlan />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard/:userName' element={<Dashboard />} />
           <Route path='/update/:id' element={<UpdateRecipe />} />
           <Route path='/one-recipe/:id' element={<OneRecipe />} />
           <Route path='/login' element={<LoginUser setIsLoggedin = {setIsLoggedin}/>} />

@@ -17,6 +17,7 @@ module.exports.authenticate = (req, res, next) => {
     } else {
       // err is null, so it is verified correctly
       console.log("user is authenticated");
+      req.jwtpayload = payload;
       next();
     }
   });
