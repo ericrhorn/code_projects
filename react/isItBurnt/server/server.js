@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 require('./config/mongoose.config')
 
 require('dotenv').config();
-console.log(process.env)
 
 app.use(cookieParser());
 
