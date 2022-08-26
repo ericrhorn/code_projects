@@ -10,6 +10,8 @@ import Dashboard from './views/dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UpdateRecipe from './views/updateRecipe';
 import OneRecipe from './views/oneRecipe';
+import DailyMealPlan from './views/showDailyMealPlan';
+import WeeklyMealPlan from './views/showWeeklyMealPlan';
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/recipies' element={<Recipies />} />
           <Route path='/meal_plan' element={<MealPlan />} />
+          <Route path='/daily' element={<DailyMealPlan />} />
+          <Route path='/weekly' element={<WeeklyMealPlan />} />
           <Route path='/dashboard/:userName' element={<Dashboard />} />
           <Route path='/update/:id' element={<UpdateRecipe />} />
           <Route path='/one-recipe/:id' element={<OneRecipe />} />

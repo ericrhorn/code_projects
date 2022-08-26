@@ -11,7 +11,7 @@ const addRecipe = (req, res) => {
   //   complete: true
   // })
 
-  newRecipeObject.createdBy = req.jwtpayload.id
+  newRecipeObject.createdBy = req.jwtpayload._id
   // newRecipeObject.createdBy = decodedJWT.payload._id
 
   newRecipeObject.save()
@@ -25,6 +25,7 @@ const addRecipe = (req, res) => {
 const showRecipe = (req, res) => {
   Recipe.find()
   .populate("createdBy", "userName email")
+  console.log(createdBy)
   // Recipe.find({})
     // .collation({ locale: "en", strength: 2 })
     // .sort({ petType: 1 })

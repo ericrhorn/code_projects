@@ -13,6 +13,7 @@ const Dashboard = (props) => {
     const [recipeList, setRecipeList] = useState([]);
     // const {id} = useParams;
     const {userName} = useParams();
+    console.log('username is', userName)
 
     // const {userName} = props;
 
@@ -21,7 +22,7 @@ const Dashboard = (props) => {
         {withCredentials: true}
         )
         .then((res) => {
-            console.log(res)
+            console.log("what is", res)
             console.log("data - ", res.data)
             setRecipeList(res.data);
         })
@@ -65,18 +66,19 @@ const Dashboard = (props) => {
                             </Card.Text>
                             <a href={recipe.recipeUrl}>Full Recipe at {recipe.recipeUrlName}</a>
                         </Card.Body>
-                        <div style={{alignItems: 'center', justifyContent: 'center', display: "flex"}}>
-                        <Link to={`/one-recipe/${recipe._id}`}>
-                        <button className="btn btn-outline-primary btn-sm mb-2" style={{width:100}} >Full Recipe</button>
-                        </Link>
-                        <Link to={`/update/${recipe._id}`}>
-                        <button className="btn btn-outline-success btn-sm mb-2" style={{width:100}} >Edit</button>
-                        </Link>
-                        <button className="btn btn-outline-danger btn-sm mb-2" style={{width:100}} onClick={() => deleteHandler(recipe._id)}>Delete</button>
+                        <div>
+                            <div className="text-center">
+                                <Link to={`/one-recipe/${recipe._id}`}>
+                                <button className="btn btn-outline-primary btn-sm mb-2" style={{width:100}} >Full Recipe</button>
+                                </Link>
+                                <Link to={`/update/${recipe._id}`}>
+                                <button className="btn btn-outline-success btn-sm mb-2" style={{width:100}} >Edit</button>
+                                </Link>
+                                <button className="btn btn-outline-danger btn-sm mb-2" style={{width:100}} onClick={() => deleteHandler(recipe._id)}>Delete</button>
+                            </div>
                         </div>
-
                     </Card>
-                    </Col>
+                    </Col>  
                     ))}
             </Row>
         </Container>

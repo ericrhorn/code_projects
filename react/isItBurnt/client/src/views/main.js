@@ -10,8 +10,6 @@ import Button from 'react-bootstrap/Button';
 
 const Main = (props) => {
 
-
-
     return (
         <>
         <h1>Lets Start Cooking!</h1>

@@ -65,8 +65,7 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
-                    <div>
-                    {/* <div style={{display: 'none'}}> */}
+                    <div >
                         <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                         <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
                         <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeUrl(e.target.value)} />

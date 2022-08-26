@@ -47,10 +47,9 @@ function Header(props) {
             {user ?
             <>
             <Navbar.Brand>Hello {user.firstName}</Navbar.Brand>
-            <Link to={`/dashboard/${user.userName}`}>My Recipies</Link>
               <NavDropdown drop='start' title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/recipies">Search Recipies</NavDropdown.Item>
-                <NavDropdown.Item href="/dashboard" >My Recipies</NavDropdown.Item>
+                <NavDropdown.Item href={`/dashboard/${user.userName}`} >My Recipies</NavDropdown.Item>
                 <NavDropdown.Item onClick={logout}>logout</NavDropdown.Item>
               </NavDropdown> 
             </>

@@ -55,7 +55,7 @@ const UpdateRecipe = (props) => {
             console.log(res)
             console.log(res.data)
             alert('This recipe has been updated')
-            navigate('/')
+            // navigate('/')
         })
         .catch((err) => {
             console.log(err)
