@@ -4,10 +4,6 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
-
-
-
 const SearchRes = ({recipe, recipeInfo, value}) => {
 
     const [recipeName, setRecipeName] = useState(value)
@@ -57,15 +53,14 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
     return (
         <>
         <Card>
-            <Card.Img variant="top" src={recipe.image} />
+            <Card.Img style={{padding:10}} variant="top" src={recipe.image} />
             <Card.Body>
                 <Card.Title>{recipe.title}</Card.Title>
                 <Card.Text>
-                {/* {recipe.id} */}
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
-                    <div >
+                    <div style={{display: "none"}}>
                         <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                         <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
                         <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeUrl(e.target.value)} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cookingImg from '../images/cooking.jpg'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';

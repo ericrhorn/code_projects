@@ -1,22 +1,12 @@
-import React, { useEffect, useState} from 'react';
+import React, {useState} from 'react';
+
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import Main from '../views/main';
-import {navigate} from '@gatsbyjs/reach-router'
-import cookingImg from '../images/cooking.jpg'
-import Image, { propTypes } from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Form from 'react-bootstrap/Form';
-import RecipeList from '../components/recipieList';
+
 import DailyMealPlan from './showDailyMealPlan';
 import WeeklyMealPlan from './showWeeklyMealPlan';
-
-
-
 
 
 
@@ -44,6 +34,12 @@ const MealPlan = (props) => {
                 </Col>
             </Row>
             <Row>
+                {
+                (show === 'daily') ? <DailyMealPlan /> : null
+                }
+                {
+                (show === 'weekly') ? <WeeklyMealPlan /> : null
+                }
             </Row>
         </Container>
         </>

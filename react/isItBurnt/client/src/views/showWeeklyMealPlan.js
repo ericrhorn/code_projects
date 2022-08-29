@@ -1,21 +1,13 @@
-import React, { useEffect, useState} from 'react';
-import Button from 'react-bootstrap/Button';
+import React, {useState} from 'react';
 import axios from 'axios';
-import Main from '../views/main';
-import {navigate} from '@gatsbyjs/reach-router'
-import cookingImg from '../images/cooking.jpg'
-import Image, { propTypes } from 'react-bootstrap/Image'
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
-import RecipeList from '../components/recipieList';
+import Button from 'react-bootstrap/Button';
 
-
-
-
+import WeeklyyMealView from './weeklyMealView';
 
 
 const WeeklyMealPlan = (props) => {
@@ -52,7 +44,7 @@ const WeeklyMealPlan = (props) => {
         setMealCalories(e.target.value)
     }
 
-    const [mealPlanData, setMealPlanData] = useState([]);
+    const [mealPlanData, setMealPlanData] = useState(null);
     const [mealDiet, setMealDiet] = useState('');
     const [mealCalories, setMealCalories] = useState('');
 
@@ -96,11 +88,7 @@ const WeeklyMealPlan = (props) => {
                         </Button>
                     </Col>
                     <Col lg={9} style={{marginBottom:50}}>
-                    {/* <Row className="g-4">
-                            {mealPlanData.map((mealData) => (
-                                <RecipeList key={mealData.id} mealPlanData={mealData}/>
-                            ))}
-                        </Row> */}
+                    {mealPlanData && <WeeklyyMealView mealData={mealPlanData}/>}
                     </Col>
                 </Row>
             </Container>

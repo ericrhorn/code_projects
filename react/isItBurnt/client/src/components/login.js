@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const LoginUser = (props) => {
 
     const navigate = useNavigate();
-    const {isLoggedin, setIsLoggedin} = props;
+    const {setIsLoggedin} = props;
     const [errs, setErrs] = useState('');
 
     const [user, setUser] = useState({

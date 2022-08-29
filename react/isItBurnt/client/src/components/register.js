@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 const RegisterUser = (props) => {
 
   const navigate = useNavigate();
-  const {isLoggedin, setIsLoggedin} = props;
-  const [confirmReg, setConfirmReg] = useState('');
+  const {setIsLoggedin} = props;
   const [errs, setErrs] = useState({});
 
   const [user, setUser] = useState({
@@ -32,7 +31,6 @@ const RegisterUser = (props) => {
     .then((res) => {
       console.log(res.data);
       setIsLoggedin(true);
-      setConfirmReg('Thank you for registering');
       setErrs({})
       navigate('/');
     })

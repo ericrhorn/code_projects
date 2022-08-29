@@ -10,7 +10,6 @@ import Card from 'react-bootstrap/Card';
 
 
 const OneRecipe = (props) => {
-    // const [recipeName, setRecipeName] = useState([]);
     const [recipe, setRecipe] = useState({
         recipeName : '',
         recipeImage : '',
@@ -50,7 +49,7 @@ const OneRecipe = (props) => {
             <Row>
                 <Col md={4} style={{marginBottom: 30}}>
                     <Card>
-                    <Card.Img variant="top" src={recipe.recipeImage} />
+                    <Card.Img style={{padding:10}} variant="top" src={recipe.recipeImage} />
                     <Card.Body>
                         <Card.Title>{recipe.recipeName}</Card.Title>
                         <Card.Text>

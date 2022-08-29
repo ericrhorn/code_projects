@@ -11,11 +11,9 @@ import Card from 'react-bootstrap/Card';
 
 const Dashboard = (props) => {
     const [recipeList, setRecipeList] = useState([]);
-    // const {id} = useParams;
     const {userName} = useParams();
     console.log('username is', userName)
 
-    // const {userName} = props;
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/recipe/my-recipies/${userName}`, 
@@ -27,29 +25,19 @@ const Dashboard = (props) => {
             setRecipeList(res.data);
         })
         .catch((err) => console.log(err.data));
-    }, []);
+    }, [userName]);
 
-
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/recipe/show")
-    //     .then((res) => {
-    //         console.log(res)
-    //         console.log(res.data)
-    //         setRecipeList(res.data);
-    //     })
-    //     .catch((err) => console.log(err.data));
-    // }, []);
 
     const deleteHandler = (id) => {
         axios
-          .delete(`http://localhost:8000/api/recipe/delete/${id}`)
-          .then((res) => {
+            .delete(`http://localhost:8000/api/recipe/delete/${id}`)
+            .then((res) => {
             console.log(res.data)
             setRecipeList(recipeList.filter((recipe) => recipe._id !== id))
             })
             
-          .catch((err) => console.log(err.data));
-      };
+            .catch((err) => console.log(err.data));
+        };
 
     return (
         <Container>
@@ -58,7 +46,7 @@ const Dashboard = (props) => {
                 {recipeList.map((recipe, idx) => (
                     <Col key={idx} md={4} style={{marginBottom: 30}}>
                         <Card>
-                        <Card.Img variant="top" src={recipe.recipeImage} />
+                        <Card.Img style={{padding:10}} variant="top" src={recipe.recipeImage} />
                         <Card.Body>
                             <Card.Title>{recipe.recipeName}</Card.Title>
                             <Card.Text>
