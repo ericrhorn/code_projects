@@ -44,12 +44,6 @@ const MealPlan = (props) => {
                 </Col>
             </Row>
             <Row>
-                {
-                (show === 'daily') ? <DailyMealPlan /> : null
-                }
-                {
-                (show === 'weekly') ? <WeeklyMealPlan /> : null
-                }
             </Row>
         </Container>
         </>
