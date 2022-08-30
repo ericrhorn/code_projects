@@ -4,27 +4,27 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const SearchRes = ({recipe, recipeInfo, value}) => {
+const SearchRes = ({recipe, recipeInfo}) => {
 
-    const [recipeName, setRecipeName] = useState(recipeInfo?.title)
-    const [recipeImage, setRecipeImage] = useState(recipeInfo?.image)
-    const [recipeUrl, setRecipeUrl] = useState(recipeInfo?.sourceUrl)
-    const [recipeUrlName, setRecipeUrlName] = useState(recipeInfo?.sourceName)
-    const [recipeSummary, setRecipeSummary] = useState(recipeInfo?.summary)
-    const [recipeInstructions, setRecipeInstructions] = useState(recipeInfo?.instructions)
+    const [recipeName, setRecipeName] = useState('')
+    const [recipeImage, setRecipeImage] = useState('')
+    const [recipeUrl, setRecipeUrl] = useState('')
+    const [recipeUrlName, setRecipeUrlName] = useState('')
+    const [recipeSummary, setRecipeSummary] = useState('')
+    const [recipeInstructions, setRecipeInstructions] = useState('')
     const [recipeComments, setRecipeComments] = useState('')
+
+    useEffect(() => {
+        setRecipeName(recipeInfo.title || '');
+        setRecipeImage(recipeInfo.image || '');
+        setRecipeUrl(recipeInfo.sourceUrl || '');
+        setRecipeUrlName(recipeInfo.sourceName || '');
+        setRecipeSummary(recipeInfo.summary || '');
+        setRecipeInstructions(recipeInfo.instructions || '');
+    }, [recipeInfo]) 
 
     const newRecipeHandler = (e) => {
         e.preventDefault();
-        console.log({
-            recipeName,
-            recipeImage,
-            recipeUrl,
-            recipeUrlName,
-            recipeComments,
-            recipeSummary,
-            recipeInstructions,
-        }) 
         axios.post('http://localhost:8000/api/recipe/create-recipe', {
             recipeName,
             recipeImage,
@@ -57,12 +57,13 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                 <form onSubmit={newRecipeHandler}>
                     <div>
                     {/* <div style={{display: 'none'}}> */}
-                        <input type="text" name='recipeName' value={recipeInfo?.title} onChange={(e) => setRecipeName(e.target.value)} />
-                        <input type="text" name='recipeImage' value={recipeInfo?.image} onChange={(e) => setRecipeImage(e.target.value)} />
-                        <input type="text" name='recipeUrl' value={recipeInfo?.sourceUrl} onChange={(e) => setRecipeUrl(e.target.value)} />
-                        <input type="text" name='recipeUrlName' value={recipeInfo?.sourceName} onChange={(e) => setRecipeUrlName(e.target.value)} />
-                        <textarea type="textarea" name='recipeSummary' value={recipeInfo?.summary} onChange={(e) => setRecipeSummary(e.target.value)} />
-                        <textarea type="textarea" name='recipeInstructions' value={recipeInfo?.instructions} onChange={(e) => setRecipeInstructions(e.target.value)} />
+                        <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
+                        <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
+                        <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeUrl(e.target.value)} />
+                        <input type="text" name='recipeUrlName' value={recipeUrlName} onChange={(e) => setRecipeUrlName(e.target.value)} />
+                        <textarea type="textarea" name='recipeSummary' value={recipeSummary} onChange={(e) => setRecipeSummary(e.target.value)} />
+                        <textarea type="textarea" name='recipeInstructions' value={recipeInstructions} onChange={(e) => setRecipeInstructions(e.target.value)} />
+                        <input type="text" name='recipeComments' value={recipeComments} onChange={(e) => setRecipeComments(e.target.value)} />
                     </div>
                     <button className="btn btn-primary mt-3" type='submit'>Save Recipe</button>
                 </form>
