@@ -18,17 +18,14 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 <div align='center'>Is It Burnt</div>
 
 <div align='center'>
-
-![home](./home-page.pgn')
-
-<kbd>
 <img src="./home-page.png">
 </kbd>
-
-<img src='./home-page.pgn'>
-
-<h1>Hello</h1>
-
+<kbd>
+<img src="./my-res.png">
+</kbd>
+<kbd>
+<img src="./search-res.png">
+</kbd>
 </div>
 
 
