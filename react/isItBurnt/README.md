@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Is It Burnt?
+>A recipe app for everyday use
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+
+* [Info] (#info)
+* [Project Demo] (#project-demo)
+* [Project Video] (#project-video)
+* [Technologies] (#technologies)
+* [Setup] (#setup)
+* [Features] (#features)
+* [Inspiration] (#inspiration)
+* [Features] (#features)
+* [Contact] (#contaact)
+
+
+## Contact
+Created by [Eric Horn](www.linkedin.com/in/eric-horn-60143454)
+Contac me with any questions
+
 
 ## Available Scripts
 
