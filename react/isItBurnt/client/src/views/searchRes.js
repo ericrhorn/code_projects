@@ -4,29 +4,24 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const SearchRes = ({recipe, recipeInfo, value}) => {
+const SearchRes = ({recipe, recipeInfo}) => {
 
-    const [recipeName, setRecipeName] = useState(value)
-    useEffect(()=> setRecipeName(recipeInfo.title), [recipeInfo.title])
-    const [recipeImage, setRecipeImage] = useState(value)
-    useEffect(()=> setRecipeImage(recipeInfo.image), [recipeInfo.image])
-    const [recipeUrl, setRecipeUrl] = useState(value)
-    useEffect(()=> setRecipeUrl(recipeInfo.sourceUrl), [recipeInfo.sourceUrl])
-    const [recipeUrlName, setRecipeUrlName] = useState(value)
-    useEffect(()=> setRecipeUrlName(recipeInfo.sourceName), [recipeInfo.sourceName])
-    const [recipeSummary, setRecipeSummary] = useState(value)
-    useEffect(()=> setRecipeSummary(recipeInfo.summary), [recipeInfo.summary])
-    const [recipeInstructions, setRecipeInstructions] = useState(value)
-    useEffect(()=> setRecipeInstructions(recipeInfo.instructions), [recipeInfo.instructions])
-
+    const [recipeName, setRecipeName] = useState('')
+    const [recipeImage, setRecipeImage] = useState('')
+    const [recipeUrl, setRecipeUrl] = useState('')
+    const [recipeUrlName, setRecipeUrlName] = useState('')
+    const [recipeSummary, setRecipeSummary] = useState('')
+    const [recipeInstructions, setRecipeInstructions] = useState('')
     const [recipeComments, setRecipeComments] = useState('')
 
-    // const [recipeName, setRecipeName] = useState(recipeInfo?.title)
-    // const [recipeImage, setRecipeImage] = useState(recipeInfo?.image)
-    // const [recipeUrl, setRecipeUrl] = useState(recipeInfo?.sourceUrl)
-    // const [recipeUrlName, setRecipeUrlName] = useState(recipeInfo.sourceName)
-    // const [recipeSummary, setRecipeSummary] = useState(recipeInfo.summary)
-    // const [recipeInstructions, setRecipeInstructions] = useState(recipeInfo.instructions)
+    useEffect(() => {
+        setRecipeName(recipeInfo.title || '');
+        setRecipeImage(recipeInfo.image || '');
+        setRecipeUrl(recipeInfo.sourceUrl || '');
+        setRecipeUrlName(recipeInfo.sourceName || '');
+        setRecipeSummary(recipeInfo.summary || '');
+        setRecipeInstructions(recipeInfo.instructions || '');
+    }, [recipeInfo]) 
 
     const newRecipeHandler = (e) => {
         e.preventDefault();
@@ -60,7 +55,8 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
-                    <div style={{display: "none"}}>
+                    <div>
+                    {/* <div style={{display: 'none'}}> */}
                         <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                         <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeImage(e.target.value)} />
                         <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeUrl(e.target.value)} />
