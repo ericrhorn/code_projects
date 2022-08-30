@@ -23,9 +23,11 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 <kbd>
 <img src="./my-res.png">
 </kbd>
+
 <kbd>
 <img src="./search-res.png">
 </kbd>
+
 </div>
 
 
