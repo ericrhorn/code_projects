@@ -10,13 +10,12 @@ import Card from 'react-bootstrap/Card';
 
 
 const OneRecipe = (props) => {
-    // const [recipeName, setRecipeName] = useState([]);
     const [recipe, setRecipe] = useState({
         recipeName : '',
         recipeImage : '',
         recipeUrl : '',
         recipeUrlName : '',
-        // recipeComments : '',
+        recipeComments : '',
         recipeSummary : '',
         recipeInstructions : '',
     });
@@ -50,7 +49,7 @@ const OneRecipe = (props) => {
             <Row>
                 <Col md={4} style={{marginBottom: 30}}>
                     <Card>
-                    <Card.Img variant="top" src={recipe.recipeImage} />
+                    <Card.Img style={{padding:10}} variant="top" src={recipe.recipeImage} />
                     <Card.Body>
                         <Card.Title>{recipe.recipeName}</Card.Title>
                         <Card.Text>
@@ -59,14 +58,27 @@ const OneRecipe = (props) => {
                     </Card.Body>
                 </Card>
                 </Col>
+                <Col md={4} style={{marginBottom: 30}}>
+                    <Card>
+                    <Card.Body>
+                    <Card.Title>Recipe Comments</Card.Title>
+                        <Card.Text>
+                            {recipe.recipeComments}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+                </Col>
             </Row>
-        <h4>Summary</h4>
-        <div dangerouslySetInnerHTML={prettySummary()}/>
-        <br/>
-        <h4>Instructions</h4>
-        <div dangerouslySetInnerHTML={prettyInstructions()}/>
-        <p>{recipe.cuisines}</p>
-        <br />
+            <Row>
+                <div style={{marginBottom:50}}>
+                    <h4>Summary</h4>
+                    <div dangerouslySetInnerHTML={prettySummary()}/>
+                </div>
+                <div style={{marginBottom:50}}>
+                <h4>Instructions</h4>
+                    <div dangerouslySetInnerHTML={prettyInstructions()}/>
+                </div>
+            </Row>
         </Container>
     )
 }

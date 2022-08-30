@@ -61,10 +61,10 @@ const login = async (req, res) => {
                     user: userRecord,
                 });
             }
-        } catch (error) {
-            console.log('login error', error)
-            res.status(400).json({error: "invalid email or password"});
-        }
+        } catch(error) {
+        console.log("login error", error)
+        res.status(400).json(error);
+        };
     }
 }
 

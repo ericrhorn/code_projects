@@ -4,24 +4,7 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
-
-
-
 const SearchRes = ({recipe, recipeInfo, value}) => {
-
-    // const [recipeName, setRecipeName] = useState(value)
-    // useEffect(()=> setRecipeName(recipeInfo.title), [recipeInfo.title])
-    // const [recipeImage, setRecipeImage] = useState(value)
-    // useEffect(()=> setRecipeImage(recipeInfo.image), [recipeInfo.image])
-    // const [recipeUrl, setRecipeUrl] = useState(value)
-    // useEffect(()=> setRecipeUrl(recipeInfo.sourceUrl), [recipeInfo.sourceUrl])
-    // const [recipeUrlName, setRecipeUrlName] = useState(value)
-    // useEffect(()=> setRecipeUrlName(recipeInfo.sourceName), [recipeInfo.sourceName])
-    // const [recipeSummary, setRecipeSummary] = useState(value)
-    // useEffect(()=> setRecipeSummary(recipeInfo.summary), [recipeInfo.summary])
-    // const [recipeInstructions, setRecipeInstructions] = useState(value)
-    // useEffect(()=> setRecipeInstructions(recipeInfo.instructions), [recipeInfo.instructions])
 
     const [recipeName, setRecipeName] = useState(recipeInfo?.title)
     const [recipeImage, setRecipeImage] = useState(recipeInfo?.image)
@@ -29,17 +12,28 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
     const [recipeUrlName, setRecipeUrlName] = useState(recipeInfo?.sourceName)
     const [recipeSummary, setRecipeSummary] = useState(recipeInfo?.summary)
     const [recipeInstructions, setRecipeInstructions] = useState(recipeInfo?.instructions)
+    const [recipeComments, setRecipeComments] = useState('')
 
     const newRecipeHandler = (e) => {
         e.preventDefault();
+        console.log({
+            recipeName,
+            recipeImage,
+            recipeUrl,
+            recipeUrlName,
+            recipeComments,
+            recipeSummary,
+            recipeInstructions,
+        }) 
         axios.post('http://localhost:8000/api/recipe/create-recipe', {
             recipeName,
             recipeImage,
             recipeUrl,
             recipeUrlName,
+            recipeComments,
             recipeSummary,
             recipeInstructions,
-        })
+        }, {withCredentials: true})
         .then((res) => {
             console.log(res)
             console.log(res.data)
@@ -51,16 +45,13 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
     }
 
 
-
-
     return (
         <>
         <Card>
-            <Card.Img variant="top" src={recipe.image} />
+            <Card.Img style={{padding:10}} variant="top" src={recipe.image} />
             <Card.Body>
                 <Card.Title>{recipe.title}</Card.Title>
                 <Card.Text>
-                {/* {recipe.id} */}
                 </Card.Text>
                 <a href={recipeInfo.sourceUrl}>Full Recipe at {recipeInfo.sourceName}</a>
                 <form onSubmit={newRecipeHandler}>
@@ -72,15 +63,12 @@ const SearchRes = ({recipe, recipeInfo, value}) => {
                         <input type="text" name='recipeUrlName' value={recipeInfo?.sourceName} onChange={(e) => setRecipeUrlName(e.target.value)} />
                         <textarea type="textarea" name='recipeSummary' value={recipeInfo?.summary} onChange={(e) => setRecipeSummary(e.target.value)} />
                         <textarea type="textarea" name='recipeInstructions' value={recipeInfo?.instructions} onChange={(e) => setRecipeInstructions(e.target.value)} />
-                        {/* <input type="text" name='recipeComments' value={newRecipe.recipeComments} onChange={(e) => setRecipeName(e.target.value)} /> */}
                     </div>
                     <button className="btn btn-primary mt-3" type='submit'>Save Recipe</button>
                 </form>
             </Card.Body>
         </Card>
         <br/>
-            {/* <p>{recipeInfo.extendedIngredients[0].name}</p>
-            <p>{recipeInfo.extendedIngredients[1].name}</p> */}
         </>
     )
 

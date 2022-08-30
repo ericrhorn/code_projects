@@ -5,7 +5,8 @@ import Container from "react-bootstrap/esm/Container";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
-
+import Form from 'react-bootstrap/Form';
+// import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,13 +16,12 @@ const UpdateRecipe = (props) => {
     const [recipeUrl, setRecipeUrl] = useState('');
     const [recipeUrlName, setRecipeUrlName] = useState('');
     const [recipeComments, setRecipeComments] = useState('');
-    // const [recipe, setRecipe] = useState({
-    //     recipeName : '',
-    //     recipeImage : '',
-    //     recipeUrl : '',
-    //     recipeUrlName : '',
-    // });
-     const {id} = useParams();
+    const [recipeSummary, setRecipeSummary] = useState('');
+    const [recipeInstructions, setRecipeInstructions] = useState('');
+
+    const {id} = useParams();
+
+    // const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -34,6 +34,8 @@ const UpdateRecipe = (props) => {
             setRecipeUrl(res.data.recipeUrl)
             setRecipeUrlName(res.data.recipeUrlName)
             setRecipeComments(res.data.recipeComments)
+            setRecipeSummary(res.data.recipeSummary)
+            setRecipeInstructions(res.data.recipeInstructions)
         })
         .catch((err) => console.log(err.data));
     }, [id]);
@@ -45,11 +47,15 @@ const UpdateRecipe = (props) => {
             recipeImage,
             recipeUrl,
             recipeUrlName,
+            recipeComments,
+            recipeSummary,
+            recipeInstructions,
         })
         .then((res) => {
             console.log(res)
             console.log(res.data)
             alert('This recipe has been updated')
+            // navigate('/')
         })
         .catch((err) => {
             console.log(err)
@@ -57,20 +63,12 @@ const UpdateRecipe = (props) => {
     }
 
     return (
-        <Container>
-            <form onSubmit={updateRecipeHandler}>
-            <input type="text" name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
-            <input type="text" name='recipeImage' value={recipeImage} onChange={(e) => setRecipeName(e.target.value)} />
-            <input type="text" name='recipeUrl' value={recipeUrl} onChange={(e) => setRecipeName(e.target.value)} />
-            <input type="text" name='recipeUrlName' value={recipeUrlName} onChange={(e) => setRecipeName(e.target.value)} /> 
-            <input type="text" name='recipeComments' value={recipeComments} onChange={(e) => setRecipeName(e.target.value)} />
-            <button className="btn btn-primary mt-3" type='submit'>Save Recipe</button>
-            </form>
+        <Container style={{paddingBottom:50}}>
             <h1 style={{marginBottom: 40}}>Update Recipe</h1>
             <Row>
                 <Col md={4} style={{marginBottom: 30}}>
                     <Card>
-                    <Card.Img variant="top" src={recipeImage} />
+                    <Card.Img style={{padding:10}} variant="top" src={recipeImage} />
                     <Card.Body>
                         <Card.Title>{recipeName}</Card.Title>
                         <Card.Text>
@@ -79,6 +77,31 @@ const UpdateRecipe = (props) => {
                     </Card.Body>
                 </Card>
                 </Col>
+            </Row>
+            <Row>
+                <Form onSubmit={updateRecipeHandler}>
+                    <Row>
+                        <Form.Group style={{width:300}} className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Recipe Name</Form.Label>
+                            <Form.Control name='recipeName' value={recipeName} onChange={(e) => setRecipeName(e.target.value)}/>                        
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Control as="textarea" rows={3} name='recipeComments' value={recipeComments} onChange={(e) => setRecipeComments(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Summary</Form.Label>
+                            <Form.Control as="textarea" rows={5} name='recipeSummary' value={recipeSummary} onChange={(e) => setRecipeSummary(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Instructions</Form.Label>
+                            <Form.Control as="textarea" rows={3} name='recipeInstructions' value={recipeInstructions} onChange={(e) => setRecipeInstructions(e.target.value)}/>
+                        </Form.Group>
+                    </Row>
+                    <button className="btn btn-primary mt-3" type='submit'>Save Recipe</button>
+                </Form>
             </Row>
         </Container>
     )

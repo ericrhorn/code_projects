@@ -8,7 +8,6 @@ const RecipeList = ({recipe, props}) => {
 
 
     const [recipeInfo, setRecipeInfo] = useState({});
-    // const [recipeInfo, setRecipeInfo] = useState([]);
 
     useEffect (() => {
         axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=a204b3541d2f4c0da0e019afe998f3c6`)

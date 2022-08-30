@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, "An email is required"],
       validate: {
         validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
         message: "Please enter a valid email",
@@ -28,11 +28,10 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "password is required"],
+      required: [true, "A password is required"],
       minLength: [8, "password must be at least 8 characters"],
     },
-    // confirm password is not here so it wont be saved to the database/collection
-    // only need one copy of a password if they match
+
   },
   { timestamps: true }
 );
@@ -51,13 +50,11 @@ userSchema.pre("validate", function (next) {
   if (this.password !== this.confirmPassword) {
     this.invalidate("confirmPassword", "Password must match confirm password");
   }
-  // run the next step in the process
   next();
 });
 
 userSchema.pre("save", function (next) {
   // encript the password BEFORE it is saved to the DB
-  // we know the passwords match already
   console.log("inside pre-save");
   bcrypt
     .hash(this.password, 10)

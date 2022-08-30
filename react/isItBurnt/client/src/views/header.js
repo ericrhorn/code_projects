@@ -11,7 +11,7 @@ function Header(props) {
 
   const navigate = useNavigate();
   const [user, setUser] = useState(null)
-  const {isLoggedin, setIsLoggedin} = props;
+  const {isLoggedin} = props;
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/user/current-user', {withCredentials: true})
@@ -49,7 +49,8 @@ function Header(props) {
             <Navbar.Brand>Hello {user.firstName}</Navbar.Brand>
               <NavDropdown drop='start' title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/recipies">Search Recipies</NavDropdown.Item>
-                <NavDropdown.Item href="/dashboard">My Recipies</NavDropdown.Item>
+                <NavDropdown.Item href="/meal_plan">Make Meal Plan</NavDropdown.Item>
+                <NavDropdown.Item href={`/dashboard/${user.userName}`} >My Recipies</NavDropdown.Item>
                 <NavDropdown.Item onClick={logout}>logout</NavDropdown.Item>
               </NavDropdown> 
             </>
