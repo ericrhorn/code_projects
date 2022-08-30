@@ -10,15 +10,37 @@
 * [Setup](#setup)
 * [Features](#features)
 * [Inspiration](#inspiration)
-* [Features](#features)
 * [Contact](#contaact)
 
 ## Info
 
 
+## Project Demo
+
+
+## Project Video
+
+
+## Technologies
+
+
+## Setup
+
+
+## Features
+
+
+## Inpiration
+
+
 ## Contact
 Created by [Eric Horn](www.linkedin.com/in/eric-horn-60143454)
 Contac me with any questions
+
+
+
+
+
 
 
 ## Available Scripts
