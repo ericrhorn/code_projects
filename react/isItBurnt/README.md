@@ -13,6 +13,10 @@
 * [Contact](#contaact)
 
 ## Info
+Is It Burnt is an easy to use web application designed to allow users to create an account and search and save recipes to their profile.
+
+<div align='center'>Is It Burnt</div>
+
 
 
 ## Project Demo
