@@ -25,6 +25,7 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 <img src="/home-page.png">
 </kbd>
 <img src='/home-page.pgn'>
+<h1>Hello</h1>
 </div>
 
 
