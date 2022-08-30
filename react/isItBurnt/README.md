@@ -18,7 +18,8 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 <div align='center'>Is It Burnt</div>
 
 <div align='center>
-<img src='./home-page.pgn'>
+![home](./home-page.pgn')
+<!-- <img src='./home-page.pgn'> -->
 </div>
 
 
@@ -42,7 +43,7 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 
 ## Contact
 Created by [Eric Horn](www.linkedin.com/in/eric-horn-60143454)
-Contac me with any questions
+Contact me with any questions
 
 
 
