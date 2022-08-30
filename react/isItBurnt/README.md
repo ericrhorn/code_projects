@@ -17,6 +17,9 @@ Is It Burnt is an easy to use web application designed to allow users to create 
 
 <div align='center'>Is It Burnt</div>
 
+<div align='center>
+<img src='./home-page.pgn'>
+</div>
 
 
 ## Project Demo
