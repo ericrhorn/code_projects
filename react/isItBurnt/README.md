@@ -3,15 +3,17 @@
 
 ## Table of Contents
 
-* [Info] (#info)
-* [Project Demo] (#project-demo)
-* [Project Video] (#project-video)
-* [Technologies] (#technologies)
-* [Setup] (#setup)
-* [Features] (#features)
-* [Inspiration] (#inspiration)
-* [Features] (#features)
-* [Contact] (#contaact)
+* [Info](#info)
+* [Project Demo](#project-demo)
+* [Project Video](#project-video)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Inspiration](#inspiration)
+* [Features](#features)
+* [Contact](#contaact)
+
+## Info
 
 
 ## Contact
