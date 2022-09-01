@@ -12,56 +12,53 @@
     {% load static %}
     <!-- <link rel="stylesheet" href="{% static 'css/dash1.css' %}">  -->
 </head>
-<body>
-<h1>Welcome to the dashboard, {{ user.first_name }}</h1>
-<h4>My Events</h4>
-<p>{{ user.first_name }}</p>
-<p>{{ user.last_name }}</p>
-<p>{{ user.username }}</p>
-<p>{{ user.email }}</p>
-<p>{{ event_list }}</p>
-<div class="container">
+<style>
 
-    <div class="card">
-        <div class='row card-group  mx-1 my-1'>
-            {% for event in event_list %}
-                {% if event.host.id == request.user.id %}
-                <div class="col-6 my-1">
-                <div class="card p-1">
+.card-img-top{
+    width: 100%;
+    height: 12vw;
+    object-fit: cover;
+}
+
+</style>
+
+
+<body>
+<h2>Here are your Events, {{ user.first_name }}</h2>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 p-4">
+        {% for event in event_list %}
+        {% if event.host.id == request.user.id %}
+        <div class="card p-2 m-1" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-lg-4">
+                    <img class="card-img-top" src="{% static 'party_image/birthday.jpeg' %}" alt="birthday-image">
+                </div>
+                <div class="col-lg-8">
                     <div class="card-body">
-                        <h4>{{event.event_name}}</h4>
-                   
+                        <h4 class="card-title">{{event.event_name}}</h4>
+                        <p class="card-text"> Location: {{event.venue.location}}</p>
+                        <p class="card-text">Date: {{event.start_date|date:"SHORT_DATE_FORMAT"}}</p>
+                        <p class="card-text">Start Time: {{event.start_time}}</p>
+                        <div style="display: flex;">
+                            <button class="btn btn-outline-success btn-sm m-1">View Event</button>
+                            <button class="btn btn-outline-primary btn-sm m-1">Edit</button>
+                            <form action="/{{ event.id }}/delete" method='POST'>
+                                {% csrf_token %}
+                                <input type="button" class="btn btn-outline-danger btn-sm m-1" value=Remove>
+                            </form> 
+                        </div>
                     </div>
-                    <span>
-                        <p class="card-text">filler data</p>
-                    </span>
-                    
                 </div>
-                </div>
-                {% endif %}
-            {% endfor %}
+            </div>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-    <div class="events-display">
-        <p>{{ user.first_name }}</p>
-        <p>{{ user.last_name }}</p>
-        <p>{{ user.username }}</p>
-        <p>{{ user.email }}</p>
-
-        <p>{{ event_list }}</p>
-
+    <!-- <div class="events-display">
         <section>
             <h4>My Events</h4>
             <table class="table">
@@ -81,11 +78,11 @@
                 {% for event in event_list %}
                     {% if event.host.id == request.user.id %}
                         <tr>
-                            <!-- <td><a href="/{{ trip.id }}/info">{{trip.destination}}</a></td> -->
+                            
                             <td>{{event.event_name}}</td>
                             <td>{{event.venue.location}}</td>
                             <td>{{event.start_date|date:"SHORT_DATE_FORMAT"}}</td>
-                            <!-- <td>{{trip.end_date|date:"SHORT_DATE_FORMAT"}}</td> -->
+                           
                             <td>{{event.start_time}}</td>
                             <td>{{event.price}}</td>
                             <td>{{event.host.username}}</td>
@@ -109,7 +106,7 @@
                 </tbody>
             </table>
         </section>
-    </div>
+    </div> -->
 </body>
 </html>
 {% endblock content %}

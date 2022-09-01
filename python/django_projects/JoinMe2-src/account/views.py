@@ -127,6 +127,14 @@ def account_view(request, *args, **kwargs):
         context['profile_img'] = account.profile_img.url
         context['hide_email'] = account.hide_email
 
+        # try:
+        #     event_list = Event.objects.get().all(host=account)
+        # except Event.DoesNotExist:
+        #     event_list = Event(user=account)
+        #     event_list.save()
+        # events = event_list.events.all()
+        # context['events'] = events
+        
         try:
             friend_list = FriendList.objects.get(user=account)
         except FriendList.DoesNotExist:
